@@ -52,9 +52,16 @@ export const Small: Story = {
   },
 };
 
-export const Dyno: Story = {
+export const Destructive: Story = {
   args: {
-    primary: true,
-    label: "Dyno",
+    destructive: true,
+    label: "Destructive",
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    ghost: true,
+    label: "Ghost",
   },
 };

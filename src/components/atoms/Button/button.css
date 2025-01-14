@@ -5,16 +5,35 @@
   border-radius: 3em;
   font-weight: 700;
   line-height: 1;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .storybook-button--primary {
   background-color: #1ea7fd;
   color: white;
+  border-radius: 10px;
 }
 .storybook-button--secondary {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
   background-color: transparent;
   color: #333;
+  border-radius: 10px;
+}
+.storybook-button--ghost {
+  background-color: transparent;
+  color: black;
+  border-radius: 10px;
+  border: black;
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+.storybook-button--ghost:hover {
+  background-color: rgba(153, 178, 194, 0.2);
+  color: black;
+  opacity: 0.8;
+}
+.storybook-button--destructive {
+  background-color: #dd3c3c;
+  color: #fff;
+  border-radius: 10px;
 }
 .storybook-button--small {
   padding: 10px 16px;
