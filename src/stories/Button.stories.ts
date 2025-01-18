@@ -1,5 +1,6 @@
 import { Button } from "@/components/atoms/Button/Button";
 import type { Meta, StoryObj } from "@storybook/react";
+import { File } from "lucide-react";
 
 const meta = {
   title: "Atoms/Button",
@@ -40,6 +41,14 @@ export const Secondary: Story = {
   },
 };
 
+export const Rounded: Story = {
+  args: {
+    size: "md",
+    label: "Rounded",
+    variant: "rounded",
+  },
+};
+
 export const Ghost: Story = {
   args: {
     variant: "ghost",
@@ -72,5 +81,14 @@ export const Disabled: Story = {
   args: {
     label: "Disabled Button",
     disabled: true,
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    variant: "rounded",
+    size: "md",
+    label: "File",
+    icon: File,
   },
 };

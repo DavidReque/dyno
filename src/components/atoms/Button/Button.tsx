@@ -1,13 +1,15 @@
 import { cn } from "@/lib/utils";
+import { LucideIcon } from "lucide-react";
 import React from "react";
 
 export interface ButtonProps {
   /** Variant of the button */
-  variant?: "primary" | "secondary" | "ghost" | "destructive";
+  variant?: "primary" | "secondary" | "ghost" | "destructive" | "rounded";
   /** Size of the button */
   size?: "sm" | "md" | "lg";
   /** Button contents */
   label: string;
+  icon?: LucideIcon;
   /** Optional click handler */
   onClick?: () => void;
   /** Optional additional className */
@@ -20,6 +22,7 @@ export const Button = ({
   variant = "primary",
   size = "md",
   label,
+  icon: Icon,
   onClick,
   className,
   disabled = false,
@@ -35,6 +38,8 @@ export const Button = ({
     ghost: "text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-500",
     destructive:
       "bg-destructive-500 text-white hover:bg-destructive-600 focus:ring-destructive-500",
+    rounded:
+      "bg-green-400 text-white hover:bg-green-600 focus:ring-primary-500 rounded-full",
   };
 
   const sizeStyles = {
@@ -56,6 +61,7 @@ export const Button = ({
       disabled={disabled}
       {...props}
     >
+      {Icon && <Icon className="mr-2" />} {/* Render icon as a component */}
       {label}
     </button>
   );
