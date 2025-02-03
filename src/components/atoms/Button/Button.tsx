@@ -8,7 +8,7 @@ export interface ButtonProps {
   /** Size of the button */
   size?: "sm" | "md" | "lg";
   /** Button contents */
-  label: string;
+  label?: string;
   icon?: LucideIcon;
   /** Optional click handler */
   onClick?: () => void;
@@ -16,6 +16,7 @@ export interface ButtonProps {
   className?: string;
   /** Disabled state */
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 export const Button = ({
@@ -26,6 +27,7 @@ export const Button = ({
   onClick,
   className,
   disabled = false,
+  children,
   ...props
 }: ButtonProps) => {
   const baseStyles =
@@ -62,7 +64,7 @@ export const Button = ({
       {...props}
     >
       {Icon && <Icon className="mr-2" />} {/* Render icon as a component */}
-      {label}
+      {label || children}
     </button>
   );
 };
