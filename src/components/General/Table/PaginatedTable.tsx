@@ -1,0 +1,61 @@
+import React, { useState } from "react";
+import { Table, TableProps } from "@/components/General/Table/Table";
+import { cn } from "@/lib/utils";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+export interface PaginatedTableProps<T> extends TableProps<T> {
+  /** Número de filas por página */
+  pageSize?: number;
+}
+
+export function PaginatedTable<T extends object>({
+  columns,
+  data,
+  className,
+  pageSize = 2,
+}: PaginatedTableProps<T>) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(data.length / pageSize);
+
+  const paginatedData = data.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
+
+  return (
+    <div className={cn("space-y-4", className)}>
+      <Table columns={columns} data={paginatedData} />
+      <div className="flex justify-center items-center gap-4 mt-4">
+        <button
+          className="px-4 py-2 text-sm font-medium bg-white border border-green-300 rounded-md hover:bg-gray-100 disabled:opacity-50"
+          onClick={handlePrev}
+          disabled={currentPage === 1}
+        >
+          <span className="text-green-300">
+            <ArrowLeft size={16} />
+          </span>
+        </button>
+        <span className="text-sm font-medium">
+          {currentPage} / {totalPages}
+        </span>
+        <button
+          className="px-4 py-2 text-sm font-medium bg-white border border-green-300 rounded-md hover:bg-gray-100 disabled:opacity-50"
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+        >
+          <span className="text-green-300">
+            <ArrowRight size={16} />
+          </span>{" "}
+        </button>
+      </div>
+    </div>
+  );
+}
