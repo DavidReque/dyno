@@ -19,7 +19,6 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   webpackFinal: async (config) => {
-    // Añade soporte para PostCSS
     if (config.module?.rules) {
       config.module.rules.push({
         test: /\.css$/,
