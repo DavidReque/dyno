@@ -1,9 +1,9 @@
-import { Select } from "@/components/atoms/Select/Select";
+import { Select } from "@/components/General/Select/Select";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ChevronUp } from "lucide-react";
 
 const meta = {
-  title: "Atoms/DropdownSelect",
+  title: "General/DropdownSelect",
   component: Select,
   parameters: {
     layout: "centered",

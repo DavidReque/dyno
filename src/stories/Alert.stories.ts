@@ -1,8 +1,8 @@
-import { Alert } from "@/components/atoms/Alert/Alert";
+import { Alert } from "@/components/General/Alert/Alert";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Alert> = {
-  title: "Atoms/Alert",
+  title: "General/Alert",
   component: Alert,
   parameters: {
     layout: "centered",

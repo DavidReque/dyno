@@ -1,9 +1,9 @@
-import { Button } from "@/components/atoms/Button/Button";
+import { Button } from "@/components/General/Button/Button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { File } from "lucide-react";
 
 const meta = {
-  title: "Atoms/Button",
+  title: "General/Button",
   component: Button,
   parameters: {
     layout: "centered",

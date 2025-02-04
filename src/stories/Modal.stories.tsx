@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Button } from "@/components/atoms/Button/Button";
-import { Modal } from "@/components/atoms/Modal/Modal";
+import { Button } from "@/components/General/Button/Button";
+import { Modal } from "@/components/General/Modal/Modal";
 import type { Meta, StoryFn } from "@storybook/react";
 
 const meta: Meta<typeof Modal> = {
-  title: "Atoms/Modal",
+  title: "General/Modal",
   component: Modal,
   parameters: {
     layout: "centered",

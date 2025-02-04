@@ -1,9 +1,9 @@
-import { Card } from "@/components/atoms/Card/Card";
+import { Card } from "@/components/General/Card/Card";
 import type { Meta, StoryObj } from "@storybook/react";
 import { User, Bell, FileText } from "lucide-react";
 
 const meta = {
-  title: "Atoms/Card",
+  title: "General/Card",
   component: Card,
   parameters: {
     layout: "centered",

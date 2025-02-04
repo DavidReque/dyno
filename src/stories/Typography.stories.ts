@@ -1,8 +1,8 @@
-import { Typography } from "@/components/atoms/Typography/Typography";
+import { Typography } from "@/components/General/Typography/Typography";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Typography> = {
-  title: "Atoms/Typography",
+  title: "General/Typography",
   component: Typography,
   parameters: {
     layout: "centered",

@@ -1,9 +1,9 @@
-import { Input } from "@/components/atoms/Input/Input";
+import { Input } from "@/components/General/Input/Input";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Search, X } from "lucide-react";
 
 const meta = {
-  title: "Atoms/Input",
+  title: "General/Input",
   component: Input,
   parameters: {
     layout: "centered",
