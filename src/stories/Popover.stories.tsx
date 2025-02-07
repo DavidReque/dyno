@@ -1,0 +1,52 @@
+import React from "react";
+import { Popover } from "@/components/General/Popover/Popover";
+import type { Meta, StoryObj } from "@storybook/react";
+
+const meta: Meta<typeof Popover> = {
+  title: "General/Popover",
+  component: Popover,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    className: { control: false },
+    panelClassName: { control: false },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Popover>;
+
+export const Default: Story = {
+  args: {
+    buttonContent: "Open Popover",
+    panelContent: (
+      <div>
+        <p>This is the popover content.</p>
+      </div>
+    ),
+  },
+};
+
+export const WithCustomContent: Story = {
+  args: {
+    buttonContent: "Options",
+    panelContent: (
+      <div>
+        <ul className="space-y-1">
+          <li className="px-2 py-1 rounded hover:bg-gray-100 cursor-pointer">
+            Option 1
+          </li>
+          <li className="px-2 py-1 rounded hover:bg-gray-100 cursor-pointer">
+            Option 2
+          </li>
+          <li className="px-2 py-1 rounded hover:bg-gray-100 cursor-pointer">
+            Option 3
+          </li>
+        </ul>
+      </div>
+    ),
+    panelClassName: "bg-gray-50",
+  },
+};
