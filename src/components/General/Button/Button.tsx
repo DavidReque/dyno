@@ -34,9 +34,9 @@ export const Button = ({
     "inline-flex items-center justify-center font-medium transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none";
 
   const variantStyles = {
-    primary: "bg-primary-500 text-white hover:bg-primary-600 ",
-    secondary:
-      "bg-neutral-100 text-neutral-900 hover:bg-neutral-200 focus:ring-neutral-500",
+    primary:
+      "bg-green-400 text-white hover:bg-green-600 focus:ring-primary-500",
+    secondary: "bg-primary-500 text-white hover:bg-primary-600",
     ghost: "text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-500",
     destructive:
       "bg-destructive-500 text-white hover:bg-destructive-600 focus:ring-destructive-500",

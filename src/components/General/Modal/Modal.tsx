@@ -1,3 +1,4 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Dialog, Transition } from "@headlessui/react";
 import { X } from "lucide-react";
@@ -16,7 +17,7 @@ export interface ModalProps {
   className?: string;
 }
 
-export const Modal = ({
+export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
   title,
@@ -25,7 +26,7 @@ export const Modal = ({
   size = "md",
   showCloseButton = true,
   className,
-}: ModalProps) => {
+}) => {
   const sizeStyles = {
     sm: "max-w-md",
     md: "max-w-lg",
@@ -60,7 +61,8 @@ export const Modal = ({
             >
               <Dialog.Panel
                 className={cn(
-                  "relative w-full bg-white rounded-xl shadow-2xl p-6",
+                  "relative w-full rounded-xl shadow-2xl p-6 transition-all duration-300",
+                  "bg-white dark:bg-neutral-900",
                   sizeStyles[size],
                   className
                 )}
@@ -70,7 +72,7 @@ export const Modal = ({
                     variant="ghost"
                     size="sm"
                     onClick={onClose}
-                    className="absolute right-4 top-4 p-1 text-neutral-500 hover:text-neutral-700"
+                    className="absolute right-4 top-4 p-1 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 "
                     aria-label="Close"
                   >
                     <X className="w-5 h-5" />
@@ -80,13 +82,13 @@ export const Modal = ({
                 <div className="space-y-4">
                   <Dialog.Title
                     as="h3"
-                    className="text-xl font-semibold text-neutral-900"
+                    className="text-xl font-semibold text-neutral-900 dark:text-neutral-100"
                   >
                     {title}
                   </Dialog.Title>
 
                   {description && (
-                    <Dialog.Description className="text-neutral-600">
+                    <Dialog.Description className="text-neutral-600 dark:text-neutral-300">
                       {description}
                     </Dialog.Description>
                   )}
