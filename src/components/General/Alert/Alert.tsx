@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { X } from "lucide-react";
 
 export interface AlertProps {
   /** Tipo de alerta */
@@ -55,7 +54,20 @@ export const Alert: React.FC<AlertProps> = ({
           className="text-neutral-500 hover:text-neutral-700"
           aria-label="Close alert"
         >
-          <X className="w-4 h-4" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
         </button>
       )}
     </div>

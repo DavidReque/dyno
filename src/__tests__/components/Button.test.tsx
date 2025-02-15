@@ -2,24 +2,19 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Button } from "@/components/General/Button/Button";
+//import { Search } from "lucide-react";
 
 describe("Button Component", () => {
-  test("renders with the correct label", () => {
-    render(<Button label="Click Me" />);
-    // Verificamos que el texto "Click Me" esté en el documento
-    expect(screen.getByText(/Click Me/i)).toBeInTheDocument();
-  });
-
   test("calls onClick handler when clicked", async () => {
     const handleClick = jest.fn();
     render(<Button label="Click Me" onClick={handleClick} />);
 
     const user = userEvent.setup();
-    // Buscamos el botón por su role e identificamos por el nombre
+    // search for the button by its role and identify by name
     const button = screen.getByRole("button", { name: /Click Me/i });
     await user.click(button);
 
-    // Verificamos que se llamó la función
+    // we verify that the function was called
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
@@ -35,11 +30,26 @@ describe("Button Component", () => {
     const user = userEvent.setup();
     const button = screen.getByRole("button", { name: /Disabled/i });
 
-    // Verificamos que el botón está deshabilitado
+    // we verify that the button is disabled
     expect(button).toBeDisabled();
 
-    // Intentamos hacer click y comprobamos que no se llama la función
+    // we try to click and check that the function is not called
     await user.click(button);
     expect(handleClick).not.toHaveBeenCalled();
   });
+
+  test("applies correct variant class", () => {
+    const { container } = render(<Button label="Primary" variant="primary" />);
+    expect(container.firstChild).toHaveClass("bg-green-400 text-white");
+  });
+
+  test("applies correct size class", () => {
+    const { container } = render(<Button label="Large" size="lg" />);
+    expect(container.firstChild).toHaveClass("text-md px-6 py-3 rounded-lg");
+  });
+
+  /*test("renders icon when provided", () => {
+    render(<Button label="Search" icon={Search} />);
+    expect(screen.getByRole("img")).toBeInTheDocument();
+  });*/
 });
