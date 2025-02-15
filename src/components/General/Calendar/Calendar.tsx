@@ -87,7 +87,10 @@ export const Calendar: React.FC<CalendarProps> = ({
         ))}
       </div>
       {/* Contenedor con altura fija para evitar que se muevan los botones */}
-      <div className="relative min-h-[150px]">
+      <div
+        className="relative min-h-[150px]"
+        data-testid="calendar-grid-container"
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={`${year}-${month}`}

@@ -1,6 +1,5 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 export interface BreadcrumbItem {
@@ -28,7 +27,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
           {item.href ? (
             <Link
               href={item.href}
-              className="text-gray-300 hover:text-green-400 transition-colors duration-300"
+              className="text-gray-400 hover:text-green-400 transition-colors duration-300"
             >
               {item.label}
             </Link>
@@ -36,7 +35,20 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
             <span className="text-white font-semibold">{item.label}</span>
           )}
           {index < items.length - 1 && (
-            <ChevronRight className="w-4 h-4 mx-2 text-gray-400" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-4 h-4 mx-2 text-gray-400"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m8.25 4.5 7.5 7.5-7.5 7.5"
+              />
+            </svg>
           )}
         </div>
       ))}
