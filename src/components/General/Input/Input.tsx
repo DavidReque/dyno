@@ -1,11 +1,10 @@
 import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
 import React, { InputHTMLAttributes } from "react";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   variant?: "default" | "withButton" | "file" | "disabled" | "withLabel";
-  leadingIcon?: LucideIcon;
-  trailingIcon?: LucideIcon;
+  leadingIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  trailingIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
   error?: boolean;
   label?: string;
   buttonText?: string;
@@ -69,7 +68,7 @@ export const Input: React.FC<InputProps> = ({
             "block mb-2 text-sm font-medium transition-colors duration-200",
             error
               ? "text-red-500"
-              : "text-neutral-700 dark:text-neutral-300 group-focus-within:text-green-500"
+              : "text-neutral-700 dark:text-neutral-400 group-focus-within:text-green-500"
           )}
         >
           {label}

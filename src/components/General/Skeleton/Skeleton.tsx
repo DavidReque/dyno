@@ -11,6 +11,7 @@ export const CardSkeleton: React.FC<{ className?: string }> = ({
         "animate-pulse bg-gray-200 rounded-lg p-4 space-y-4",
         className
       )}
+      data-testid="skeleton-block"
     >
       <div className="h-4 bg-gray-300 rounded w-3/4"></div>
       <div className="space-y-2">

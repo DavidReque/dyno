@@ -1,7 +1,6 @@
 import React from "react";
 import { Popover as HeadlessPopover, Transition } from "@headlessui/react";
 import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
 
 export interface PopoverProps {
   /** Contenido que se muestra en el botón que dispara el popover */
@@ -24,7 +23,20 @@ export const Popover: React.FC<PopoverProps> = ({
     <HeadlessPopover className={cn("relative", className)}>
       <HeadlessPopover.Button className="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 focus:outline-none transition-colors duration-300">
         {buttonContent}
-        <ChevronDown className="ml-2 w-4 h-4" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="ml-2 w-4 h-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>{" "}
       </HeadlessPopover.Button>
       <Transition
         as={React.Fragment}
