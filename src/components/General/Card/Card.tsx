@@ -1,5 +1,4 @@
 import React from "react";
-import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface CardProps {
@@ -8,7 +7,7 @@ export interface CardProps {
   children?: React.ReactNode;
   footer?: React.ReactNode;
   variant?: "default" | "ghost" | "outline";
-  icon?: LucideIcon;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   className?: string;
   onClick?: () => void;
 }
@@ -46,6 +45,7 @@ export const Card: React.FC<CardProps> = ({
         >
           {Icon && (
             <Icon
+              data-testid="card-icon"
               className={cn(
                 "w-6 h-6 transition-transform group-hover:scale-110 group-hover:rotate-6",
                 variant === "ghost" ? "text-green-500" : "text-green-500"
