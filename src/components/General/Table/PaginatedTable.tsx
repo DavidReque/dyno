@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Table, TableProps } from "@/components/General/Table/Table";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export interface PaginatedTableProps<T> extends TableProps<T> {
   /** Número de filas por página */
@@ -40,7 +39,20 @@ export function PaginatedTable<T extends object>({
           disabled={currentPage === 1}
         >
           <span className="text-green-300">
-            <ArrowLeft size={16} />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+              />
+            </svg>
           </span>
         </button>
         <span className="text-sm font-medium">
@@ -52,7 +64,20 @@ export function PaginatedTable<T extends object>({
           disabled={currentPage === totalPages}
         >
           <span className="text-green-300">
-            <ArrowRight size={16} />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+              />
+            </svg>
           </span>{" "}
         </button>
       </div>
