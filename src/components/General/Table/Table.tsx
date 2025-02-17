@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export interface Column<T> {
   /** Texto del encabezado de la columna */
-  header: string;
+  header: React.ReactNode;
   /** Llave para acceder a la propiedad del objeto de datos */
   accessor: keyof T;
   /** Función opcional para renderizar la celda personalizada */

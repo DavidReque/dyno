@@ -1,16 +1,20 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Popover } from "@/components/General/Popover/Popover";
 import "@testing-library/jest-dom";
+
+global.ResizeObserver = class {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
 
 describe("Popover Component", () => {
   test("renders the button content", () => {
     render(
       <Popover buttonContent="Open Popover" panelContent="Panel Content" />
     );
-
-    // Verificamos que el botón muestre el texto esperado
     expect(screen.getByText("Open Popover")).toBeInTheDocument();
   });
 
@@ -18,7 +22,6 @@ describe("Popover Component", () => {
     render(
       <Popover buttonContent="Open Popover" panelContent="Panel Content" />
     );
-    // El panel no debe estar visible inicialmente
     expect(screen.queryByText("Panel Content")).not.toBeInTheDocument();
   });
 
@@ -45,7 +48,9 @@ describe("Popover Component", () => {
 
     await user.click(document.body);
 
-    expect(screen.queryByText("Panel Content")).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText("Panel Content")).not.toBeInTheDocument();
+    });
   });
 
   test("toggles panel when button is clicked again", async () => {
@@ -59,6 +64,9 @@ describe("Popover Component", () => {
     expect(screen.getByText("Panel Content")).toBeInTheDocument();
 
     await user.click(button);
-    expect(screen.queryByText("Panel Content")).not.toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.queryByText("Panel Content")).not.toBeInTheDocument();
+    });
   });
 });
