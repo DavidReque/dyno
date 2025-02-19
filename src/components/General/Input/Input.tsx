@@ -87,13 +87,21 @@ export const Input: React.FC<InputProps> = ({
         )}
 
         <input
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              console.log("Enter pressed");
+            } else if (e.key === "Escape") {
+              e.currentTarget.value = "";
+            }
+          }}
           className={cn(
             baseStyles,
             variantStyles[variant],
             variant === "file" ? "cursor-pointer" : "",
             LeadingIcon ? "pl-10" : "",
             TrailingIcon ? "pr-10" : "",
-            className
+            className,
+            "focus:ring-2 focus:ring-green-400 focus:outline-none"
           )}
           disabled={variant === "disabled" || disabled}
           {...props}

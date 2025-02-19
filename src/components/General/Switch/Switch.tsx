@@ -32,6 +32,13 @@ export const Switch: React.FC<SwitchProps> = ({
       type="button"
       role="switch"
       aria-checked={isChecked}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === " " || e.key === "Enter") {
+          e.preventDefault();
+          toggle();
+        }
+      }}
       onClick={toggle}
       className={cn(
         "relative inline-flex h-6 w-11 items-center cursor-pointer rounded-full transition-colors",

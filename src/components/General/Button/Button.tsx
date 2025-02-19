@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
 import React from "react";
 
 export interface ButtonProps {
@@ -9,7 +8,7 @@ export interface ButtonProps {
   size?: "sm" | "md" | "lg";
   /** Button contents */
   label?: string;
-  icon?: LucideIcon;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   /** Optional click handler */
   onClick?: () => void;
   /** Optional additional className */
@@ -53,6 +52,12 @@ export const Button = ({
   return (
     <button
       type="button"
+      onKeyDown={(e) => {
+        if (e.key === " " || e.key === "Enter") {
+          e.preventDefault();
+          onClick?.();
+        }
+      }}
       className={cn(
         baseStyles,
         variantStyles[variant],
