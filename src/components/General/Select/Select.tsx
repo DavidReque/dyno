@@ -28,9 +28,18 @@ export const Select: React.FC<SelectProps> = ({
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Cierra el dropdown al hacer clic fuera
+  useEffect(() => {
+    if (isOpen && activeIndex >= 0) {
+      const listItems = document.querySelectorAll('[role="option"]');
+      (listItems[activeIndex] as HTMLElement)?.focus();
+    }
+  }, [activeIndex, isOpen]);
+
+  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -38,6 +47,7 @@ export const Select: React.FC<SelectProps> = ({
         !containerRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        setActiveIndex(-1);
       }
     };
 
@@ -45,12 +55,60 @@ export const Select: React.FC<SelectProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Busca la opción seleccionada para mostrar su etiqueta
   const selectedOption = options.find((opt) => opt.value === selectedValue);
 
   const handleSelect = (value: string) => {
     onChange?.(value);
     setIsOpen(false);
+    setActiveIndex(-1);
+    buttonRef.current?.focus();
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (event.key) {
+      case "Enter":
+      case " ":
+        event.preventDefault();
+        if (!isOpen) {
+          setIsOpen(true);
+          setActiveIndex(0);
+        } else if (activeIndex >= 0) {
+          handleSelect(options[activeIndex].value);
+        }
+        break;
+      case "ArrowDown":
+        event.preventDefault();
+        if (!isOpen) {
+          setIsOpen(true);
+          setActiveIndex(0);
+        } else {
+          setActiveIndex((prev) => (prev + 1) % options.length);
+        }
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        if (isOpen) {
+          setActiveIndex(
+            (prev) => (prev - 1 + options.length) % options.length
+          );
+        }
+        break;
+      case "Escape":
+        if (isOpen) {
+          event.preventDefault();
+          setIsOpen(false);
+          setActiveIndex(-1);
+          buttonRef.current?.focus();
+        }
+        break;
+      case "Tab":
+        if (isOpen) {
+          event.preventDefault();
+          setIsOpen(false);
+          setActiveIndex(-1);
+        }
+        break;
+    }
   };
 
   const baseStyles =
@@ -78,8 +136,17 @@ export const Select: React.FC<SelectProps> = ({
   };
 
   return (
-    <div ref={containerRef} className={cn("relative w-64", className)}>
+    <div
+      ref={containerRef}
+      className={cn("relative w-64", className)}
+      onKeyDown={handleKeyDown}
+      role="combobox"
+      aria-expanded={isOpen}
+      aria-haspopup="listbox"
+      aria-controls="select-dropdown"
+    >
       <button
+        ref={buttonRef}
         type="button"
         disabled={disabled}
         onClick={() => !disabled && setIsOpen((prev) => !prev)}
@@ -114,18 +181,31 @@ export const Select: React.FC<SelectProps> = ({
             exit={{ opacity: 0, scale: 0.95, y: -5 }}
             transition={{ duration: 0.2 }}
             className="absolute mt-1 w-full rounded-lg shadow-lg bg-white dark:bg-neutral-800 z-10"
+            role="listbox"
+            id="select-dropdown"
           >
             <ul className="max-h-60 overflow-auto">
-              {options.map((option) => (
+              {options.map((option, index) => (
                 <li
                   key={option.value}
+                  role="option"
+                  aria-selected={selectedValue === option.value}
+                  tabIndex={-1}
                   onClick={() => handleSelect(option.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleSelect(option.value);
+                    }
+                  }}
                   className={cn(
-                    "cursor-pointer px-3 py-2 text-gray-300 hover:bg-neutral-100 rounded-lg dark:hover:bg-neutral-700 transition-colors",
+                    "cursor-pointer px-3 py-2 text-gray-300 hover:bg-neutral-100 rounded-lg dark:hover:bg-neutral-700 transition-colors focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-700",
                     variant === "destructive" &&
                       "text-red-300 dark:text-red-300",
                     selectedValue === option.value &&
-                      "bg-neutral-300 dark:bg-neutral-600"
+                      "bg-neutral-300 dark:bg-neutral-600",
+                    activeIndex === index &&
+                      "bg-neutral-100 dark:bg-neutral-700"
                   )}
                 >
                   {option.label}
