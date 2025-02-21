@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cn } from "@/lib/utils"; // Asegúrate de que tienes esta función utilitaria o reemplázala con clsx o classNames
+import { cn } from "@/lib/utils";
 
 interface AccordionItem {
   id: number;
@@ -14,8 +14,14 @@ interface AccordionProps {
 export function Accordion({ items }: AccordionProps) {
   const [openItem, setOpenItem] = useState<number | null>(null);
 
-  const toggleItem = (id: number) => {
-    setOpenItem(openItem === id ? null : id);
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLButtonElement>,
+    id: number
+  ) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setOpenItem(openItem === id ? null : id);
+    }
   };
 
   return (
@@ -26,7 +32,11 @@ export function Accordion({ items }: AccordionProps) {
         return (
           <div key={item.id} className="border-b last:border-none">
             <button
-              onClick={() => toggleItem(item.id)}
+              id={`accordion-button-${item.id}`}
+              aria-expanded={isOpen}
+              aria-controls={`accordion-content-${item.id}`}
+              onClick={() => setOpenItem(openItem === item.id ? null : item.id)}
+              onKeyDown={(e) => handleKeyDown(e, item.id)}
               className="w-full flex items-center justify-between px-5 py-3 text-left text-sm font-semibold text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition"
             >
               {item.title}
@@ -36,6 +46,7 @@ export function Accordion({ items }: AccordionProps) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
+                aria-hidden="true"
                 className={cn(
                   "h-5 w-5 text-gray-600 transition-transform duration-200 ease-out",
                   isOpen ? "rotate-180" : "rotate-0"
@@ -48,8 +59,10 @@ export function Accordion({ items }: AccordionProps) {
                 />
               </svg>
             </button>
-
             <div
+              id={`accordion-content-${item.id}`}
+              role="region"
+              aria-labelledby={`accordion-button-${item.id}`}
               className={cn(
                 "overflow-hidden transition-all duration-200 ease-out px-5 text-sm text-gray-600",
                 isOpen
