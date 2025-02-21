@@ -28,6 +28,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
             <Link
               href={item.href}
               className="text-gray-400 hover:text-green-400 transition-colors duration-300"
+              tabIndex={0}
             >
               {item.label}
             </Link>
