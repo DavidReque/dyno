@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export interface AlertProps {
@@ -22,6 +22,7 @@ export const Alert: React.FC<AlertProps> = ({
   className,
 }) => {
   const [visible, setVisible] = useState(true);
+  const alertRef = useRef<HTMLDivElement>(null);
 
   const variantClasses = {
     success: "bg-green-100 border border-green-500 text-green-800",
@@ -29,6 +30,24 @@ export const Alert: React.FC<AlertProps> = ({
     warning: "bg-yellow-100 border border-yellow-500 text-yellow-800",
     info: "bg-blue-100 border border-blue-500 text-blue-800",
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && dismissible) {
+        handleClose();
+      }
+    };
+
+    if (dismissible) {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      if (dismissible) {
+        document.removeEventListener("keydown", handleKeyDown);
+      }
+    };
+  }, [dismissible]);
 
   const handleClose = () => {
     if (onClose) {
@@ -41,6 +60,8 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <div
+      ref={alertRef}
+      role="alert"
       className={cn(
         "p-4 rounded-lg flex items-center justify-between space-x-3",
         variantClasses[variant],
@@ -51,7 +72,7 @@ export const Alert: React.FC<AlertProps> = ({
       {dismissible && (
         <button
           onClick={handleClose}
-          className="text-neutral-500 hover:text-neutral-700"
+          className="text-neutral-500 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 rounded"
           aria-label="Close alert"
         >
           <svg
