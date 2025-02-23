@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, KeyboardEvent } from "react";
 import { cn } from "@/lib/utils";
 
 export interface DatePickerProps
@@ -21,6 +21,39 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   const handleCalendarClick = () => {
     if (!disabled && inputRef.current) {
       inputRef.current.showPicker();
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (disabled) return;
+
+    const currentDate = inputRef.current?.value
+      ? new Date(inputRef.current.value)
+      : new Date();
+
+    switch (e.key) {
+      case "ArrowLeft":
+        e.preventDefault();
+        currentDate.setDate(currentDate.getDate() - 1);
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        currentDate.setDate(currentDate.getDate() + 1);
+        break;
+      case "Enter":
+        e.preventDefault();
+        const event = new Event("change", { bubbles: true });
+        inputRef.current?.dispatchEvent(event);
+        break;
+      default:
+        return;
+    }
+
+    if (inputRef.current && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+      const formattedDate = currentDate.toISOString().split("T")[0];
+      inputRef.current.value = formattedDate;
+      const event = new Event("change", { bubbles: true });
+      inputRef.current.dispatchEvent(event);
     }
   };
 
@@ -58,6 +91,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             disabled={disabled}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            onKeyDown={handleKeyDown}
             className={cn(
               "w-full px-4 py-2 rounded-lg border transition-all duration-200",
               "bg-white dark:bg-gray-800",
