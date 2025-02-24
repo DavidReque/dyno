@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Colors } from "@/theme/tokens";
+import { Typography } from "@/theme/typography";
+import { Spacing } from "@/theme/spacing";
 
 interface AccordionItem {
   id: number;
@@ -25,7 +28,13 @@ export function Accordion({ items }: AccordionProps) {
   };
 
   return (
-    <div className="border rounded-lg shadow-sm bg-white">
+    <div
+      className="border rounded-lg shadow-sm"
+      style={{
+        backgroundColor: Colors.white,
+        fontFamily: Typography.fontFamilyBase,
+      }}
+    >
       {items.map((item) => {
         const isOpen = openItem === item.id;
 
@@ -37,7 +46,13 @@ export function Accordion({ items }: AccordionProps) {
               aria-controls={`accordion-content-${item.id}`}
               onClick={() => setOpenItem(openItem === item.id ? null : item.id)}
               onKeyDown={(e) => handleKeyDown(e, item.id)}
-              className="w-full flex items-center justify-between px-5 py-3 text-left text-sm font-semibold text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition"
+              className="w-full flex items-center justify-between hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 transition"
+              style={{
+                padding: `${Spacing.sm} ${Spacing.md}`,
+                color: Colors.neutral800,
+                fontSize: Typography.fontSizeSm,
+                fontWeight: Typography.fontWeightSemibold,
+              }}
             >
               {item.title}
               <svg
@@ -48,9 +63,10 @@ export function Accordion({ items }: AccordionProps) {
                 stroke="currentColor"
                 aria-hidden="true"
                 className={cn(
-                  "h-5 w-5 text-gray-600 transition-transform duration-200 ease-out",
+                  "h-5 w-5 transition-transform duration-200 ease-out",
                   isOpen ? "rotate-180" : "rotate-0"
                 )}
+                style={{ color: Colors.neutral800 }}
               >
                 <path
                   strokeLinecap="round"
@@ -64,11 +80,16 @@ export function Accordion({ items }: AccordionProps) {
               role="region"
               aria-labelledby={`accordion-button-${item.id}`}
               className={cn(
-                "overflow-hidden transition-all duration-200 ease-out px-5 text-sm text-gray-600",
+                "overflow-hidden transition-all duration-200 ease-out",
                 isOpen
-                  ? "max-h-96 py-3 opacity-100 visible"
-                  : "max-h-0 py-0 opacity-0 invisible"
+                  ? "max-h-96 opacity-100 visible"
+                  : "max-h-0 opacity-0 invisible"
               )}
+              style={{
+                padding: isOpen ? `${Spacing.sm} ${Spacing.md}` : 0,
+                fontSize: Typography.fontSizeSm,
+                color: Colors.neutral800,
+              }}
             >
               {item.content}
             </div>

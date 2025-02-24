@@ -1,19 +1,15 @@
-import { cn } from "@/lib/utils";
-import React from "react";
+import { Radius, Spacing } from "@/theme/spacing";
+import { Colors } from "@/theme/tokens";
+import { Typography } from "@/theme/typography";
+import React, { useState } from "react";
 
 export interface ButtonProps {
-  /** Variant of the button */
   variant?: "primary" | "secondary" | "ghost" | "destructive" | "rounded";
-  /** Size of the button */
   size?: "sm" | "md" | "lg";
-  /** Button contents */
   label?: string;
   icon?: React.FC<React.SVGProps<SVGSVGElement>>;
-  /** Optional click handler */
   onClick?: () => void;
-  /** Optional additional className */
   className?: string;
-  /** Disabled state */
   disabled?: boolean;
   children?: React.ReactNode;
 }
@@ -29,24 +25,83 @@ export const Button = ({
   children,
   ...props
 }: ButtonProps) => {
-  const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-colors duration-200 disabled:opacity-50 disabled:pointer-events-none";
+  const [isHover, setIsHover] = useState(false);
+
+  const baseStyles: React.CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontWeight: Typography.fontWeightRegular,
+    transition: "all 150ms ease-in-out",
+    opacity: disabled ? 0.5 : 1,
+    pointerEvents: disabled ? "none" : "auto",
+    cursor: "pointer",
+    border: "none",
+    outline: "none",
+    userSelect: "none",
+  };
 
   const variantStyles = {
-    primary:
-      "bg-green-400 text-white hover:bg-green-600 focus:ring-primary-500",
-    secondary: "bg-primary-500 text-white hover:bg-primary-600",
-    ghost: "text-neutral-700 hover:bg-neutral-100 focus:ring-neutral-500",
-    destructive:
-      "bg-destructive-500 text-white hover:bg-destructive-600 focus:ring-destructive-500",
-    rounded:
-      "bg-green-400 text-white hover:bg-green-600 focus:ring-primary-500 rounded-full",
+    primary: {
+      normalBg: Colors.primary400,
+      hoverBg: Colors.primary600,
+      textColor: Colors.white,
+    },
+    secondary: {
+      normalBg: Colors.secondary400,
+      hoverBg: Colors.secondary600,
+      textColor: Colors.white,
+    },
+    ghost: {
+      normalBg: "transparent",
+      hoverBg: Colors.neutral100,
+      textColor: Colors.neutral700,
+    },
+    destructive: {
+      normalBg: Colors.destructive500,
+      hoverBg: Colors.destructive600,
+      textColor: Colors.white,
+    },
+    rounded: {
+      normalBg: Colors.primary400,
+      hoverBg: Colors.primary600,
+      textColor: Colors.white,
+      isRounded: true,
+    },
   };
 
   const sizeStyles = {
-    sm: "text-sm px-3 py-1.5 rounded-md",
-    md: "text-sm px-4 py-2 rounded-lg",
-    lg: "text-md px-6 py-3 rounded-lg",
+    sm: {
+      fontSize: Typography.fontSizeSm,
+      padding: `${Spacing.xs} ${Spacing.sm}`,
+      borderRadius: variant === "rounded" ? Radius.full : Radius.sm,
+      gap: Spacing.xs,
+    },
+    md: {
+      fontSize: Typography.fontSizeSm,
+      padding: `${Spacing.sm} ${Spacing.md}`,
+      borderRadius: variant === "rounded" ? Radius.full : Radius.base,
+      gap: Spacing.sm,
+    },
+    lg: {
+      fontSize: Typography.fontSizeMd,
+      padding: `${Spacing.md} ${Spacing.lg}`,
+      borderRadius: variant === "rounded" ? Radius.full : Radius.base,
+      gap: Spacing.sm,
+    },
+  };
+
+  const config = variantStyles[variant];
+  const sizeConfig = sizeStyles[size];
+
+  const backgroundColor = isHover ? config.hoverBg : config.normalBg;
+
+  const finalStyle: React.CSSProperties = {
+    ...baseStyles,
+    ...sizeConfig,
+    backgroundColor,
+    color: config.textColor,
+    borderRadius: "isRounded" in config ? Radius.full : sizeConfig.borderRadius,
   };
 
   return (
@@ -58,17 +113,15 @@ export const Button = ({
           onClick?.();
         }
       }}
-      className={cn(
-        baseStyles,
-        variantStyles[variant],
-        sizeStyles[size],
-        className
-      )}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      style={finalStyle}
+      className={className}
       onClick={onClick}
       disabled={disabled}
       {...props}
     >
-      {Icon && <Icon className="mr-2" />} {/* Render icon as a component */}
+      {Icon && <Icon />}
       {label || children}
     </button>
   );

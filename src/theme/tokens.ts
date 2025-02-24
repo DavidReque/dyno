@@ -1,5 +1,14 @@
 export const Colors = {
-  // Variantes de estado
+  primary400: "#4ADE80",
+  primary600: "#43A047",
+
+  secondary400: "#3B82F6",
+  secondary600: "#2563EB",
+  destructive500: "#EF5350",
+  destructive600: "#D32F2F",
+
+  gray400: "#9CA3AF",
+
   successBg: "#E9F5EE",
   successText: "#256C3A",
 
@@ -12,13 +21,10 @@ export const Colors = {
   infoBg: "#E3F2FD",
   infoText: "#1976D2",
 
-  // Primarios, destructivos, neutrales...
-  primary400: "#4CAF50",
-  primary600: "#43A047",
-
-  destructive400: "#EF5350",
-  destructive600: "#D32F2F",
-
-  neutral100: "#F5F5F5",
+  neutral100: "#f5f5f5",
   neutral800: "#212121",
+  neutral700: "#374151",
+
+  white: "#ffffff",
+  black: "#000000",
 };

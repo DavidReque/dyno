@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Colors } from "@/theme/tokens";
 
 export interface AlertProps {
   /** Tipo de alerta */
@@ -24,11 +25,27 @@ export const Alert: React.FC<AlertProps> = ({
   const [visible, setVisible] = useState(true);
   const alertRef = useRef<HTMLDivElement>(null);
 
-  const variantClasses = {
-    success: "bg-green-100 border border-green-500 text-green-800",
-    error: "bg-red-100 border border-red-500 text-red-800",
-    warning: "bg-yellow-100 border border-yellow-500 text-yellow-800",
-    info: "bg-blue-100 border border-blue-500 text-blue-800",
+  const variantStyles = {
+    success: {
+      backgroundColor: Colors.successBg,
+      border: `1px solid ${Colors.successText}`,
+      color: Colors.successText,
+    },
+    error: {
+      backgroundColor: Colors.errorBg,
+      border: `1px solid ${Colors.errorText}`,
+      color: Colors.errorText,
+    },
+    warning: {
+      backgroundColor: Colors.warningBg,
+      border: `1px solid ${Colors.warningText}`,
+      color: Colors.warningText,
+    },
+    info: {
+      backgroundColor: Colors.infoBg,
+      border: `1px solid ${Colors.infoText}`,
+      color: Colors.infoText,
+    },
   };
 
   useEffect(() => {
@@ -62,9 +79,9 @@ export const Alert: React.FC<AlertProps> = ({
     <div
       ref={alertRef}
       role="alert"
+      style={variantStyles[variant]}
       className={cn(
         "p-4 rounded-lg flex items-center justify-between space-x-3",
-        variantClasses[variant],
         className
       )}
     >

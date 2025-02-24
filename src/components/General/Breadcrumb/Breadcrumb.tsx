@@ -1,6 +1,8 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Typography } from "@/theme/typography";
+import { Colors } from "@/theme/tokens";
 
 export interface BreadcrumbItem {
   /** Texto que se muestra para el ítem */
@@ -19,21 +21,34 @@ export interface BreadcrumbProps {
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
   return (
     <nav
-      className={cn("flex items-center text-sm", className)}
+      className={cn("flex items-center", className)}
       aria-label="Breadcrumb"
+      style={{
+        fontSize: Typography.fontSizeSm,
+      }}
     >
       {items.map((item, index) => (
         <div key={index} className="flex items-center">
           {item.href ? (
             <Link
               href={item.href}
-              className="text-gray-400 hover:text-green-400 transition-colors duration-300"
+              className={cn(
+                "transition-colors duration-300 hover:text-[#4ADE80]",
+                "text-[#9CA3AF]"
+              )}
               tabIndex={0}
             >
               {item.label}
             </Link>
           ) : (
-            <span className="text-white font-semibold">{item.label}</span>
+            <span
+              style={{
+                color: Colors.white,
+                fontWeight: Typography.fontWeightSemibold,
+              }}
+            >
+              {item.label}
+            </span>
           )}
           {index < items.length - 1 && (
             <svg
@@ -42,7 +57,10 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-4 h-4 mx-2 text-gray-400"
+              className="w-4 h-4 mx-2"
+              style={{
+                color: Colors.gray400,
+              }}
             >
               <path
                 strokeLinecap="round"
