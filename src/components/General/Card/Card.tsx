@@ -1,6 +1,5 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Colors } from "@/theme/tokens";
 
 export interface CardProps {
   title?: string;
@@ -23,22 +22,6 @@ export const Card: React.FC<CardProps> = ({
   className,
   onClick,
 }) => {
-  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  const getBackgroundColor = () => {
-    if (variant === "default") return isDark ? Colors.neutral900 : Colors.white;
-    if (variant === "ghost") return Colors.transparent;
-    if (variant === "outline") return isDark ? Colors.neutral900 : Colors.white;
-    return Colors.white;
-  };
-
-  const getHoverBackgroundColor = () => {
-    if (variant === "ghost") {
-      return isDark ? Colors.neutral800 : Colors.neutral100;
-    }
-    return Colors.transparent;
-  };
-
   const baseStyles = cn(
     "group rounded-xl overflow-hidden transition-all duration-300",
     variant === "default" && "shadow-sm hover:shadow-lg",
@@ -51,22 +34,18 @@ export const Card: React.FC<CardProps> = ({
       className={baseStyles}
       onClick={onClick}
       style={{
-        backgroundColor: getBackgroundColor(),
-        borderColor:
-          variant === "outline"
-            ? isDark
-              ? Colors.neutral600
-              : Colors.neutral300
-            : undefined,
+        backgroundColor:
+          variant === "ghost" ? "transparent" : "var(--color-background)",
+        borderColor: variant === "outline" ? "var(--color-border)" : undefined,
       }}
       onMouseEnter={(e) => {
         if (variant === "ghost") {
-          e.currentTarget.style.backgroundColor = getHoverBackgroundColor();
+          e.currentTarget.style.backgroundColor = "var(--color-hover)";
         }
       }}
       onMouseLeave={(e) => {
         if (variant === "ghost") {
-          e.currentTarget.style.backgroundColor = Colors.transparent;
+          e.currentTarget.style.backgroundColor = "transparent";
         }
       }}
     >
@@ -75,7 +54,7 @@ export const Card: React.FC<CardProps> = ({
         <div
           className="px-4 py-4 border-b transition-colors duration-300 flex items-center gap-3"
           style={{
-            borderColor: isDark ? Colors.neutral700 : Colors.neutral200,
+            borderColor: "var(--color-border)",
           }}
         >
           {Icon && (
@@ -83,7 +62,7 @@ export const Card: React.FC<CardProps> = ({
               data-testid="card-icon"
               className="w-6 h-6 transition-transform group-hover:scale-110 group-hover:rotate-6"
               style={{
-                color: Colors.primary500,
+                color: "var(--color-primary)",
               }}
             />
           )}
@@ -94,10 +73,8 @@ export const Card: React.FC<CardProps> = ({
                 style={{
                   color:
                     variant === "ghost"
-                      ? Colors.primary500
-                      : isDark
-                      ? Colors.neutral100
-                      : Colors.neutral800,
+                      ? "var(--color-primary)"
+                      : "var(--color-text)",
                 }}
               >
                 {title}
@@ -107,7 +84,8 @@ export const Card: React.FC<CardProps> = ({
               <p
                 className="text-sm"
                 style={{
-                  color: isDark ? Colors.neutral400 : Colors.neutral500,
+                  color: "var(--color-text)",
+                  opacity: 0.7,
                 }}
               >
                 {subtitle}
@@ -122,11 +100,7 @@ export const Card: React.FC<CardProps> = ({
         className="p-4 space-y-2 transition-colors"
         style={{
           color:
-            variant === "ghost"
-              ? Colors.primary500
-              : isDark
-              ? Colors.neutral300
-              : Colors.neutral700,
+            variant === "ghost" ? "var(--color-primary)" : "var(--color-text)",
         }}
       >
         {children}
@@ -137,14 +111,11 @@ export const Card: React.FC<CardProps> = ({
         <div
           className="px-4 py-3 border-t transition-colors"
           style={{
-            color: variant === "ghost" ? Colors.neutral500 : Colors.neutral400,
-            borderColor: isDark ? Colors.neutral700 : Colors.neutral200,
+            color: "var(--color-text)",
+            opacity: 0.6,
+            borderColor: "var(--color-border)",
             backgroundColor:
-              variant === "ghost"
-                ? Colors.transparent
-                : isDark
-                ? Colors.neutral800
-                : Colors.neutral100,
+              variant === "ghost" ? "transparent" : "var(--color-hover)",
           }}
         >
           {footer}

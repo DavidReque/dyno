@@ -12,6 +12,7 @@ export interface ButtonProps {
   className?: string;
   disabled?: boolean;
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export const Button = ({

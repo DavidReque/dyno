@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Button } from "../Button/Button";
+import { sizeStyles } from "@/theme/spacing";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -26,12 +27,6 @@ export const Modal: React.FC<ModalProps> = ({
   showCloseButton = true,
   className,
 }) => {
-  const sizeStyles = {
-    sm: "max-w-md",
-    md: "max-w-lg",
-    lg: "max-w-2xl",
-  };
-
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -44,7 +39,10 @@ export const Modal: React.FC<ModalProps> = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+          <div
+            className="fixed inset-0 backdrop-blur-sm"
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+          />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -60,18 +58,25 @@ export const Modal: React.FC<ModalProps> = ({
             >
               <Dialog.Panel
                 className={cn(
-                  "relative w-full rounded-xl shadow-2xl p-6 transition-all duration-300",
-                  "bg-white dark:bg-neutral-900",
+                  "relative w-full shadow-2xl p-6 transition-all duration-300",
                   sizeStyles[size],
                   className
                 )}
+                style={{
+                  backgroundColor: "var(--color-background)",
+                  borderRadius: "1rem",
+                  border: "1px solid var(--color-border)",
+                }}
               >
                 {showCloseButton && (
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={onClose}
-                    className="absolute right-4 top-4 p-1 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 "
+                    className="absolute right-4 top-4 p-1"
+                    style={{
+                      color: "var(--color-text)",
+                    }}
                     aria-label="Close"
                   >
                     <svg
@@ -94,13 +99,21 @@ export const Modal: React.FC<ModalProps> = ({
                 <div className="space-y-4">
                   <Dialog.Title
                     as="h3"
-                    className="text-xl font-semibold text-neutral-900 dark:text-neutral-100"
+                    className="text-xl font-semibold"
+                    style={{
+                      color: "var(--color-text)",
+                    }}
                   >
                     {title}
                   </Dialog.Title>
 
                   {description && (
-                    <Dialog.Description className="text-neutral-600 dark:text-neutral-300">
+                    <Dialog.Description
+                      style={{
+                        color: "var(--color-text)",
+                        opacity: 0.8,
+                      }}
+                    >
                       {description}
                     </Dialog.Description>
                   )}

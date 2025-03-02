@@ -12,3 +12,9 @@ export const Radius = {
   full: "9999px", // rounded-full
   xl: "1rem", // rounded-xl
 };
+
+export const sizeStyles = {
+  sm: "max-w-md",
+  md: "max-w-lg",
+  lg: "max-w-2xl",
+};
