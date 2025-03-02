@@ -1,0 +1,40 @@
+:root {
+  /* Variables de color por defecto (tema claro) */
+  --color-background: #ffffff;
+  --color-text: #1a1a1a;
+  --color-border: #e5e5e5;
+  --color-primary: #22c55e;
+  --color-secondary: #2563eb;
+
+  /* Variables adicionales */
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  /* Variables de estado */
+  --color-disabled: #737373;
+  --color-placeholder: #a3a3a3;
+  --color-hover: #f5f5f5;
+  --color-focus: #4ade80;
+}
+
+[data-theme="dark"] {
+  --color-background: #1a1a1a;
+  --color-text: #f5f5f5;
+  --color-border: #374151;
+  --color-primary: #4ade80;
+  --color-secondary: #3b82f6;
+
+  /* Variables adicionales */
+  --color-success: #86efac;
+  --color-error: #fca5a5;
+  --color-warning: #fcd34d;
+  --color-info: #93c5fd;
+
+  /* Variables de estado */
+  --color-disabled: #525252;
+  --color-placeholder: #737373;
+  --color-hover: #262626;
+  --color-focus: #86efac;
+}
