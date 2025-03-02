@@ -37,10 +37,13 @@ export const Colors = {
   neutral600: "#525252",
   neutral700: "#374151", // dark mode disabled
   neutral800: "#262626",
+  neutral900: "#1a1a1a",
 
   // Base
   white: "#ffffff",
   black: "#000000",
+
+  transparent: "transparent",
 
   // Semantic tokens para Input
   input: {

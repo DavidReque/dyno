@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import { Colors } from "@/theme/tokens";
 
 export interface CardProps {
   title?: string;
@@ -22,57 +23,92 @@ export const Card: React.FC<CardProps> = ({
   className,
   onClick,
 }) => {
+  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const getBackgroundColor = () => {
+    if (variant === "default") return isDark ? Colors.neutral900 : Colors.white;
+    if (variant === "ghost") return Colors.transparent;
+    if (variant === "outline") return isDark ? Colors.neutral900 : Colors.white;
+    return Colors.white;
+  };
+
+  const getHoverBackgroundColor = () => {
+    if (variant === "ghost") {
+      return isDark ? Colors.neutral800 : Colors.neutral100;
+    }
+    return Colors.transparent;
+  };
+
   const baseStyles = cn(
     "group rounded-xl overflow-hidden transition-all duration-300",
-    variant === "default" &&
-      "bg-white dark:bg-neutral-900 shadow-sm hover:shadow-lg",
-    variant === "ghost" &&
-      "bg-transparent dark:bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800",
-    variant === "outline" &&
-      "border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-900",
+    variant === "default" && "shadow-sm hover:shadow-lg",
+    variant === "outline" && "border",
     className
   );
 
   return (
-    <div className={baseStyles} onClick={onClick}>
+    <div
+      className={baseStyles}
+      onClick={onClick}
+      style={{
+        backgroundColor: getBackgroundColor(),
+        borderColor:
+          variant === "outline"
+            ? isDark
+              ? Colors.neutral600
+              : Colors.neutral300
+            : undefined,
+      }}
+      onMouseEnter={(e) => {
+        if (variant === "ghost") {
+          e.currentTarget.style.backgroundColor = getHoverBackgroundColor();
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (variant === "ghost") {
+          e.currentTarget.style.backgroundColor = Colors.transparent;
+        }
+      }}
+    >
       {/* Header */}
       {(title || Icon) && (
         <div
-          className={cn(
-            "px-4 py-4 border-b transition-colors duration-300 flex items-center gap-3",
-            "border-neutral-200 dark:border-neutral-700"
-          )}
+          className="px-4 py-4 border-b transition-colors duration-300 flex items-center gap-3"
+          style={{
+            borderColor: isDark ? Colors.neutral700 : Colors.neutral200,
+          }}
         >
           {Icon && (
             <Icon
               data-testid="card-icon"
-              className={cn(
-                "w-6 h-6 transition-transform group-hover:scale-110 group-hover:rotate-6",
-                variant === "ghost" ? "text-green-500" : "text-green-500"
-              )}
+              className="w-6 h-6 transition-transform group-hover:scale-110 group-hover:rotate-6"
+              style={{
+                color: Colors.primary500,
+              }}
             />
           )}
           <div>
             {title && (
               <h3
-                className={cn(
-                  "text-lg font-medium transition-colors group-hover:text-green-500",
-                  variant === "ghost"
-                    ? "text-green-500"
-                    : "text-neutral-800 dark:text-neutral-100"
-                )}
+                className="text-lg font-medium transition-colors group-hover:text-green-500"
+                style={{
+                  color:
+                    variant === "ghost"
+                      ? Colors.primary500
+                      : isDark
+                      ? Colors.neutral100
+                      : Colors.neutral800,
+                }}
               >
                 {title}
               </h3>
             )}
             {subtitle && (
               <p
-                className={cn(
-                  "text-sm",
-                  variant === "ghost"
-                    ? "text-gray-500"
-                    : "text-neutral-500 dark:text-neutral-400"
-                )}
+                className="text-sm"
+                style={{
+                  color: isDark ? Colors.neutral400 : Colors.neutral500,
+                }}
               >
                 {subtitle}
               </p>
@@ -83,12 +119,15 @@ export const Card: React.FC<CardProps> = ({
 
       {/* Body */}
       <div
-        className={cn(
-          "p-4 space-y-2 transition-colors",
-          variant === "ghost"
-            ? "text-green-500"
-            : "text-neutral-700 dark:text-neutral-300"
-        )}
+        className="p-4 space-y-2 transition-colors"
+        style={{
+          color:
+            variant === "ghost"
+              ? Colors.primary500
+              : isDark
+              ? Colors.neutral300
+              : Colors.neutral700,
+        }}
       >
         {children}
       </div>
@@ -96,12 +135,17 @@ export const Card: React.FC<CardProps> = ({
       {/* Footer */}
       {footer && (
         <div
-          className={cn(
-            "px-4 py-3 border-t transition-colors",
-            variant === "ghost"
-              ? "border-white/30 bg-transparent text-gray-500"
-              : "text-gray-400 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800"
-          )}
+          className="px-4 py-3 border-t transition-colors"
+          style={{
+            color: variant === "ghost" ? Colors.neutral500 : Colors.neutral400,
+            borderColor: isDark ? Colors.neutral700 : Colors.neutral200,
+            backgroundColor:
+              variant === "ghost"
+                ? Colors.transparent
+                : isDark
+                ? Colors.neutral800
+                : Colors.neutral100,
+          }}
         >
           {footer}
         </div>
