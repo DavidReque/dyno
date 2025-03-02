@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { Colors } from "./src/theme/tokens";
 
 const config: Config = {
   content: [
@@ -12,17 +13,36 @@ const config: Config = {
       },
       colors: {
         primary: {
-          50: "#E5F4FF",
-          100: "#CCE9FF",
-          500: "#0091FF",
-          600: "#0074CC",
-          700: "#005799",
+          300: Colors.primary300,
+          400: Colors.primary400,
+          500: Colors.primary500,
+          600: Colors.primary600,
+        },
+        secondary: {
+          400: Colors.secondary400,
+          600: Colors.secondary600,
         },
         destructive: {
-          500: "#FF3333",
-          600: "#CC2929",
-          700: "#991F1F",
+          300: Colors.destructive300,
+          500: Colors.destructive500,
+          600: Colors.destructive600,
         },
+        gray: {
+          300: Colors.gray300,
+          400: Colors.gray400,
+        },
+        neutral: {
+          100: Colors.neutral100,
+          200: Colors.neutral200,
+          300: Colors.neutral300,
+          400: Colors.neutral400,
+          500: Colors.neutral500,
+          600: Colors.neutral600,
+          700: Colors.neutral700,
+          800: Colors.neutral800,
+        },
+        white: Colors.white,
+        black: Colors.black,
       },
     },
   },
