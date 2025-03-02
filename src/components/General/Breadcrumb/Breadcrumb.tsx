@@ -2,7 +2,6 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Typography } from "@/theme/typography";
-import { Colors } from "@/theme/tokens";
 
 export interface BreadcrumbItem {
   /** Texto que se muestra para el ítem */
@@ -33,8 +32,8 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
             <Link
               href={item.href}
               className={cn(
-                "transition-colors duration-300 hover:text-[#4ADE80]",
-                "text-[#9CA3AF]"
+                "transition-colors duration-300 hover:text-[var(--color-primary)]",
+                "text-[var(--color-placeholder)]"
               )}
               tabIndex={0}
             >
@@ -43,7 +42,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
           ) : (
             <span
               style={{
-                color: Colors.white,
+                color: "var(--color-text)",
                 fontWeight: Typography.fontWeightSemibold,
               }}
             >
@@ -59,7 +58,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
               stroke="currentColor"
               className="w-4 h-4 mx-2"
               style={{
-                color: Colors.gray400,
+                color: "var(--color-placeholder)",
               }}
             >
               <path

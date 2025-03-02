@@ -29,7 +29,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   return (
     <div
-      className={cn("relative inline-block", className)}
+      className={cn(
+        "relative inline-block color-text-[var(--color-tooltip-text)]",
+        className
+      )}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
     >
@@ -37,9 +40,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
       {visible && (
         <div
           className={cn(
-            "absolute z-10 px-2 py-1 text-xs text-white bg-gray-800 rounded opacity-90",
+            "absolute z-10 px-2 py-1 text-xs rounded ",
             positionClasses[position]
           )}
+          style={{
+            backgroundColor: "var(--color-tooltip-bg)",
+            color: "var(--color-tooltip-text)",
+            opacity: 0.9,
+          }}
         >
           {text}
         </div>

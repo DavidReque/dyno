@@ -21,7 +21,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, className }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.id);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Handle keyboard navigation
+  // Manejo de navegación con teclado
   const handleKeyDown = (
     e: KeyboardEvent<HTMLButtonElement>,
     index: number
@@ -48,16 +48,16 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, className }) => {
   return (
     <div
       className={cn(
-        "w-full p-4 rounded-lg bg-[#0D1B2A] text-white",
+        "w-full p-4 rounded-lg bg-[var(--color-tabs-bg)] text-[var(--color-tabs-text)]",
         className,
         poppins.className
       )}
     >
-      {/* Tab list with ARIA roles */}
+      {/* Lista de tabs con roles ARIA */}
       <div
         role="tablist"
         aria-label="Content tabs"
-        className="flex border-b border-gray-600 overflow-x-auto"
+        className="flex border-b border-[var(--color-tabs-border)] overflow-x-auto"
       >
         {tabs.map((tab, index) => (
           <button
@@ -75,8 +75,8 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, className }) => {
             className={cn(
               "relative flex items-center px-4 py-2 text-sm whitespace-nowrap transition-colors duration-300",
               activeTab === tab.id
-                ? "text-white font-semibold"
-                : "text-gray-400"
+                ? "text-[var(--color-tabs-active-text)] font-semibold"
+                : "text-[var(--color-tabs-inactive-text)]"
             )}
           >
             {tab.icon && (
@@ -88,7 +88,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, className }) => {
             {activeTab === tab.id && (
               <motion.span
                 layoutId="underline"
-                className="absolute bottom-0 left-0 w-full h-[2px] bg-green-400 rounded-full"
+                className="absolute bottom-0 left-0 w-full h-[2px] bg-[var(--color-tabs-active-text)] rounded-full"
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               />
             )}
@@ -96,8 +96,8 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, className }) => {
         ))}
       </div>
 
-      {/* Tab panels with ARIA roles */}
-      <div className="mt-4 p-4 bg-gray-800 rounded-lg relative overflow-hidden">
+      {/* Paneles de tabs con roles ARIA */}
+      <div className="mt-4 bg-[var(--color-tabs-panel-bg)]">
         <AnimatePresence mode="wait">
           {tabs.map(
             (tab) =>
@@ -121,3 +121,5 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, className }) => {
     </div>
   );
 };
+
+export default Tabs;

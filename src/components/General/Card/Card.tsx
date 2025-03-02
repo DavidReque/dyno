@@ -84,7 +84,7 @@ export const Card: React.FC<CardProps> = ({
               <p
                 className="text-sm"
                 style={{
-                  color: "var(--color-text)",
+                  color: "#8f8b8b",
                   opacity: 0.7,
                 }}
               >

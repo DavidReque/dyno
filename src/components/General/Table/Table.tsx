@@ -26,26 +26,40 @@ export function Table<T extends object>({
 }: TableProps<T>) {
   return (
     <div className={cn("overflow-x-auto", className)}>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
+      <table
+        className="min-w-full divide-y"
+        style={{ borderColor: "var(--color-table-border)" }}
+      >
+        <thead>
+          <tr style={{ backgroundColor: "var(--color-table-header-bg)" }}>
             {columns.map((column, index) => (
               <th
                 key={index}
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                style={{ color: "var(--color-table-header-text)" }}
               >
                 {column.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody
+          className="divide-y"
+          style={{
+            backgroundColor: "var(--color-background)",
+            borderColor: "var(--color-table-border)",
+          }}
+        >
           {data.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+            <tr
+              key={rowIndex}
+              className="transition-colors hover:bg-[var(--color-table-row-hover)]"
+            >
               {columns.map((column, colIndex) => (
                 <td
                   key={colIndex}
-                  className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                  className="px-6 py-4 whitespace-nowrap text-sm"
+                  style={{ color: "var(--color-table-text)" }}
                 >
                   {column.cell
                     ? column.cell(row)

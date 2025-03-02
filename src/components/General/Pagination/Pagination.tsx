@@ -32,7 +32,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <div
       className={cn(
-        "flex items-center justify-center space-x-2 p-4 bg-[#0D1B2A] rounded-lg",
+        "flex items-center justify-center space-x-2 p-4 bg-[var(--color-pagination-bg)] rounded-lg",
         className
       )}
     >
@@ -40,7 +40,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         onKeyDown={(e) => handleKeyDown(e, () => onPageChange(currentPage - 1))}
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 text-sm text-gray-400 bg-gray-700 hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed rounded"
+        className="px-3 py-1 text-sm text-[var(--color-placeholder)] bg-[var(--color-button-bg)] hover:bg-[var(--color-button-hover)] disabled:opacity-50 disabled:cursor-not-allowed rounded"
         tabIndex={0}
       >
         Prev
@@ -53,8 +53,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           className={cn(
             "px-3 py-1 text-sm rounded transition-colors duration-300",
             page === currentPage
-              ? "bg-green-400 text-white font-semibold"
-              : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+              ? "bg-[var(--color-primary)] text-white font-semibold"
+              : "bg-[var(--color-button-bg)] text-[var(--color-placeholder)] hover:bg-[var(--color-button-hover)]"
           )}
           whileTap={{ scale: 0.95 }}
           aria-label={`Page ${page}`}
@@ -64,12 +64,11 @@ export const Pagination: React.FC<PaginationProps> = ({
           {page}
         </motion.button>
       ))}
-
       <button
         onKeyDown={(e) => handleKeyDown(e, () => onPageChange(currentPage + 1))}
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 text-sm text-gray-400 bg-gray-700 hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed rounded"
+        className="px-3 py-1 text-sm text-[var(--color-placeholder)] bg-[var(--color-button-bg)] hover:bg-[var(--color-button-hover)] disabled:opacity-50 disabled:cursor-not-allowed rounded"
         aria-label="Next page"
         tabIndex={0}
       >
@@ -78,3 +77,5 @@ export const Pagination: React.FC<PaginationProps> = ({
     </div>
   );
 };
+
+export default Pagination;

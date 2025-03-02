@@ -32,13 +32,11 @@ export function SelectableTable<T extends object>({
 
   const toggleSelectAll = () => {
     if (selectedIndices.size === data.length) {
-      // Deseleccionar todas
       setSelectedIndices(new Set());
       if (onSelectionChange) {
         onSelectionChange([]);
       }
     } else {
-      // Seleccionar todas las filas
       const newSet = new Set<number>();
       data.forEach((_, index) => newSet.add(index));
       setSelectedIndices(newSet);
@@ -48,7 +46,6 @@ export function SelectableTable<T extends object>({
     }
   };
 
-  // Extendemos las columnas agregando la columna de selección
   const extendedColumns: Column<T>[] = [
     {
       header: (
@@ -56,10 +53,9 @@ export function SelectableTable<T extends object>({
           type="checkbox"
           checked={data.length > 0 && selectedIndices.size === data.length}
           onChange={toggleSelectAll}
-          className="w-4 h-4"
+          className="w-4 h-4 accent-[var(--color-primary)]"
         />
       ),
-      // Se usa un accessor ficticio
       accessor: "" as never,
       cell: (_row: T, rowIndex?: number) => {
         return (
@@ -67,7 +63,7 @@ export function SelectableTable<T extends object>({
             type="checkbox"
             checked={rowIndex !== undefined && selectedIndices.has(rowIndex)}
             onChange={() => rowIndex !== undefined && toggleSelect(rowIndex)}
-            className="w-4 h-4"
+            className="w-4 h-4 accent-[var(--color-primary)]"
           />
         );
       },
@@ -75,42 +71,57 @@ export function SelectableTable<T extends object>({
     ...columns,
   ];
 
-  const EnhancedTable = () => {
-    return (
-      <div className={cn("overflow-x-auto", className)}>
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              {extendedColumns.map((column, index) => (
-                <th
-                  key={index}
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+  return (
+    <div className={cn("overflow-x-auto", className)}>
+      <table
+        className="min-w-full divide-y"
+        style={{ borderColor: "var(--color-table-border)" }}
+      >
+        <thead>
+          <tr style={{ backgroundColor: "var(--color-table-header-bg)" }}>
+            {extendedColumns.map((column, index) => (
+              <th
+                key={index}
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
+                style={{ color: "var(--color-table-header-text)" }}
+              >
+                {column.header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody
+          className="divide-y"
+          style={{
+            backgroundColor: "var(--color-background)",
+            borderColor: "var(--color-table-border)",
+          }}
+        >
+          {data.map((row, rowIndex) => (
+            <tr
+              key={rowIndex}
+              className={cn(
+                "transition-colors",
+                selectedIndices.has(rowIndex)
+                  ? "bg-[var(--color-table-selected-bg)]"
+                  : "hover:bg-[var(--color-table-row-hover)]"
+              )}
+            >
+              {extendedColumns.map((column, colIndex) => (
+                <td
+                  key={colIndex}
+                  className="px-6 py-4 whitespace-nowrap text-sm"
+                  style={{ color: "var(--color-table-text)" }}
                 >
-                  {column.header}
-                </th>
+                  {column.cell
+                    ? column.cell(row, rowIndex)
+                    : String(row[column.accessor as keyof T])}
+                </td>
               ))}
             </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {data.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {extendedColumns.map((column, colIndex) => (
-                  <td
-                    key={colIndex}
-                    className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                  >
-                    {column.cell
-                      ? column.cell(row, rowIndex)
-                      : String(row[column.accessor as keyof T])}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
-
-  return <EnhancedTable />;
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }

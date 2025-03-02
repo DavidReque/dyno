@@ -25,39 +25,39 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   const baseStyles = cn(
     "w-full px-4 py-2.5 text-sm border rounded-xl transition-all duration-300 shadow-md hover:shadow-lg",
-    "focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-opacity-50",
-    "placeholder-neutral-400",
-    // Soporte para modo oscuro
-    "bg-white text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100"
+    "focus:outline-none focus:ring-2 focus:ring-[var(--color-focus)] focus:ring-opacity-50",
+    "placeholder-[var(--color-placeholder)]",
+    "bg-[var(--color-background)] text-[var(--color-text)]",
+    "border-[var(--color-border)]"
   );
 
   const variantStyles = {
     default: cn(
       error
-        ? "border-destructive-500 focus:border-destructive-500 focus:ring-destructive-300"
-        : "border-gray-300 focus:border-primary-500",
+        ? "border-[var(--color-error)] focus:border-[var(--color-error)] focus:ring-[var(--color-error)]"
+        : "focus:border-[var(--color-primary)]",
       disabled &&
-        "bg-neutral-200 text-neutral-500 cursor-not-allowed dark:bg-neutral-700 dark:text-neutral-400"
+        "bg-[var(--color-disabled)] text-[var(--color-disabled)] cursor-not-allowed"
     ),
     withButton: "rounded-r-none border-r-0",
     file: cn(
       "file:mr-4 file:py-2 file:px-4",
       "file:rounded-lg file:border-0",
       "file:text-sm file:font-semibold",
-      "file:bg-primary-500 file:text-white",
-      "file:hover:bg-primary-600",
+      "file:bg-[var(--color-primary)] file:text-white",
+      "file:hover:bg-[var(--color-primary)]",
       "file:transition-colors file:duration-300",
       "file:cursor-pointer",
-      "text-neutral-500 placeholder-neutral-400"
+      "text-[var(--color-placeholder)] placeholder-[var(--color-placeholder)]"
     ),
     disabled:
-      "bg-neutral-200 text-neutral-500 cursor-not-allowed dark:bg-neutral-700 dark:text-neutral-400",
+      "bg-[var(--color-disabled)] text-[var(--color-disabled)] cursor-not-allowed",
     withLabel: "mt-2",
   };
 
   const iconStyles = cn(
     "absolute top-1/2 -translate-y-1/2",
-    "text-neutral-500 transition-colors duration-200"
+    "text-[var(--color-placeholder)] transition-colors duration-200"
   );
 
   return (
@@ -67,8 +67,8 @@ export const Input: React.FC<InputProps> = ({
           className={cn(
             "block mb-2 text-sm font-medium transition-colors duration-200",
             error
-              ? "text-destructive-500"
-              : "text-neutral-700 dark:text-neutral-400 group-focus-within:text-primary-500"
+              ? "text-[var(--color-error)]"
+              : "text-[var(--color-text)] group-focus-within:text-[var(--color-primary)]"
           )}
         >
           {label}
@@ -81,7 +81,7 @@ export const Input: React.FC<InputProps> = ({
             className={cn(
               iconStyles,
               "left-3",
-              "group-focus-within:text-primary-500"
+              "group-focus-within:text-[var(--color-primary)]"
             )}
           />
         )}
@@ -101,7 +101,7 @@ export const Input: React.FC<InputProps> = ({
             LeadingIcon ? "pl-10" : "",
             TrailingIcon ? "pr-10" : "",
             className,
-            "focus:ring-2 focus:ring-primary-400 focus:outline-none"
+            "focus:ring-2 focus:ring-[var(--color-focus)] focus:outline-none"
           )}
           disabled={variant === "disabled" || disabled}
           {...props}
@@ -112,7 +112,7 @@ export const Input: React.FC<InputProps> = ({
             className={cn(
               iconStyles,
               "right-3",
-              "group-focus-within:text-primary-500"
+              "group-focus-within:text-[var(--color-primary)]"
             )}
           />
         )}
@@ -122,10 +122,10 @@ export const Input: React.FC<InputProps> = ({
             type="button"
             onClick={onButtonClick}
             className={cn(
-              "bg-primary-500 text-white px-4 py-2.5 rounded-r-xl transition-all duration-300 shadow-md hover:shadow-lg",
-              "hover:bg-primary-600",
-              "focus:ring-2 focus:ring-primary-400 focus:ring-opacity-50",
-              "disabled:bg-neutral-200 disabled:cursor-not-allowed"
+              "bg-[var(--color-primary)] text-white px-4 py-2.5 rounded-r-xl transition-all duration-300 shadow-md hover:shadow-lg",
+              "hover:bg-[var(--color-primary)]",
+              "focus:ring-2 focus:ring-[var(--color-focus)] focus:ring-opacity-50",
+              "disabled:bg-[var(--color-disabled)] disabled:cursor-not-allowed"
             )}
             disabled={disabled}
           >
@@ -135,7 +135,7 @@ export const Input: React.FC<InputProps> = ({
       </div>
 
       {error && (
-        <p className="mt-1.5 text-xs text-destructive-500 animate-pulse">
+        <p className="mt-1.5 text-xs text-[var(--color-error)] animate-pulse">
           {props.title || "Invalid input"}
         </p>
       )}

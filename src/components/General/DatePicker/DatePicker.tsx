@@ -70,8 +70,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           className={cn(
             "text-sm font-medium transition-colors duration-200",
             isFocused
-              ? "text-green-600 dark:text-green-400"
-              : "text-gray-700 dark:text-gray-300"
+              ? "text-[var(--color-primary)]"
+              : "text-[var(--color-text)]"
           )}
         >
           {label}
@@ -80,7 +80,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       <div className="relative group">
         <div
           className={cn(
-            "absolute inset-0 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 opacity-0 rounded-lg transition-opacity duration-200",
+            "absolute inset-0 bg-gradient-to-r opacity-0 rounded-lg transition-opacity duration-200",
+            "from-[var(--color-primary)]/10 to-[var(--color-primary)]/20",
             isFocused && "opacity-100"
           )}
         />
@@ -94,14 +95,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             onKeyDown={handleKeyDown}
             className={cn(
               "w-full px-4 py-2 rounded-lg border transition-all duration-200",
-              "bg-white dark:bg-gray-800",
-              "text-gray-700 dark:text-gray-200",
-              "placeholder-gray-400 dark:placeholder-gray-500",
-              "focus:outline-none focus:ring-2 focus:ring-green-400/50 dark:focus:ring-green-500/50",
-              "border-gray-200 dark:border-gray-700",
-              "hover:border-green-300 dark:hover:border-green-600",
+              "bg-[var(--color-background)]",
+              "text-[var(--color-text)]",
+              "placeholder-[var(--color-placeholder)]",
+              "focus:outline-none focus:ring-2 focus:ring-[var(--color-focus)]",
+              "border-[var(--color-border)]",
+              "hover:border-[var(--color-primary)]",
               disabled &&
-                "bg-gray-100 dark:bg-gray-900 cursor-not-allowed opacity-60",
+                "bg-[var(--color-disabled)] cursor-not-allowed opacity-60",
               "peer"
             )}
             {...props}
@@ -112,8 +113,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             disabled={disabled}
             className={cn(
               "absolute right-2 p-1 rounded-md transition-all duration-200",
-              "hover:bg-green-50 dark:hover:bg-green-900/30",
-              "focus:outline-none focus:ring-2 focus:ring-green-400/50 dark:focus:ring-green-500/50",
+              "hover:bg-[var(--color-hover)]",
+              "focus:outline-none focus:ring-2 focus:ring-[var(--color-focus)]",
               disabled && "cursor-not-allowed"
             )}
           >
@@ -126,8 +127,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               className={cn(
                 "size-6 transition-colors duration-200",
                 isFocused
-                  ? "text-green-500 dark:text-green-400"
-                  : "text-gray-400 dark:text-gray-500",
+                  ? "text-[var(--color-primary)]"
+                  : "text-[var(--color-placeholder)]",
                 disabled && "opacity-60"
               )}
             >

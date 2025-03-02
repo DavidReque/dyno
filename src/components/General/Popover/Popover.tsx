@@ -21,7 +21,7 @@ export const Popover: React.FC<PopoverProps> = ({
 }) => {
   return (
     <HeadlessPopover className={cn("relative", className)}>
-      <HeadlessPopover.Button className="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 focus:outline-none transition-colors duration-300">
+      <HeadlessPopover.Button className="inline-flex items-center px-4 py-2 bg-[var(--color-popover-button-bg)] text-[var(--color-popover-button-text)] rounded-md hover:bg-[var(--color-popover-button-hover)] focus:outline-none transition-colors duration-300">
         {buttonContent}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ export const Popover: React.FC<PopoverProps> = ({
             strokeLinejoin="round"
             d="m19.5 8.25-7.5 7.5-7.5-7.5"
           />
-        </svg>{" "}
+        </svg>
       </HeadlessPopover.Button>
       <Transition
         as={React.Fragment}
@@ -49,7 +49,7 @@ export const Popover: React.FC<PopoverProps> = ({
       >
         <HeadlessPopover.Panel
           className={cn(
-            "absolute z-10 mt-2 w-64 bg-white rounded-md shadow-lg p-4",
+            "absolute z-10 mt-2 w-64 bg-[var(--color-popover-panel-bg)] rounded-md shadow-lg p-4 text-[var(--color-text)] color-text-[var(--color-text)]",
             panelClassName
           )}
         >
@@ -59,3 +59,5 @@ export const Popover: React.FC<PopoverProps> = ({
     </HeadlessPopover>
   );
 };
+
+export default Popover;

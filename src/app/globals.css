@@ -1,8 +1,8 @@
+@import "../theme/global.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "../theme/global.css";
 
 /* Estilos globales adicionales */
 body {

@@ -54,26 +54,67 @@ export const Calendar: React.FC<CalendarProps> = ({
     "December",
   ];
 
+  // Estilos que usan las variables CSS
+  const calendarStyles = {
+    background: "var(--color-background)",
+    color: "var(--color-text)",
+    border: "1px solid var(--color-border)",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  };
+
+  const buttonStyles = {
+    color: "var(--color-text)",
+    cursor: "pointer",
+    background: "transparent",
+    border: "none",
+  };
+
+  const dayHeaderStyles = {
+    color: "var(--color-placeholder)",
+    fontWeight: 600,
+  };
+
+  const dayButtonStyles = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "2rem",
+    width: "100%",
+    borderRadius: "0.25rem",
+    background: "transparent",
+    border: "none",
+    color: "var(--color-text)",
+    cursor: "pointer",
+    transition: "background-color 0.2s",
+  };
+
+  const dayButtonHoverStyles = {
+    backgroundColor: "var(--color-hover)",
+  };
+
   return (
     <div
-      className={cn(
-        "w-full max-w-md bg-white rounded-lg shadow p-4",
-        className
-      )}
+      className={cn("w-full max-w-md rounded-lg p-4", className)}
+      style={calendarStyles}
     >
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={goToPreviousMonth}
-          className="text-gray-600 hover:text-gray-800 focus:outline-none"
+          style={buttonStyles}
+          className="focus:outline-none"
         >
           &lt;
         </button>
-        <h3 className="text-lg font-medium text-gray-800">
+        <h3
+          className="text-lg font-medium"
+          style={{ color: "var(--color-text)" }}
+        >
           {monthNames[month]} {year}
         </h3>
         <button
           onClick={goToNextMonth}
-          className="text-gray-600 hover:text-gray-800 focus:outline-none"
+          style={buttonStyles}
+          className="focus:outline-none"
         >
           &gt;
         </button>
@@ -81,7 +122,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       {/* Cabecera de días de la semana */}
       <div className="grid grid-cols-7 gap-1 text-center text-sm">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-          <div key={day} className="font-semibold text-gray-600">
+          <div key={day} style={dayHeaderStyles}>
             {day}
           </div>
         ))}
@@ -107,7 +148,14 @@ export const Calendar: React.FC<CalendarProps> = ({
               <button
                 key={day}
                 onClick={() => handleDateClick(day)}
-                className="h-8 flex items-center justify-center rounded hover:bg-green-100 transition-colors duration-200"
+                style={dayButtonStyles}
+                className="hover-effect"
+                onMouseOver={(e) => {
+                  Object.assign(e.currentTarget.style, dayButtonHoverStyles);
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }}
               >
                 {day}
               </button>
