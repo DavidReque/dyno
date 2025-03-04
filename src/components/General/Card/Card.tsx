@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import { typography } from "@/theme/typography";
 
 export interface CardProps {
   title?: string;
@@ -69,7 +70,10 @@ export const Card: React.FC<CardProps> = ({
           <div>
             {title && (
               <h3
-                className="text-lg font-medium transition-colors group-hover:text-green-500"
+                className={cn(
+                  typography.h5,
+                  "transition-colors group-hover:text-green-500"
+                )}
                 style={{
                   color:
                     variant === "ghost"
@@ -81,13 +85,7 @@ export const Card: React.FC<CardProps> = ({
               </h3>
             )}
             {subtitle && (
-              <p
-                className="text-sm"
-                style={{
-                  color: "#8f8b8b",
-                  opacity: 0.7,
-                }}
-              >
+              <p className={cn(typography.body2, typography.muted)}>
                 {subtitle}
               </p>
             )}
@@ -97,7 +95,7 @@ export const Card: React.FC<CardProps> = ({
 
       {/* Body */}
       <div
-        className="p-4 space-y-2 transition-colors"
+        className={cn("p-4 space-y-2 transition-colors", typography.body1)}
         style={{
           color:
             variant === "ghost" ? "var(--color-primary)" : "var(--color-text)",
@@ -109,10 +107,12 @@ export const Card: React.FC<CardProps> = ({
       {/* Footer */}
       {footer && (
         <div
-          className="px-4 py-3 border-t transition-colors"
+          className={cn(
+            "px-4 py-3 border-t transition-colors",
+            typography.body2,
+            typography.muted
+          )}
           style={{
-            color: "var(--color-text)",
-            opacity: 0.6,
             borderColor: "var(--color-border)",
             backgroundColor:
               variant === "ghost" ? "transparent" : "var(--color-hover)",
