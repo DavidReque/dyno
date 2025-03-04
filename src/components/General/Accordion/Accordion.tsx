@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface AccordionItem {
@@ -23,6 +23,13 @@ export function Accordion({
   const [openItems, setOpenItems] = useState<number[]>(
     defaultOpenItem !== null ? [defaultOpenItem] : []
   );
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Inicializar refs para cada botón de acordeón
+  useEffect(() => {
+    buttonRefs.current = buttonRefs.current.slice(0, items.length);
+  }, [items.length]);
 
   const isOpen = (id: number) => openItems.includes(id);
 
@@ -40,11 +47,37 @@ export function Accordion({
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLButtonElement>,
-    id: number
+    id: number,
+    index: number
   ) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggleItem(id);
+    switch (e.key) {
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        toggleItem(id);
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        const nextIndex = (index + 1) % items.length;
+        buttonRefs.current[nextIndex]?.focus();
+        setFocusedIndex(nextIndex);
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        const prevIndex = (index - 1 + items.length) % items.length;
+        buttonRefs.current[prevIndex]?.focus();
+        setFocusedIndex(prevIndex);
+        break;
+      case "Home":
+        e.preventDefault();
+        buttonRefs.current[0]?.focus();
+        setFocusedIndex(0);
+        break;
+      case "End":
+        e.preventDefault();
+        buttonRefs.current[items.length - 1]?.focus();
+        setFocusedIndex(items.length - 1);
+        break;
     }
   };
 
@@ -55,8 +88,10 @@ export function Accordion({
         backgroundColor: "var(--color-background)",
         borderColor: "var(--color-border)",
       }}
+      role="region"
+      aria-label="Acordeón"
     >
-      {items.map((item) => {
+      {items.map((item, index) => {
         const itemIsOpen = isOpen(item.id);
 
         return (
@@ -66,14 +101,19 @@ export function Accordion({
             style={{ borderColor: "var(--color-border)" }}
           >
             <button
+              ref={(el) => {
+                buttonRefs.current[index] = el;
+              }}
               id={`accordion-button-${item.id}`}
               aria-expanded={itemIsOpen}
               aria-controls={`accordion-content-${item.id}`}
               onClick={() => toggleItem(item.id)}
-              onKeyDown={(e) => handleKeyDown(e, item.id)}
+              onKeyDown={(e) => handleKeyDown(e, item.id, index)}
+              onFocus={() => setFocusedIndex(index)}
               className={cn(
                 "w-full flex items-center justify-between transition",
-                "focus:outline-none hover-effect"
+                "focus:outline-none hover-effect",
+                focusedIndex === index ? "ring-2 ring-opacity-50" : ""
               )}
               style={{
                 padding: "0.75rem 1rem",
