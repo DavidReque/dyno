@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Colors } from "@/theme/tokens";
-import { Typography } from "@/theme/typography";
-import { Spacing } from "@/theme/spacing";
 
 interface AccordionItem {
   id: number;
@@ -12,10 +9,34 @@ interface AccordionItem {
 
 interface AccordionProps {
   items: AccordionItem[];
+  defaultOpenItem?: number | null;
+  allowMultiple?: boolean;
+  className?: string;
 }
 
-export function Accordion({ items }: AccordionProps) {
-  const [openItem, setOpenItem] = useState<number | null>(null);
+export function Accordion({
+  items,
+  defaultOpenItem = null,
+  allowMultiple = false,
+  className,
+}: AccordionProps) {
+  const [openItems, setOpenItems] = useState<number[]>(
+    defaultOpenItem !== null ? [defaultOpenItem] : []
+  );
+
+  const isOpen = (id: number) => openItems.includes(id);
+
+  const toggleItem = (id: number) => {
+    if (allowMultiple) {
+      setOpenItems(
+        isOpen(id)
+          ? openItems.filter((itemId) => itemId !== id)
+          : [...openItems, id]
+      );
+    } else {
+      setOpenItems(isOpen(id) ? [] : [id]);
+    }
+  };
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLButtonElement>,
@@ -23,35 +44,42 @@ export function Accordion({ items }: AccordionProps) {
   ) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      setOpenItem(openItem === id ? null : id);
+      toggleItem(id);
     }
   };
 
   return (
     <div
-      className="border rounded-lg shadow-sm"
+      className={cn("border rounded-lg shadow-sm", className)}
       style={{
-        backgroundColor: Colors.white,
-        fontFamily: Typography.fontFamilyBase,
+        backgroundColor: "var(--color-background)",
+        borderColor: "var(--color-border)",
       }}
     >
       {items.map((item) => {
-        const isOpen = openItem === item.id;
+        const itemIsOpen = isOpen(item.id);
 
         return (
-          <div key={item.id} className="border-b last:border-none">
+          <div
+            key={item.id}
+            className="border-b last:border-none"
+            style={{ borderColor: "var(--color-border)" }}
+          >
             <button
               id={`accordion-button-${item.id}`}
-              aria-expanded={isOpen}
+              aria-expanded={itemIsOpen}
               aria-controls={`accordion-content-${item.id}`}
-              onClick={() => setOpenItem(openItem === item.id ? null : item.id)}
+              onClick={() => toggleItem(item.id)}
               onKeyDown={(e) => handleKeyDown(e, item.id)}
-              className="w-full flex items-center justify-between hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 transition"
+              className={cn(
+                "w-full flex items-center justify-between transition",
+                "focus:outline-none hover-effect"
+              )}
               style={{
-                padding: `${Spacing.sm} ${Spacing.md}`,
-                color: Colors.neutral800,
-                fontSize: Typography.fontSizeSm,
-                fontWeight: Typography.fontWeightSemibold,
+                padding: "0.75rem 1rem",
+                color: "var(--color-text)",
+                fontSize: "0.875rem",
+                fontWeight: 600,
               }}
             >
               {item.title}
@@ -64,9 +92,9 @@ export function Accordion({ items }: AccordionProps) {
                 aria-hidden="true"
                 className={cn(
                   "h-5 w-5 transition-transform duration-200 ease-out",
-                  isOpen ? "rotate-180" : "rotate-0"
+                  itemIsOpen ? "rotate-180" : "rotate-0"
                 )}
-                style={{ color: Colors.neutral800 }}
+                style={{ color: "var(--color-text)" }}
               >
                 <path
                   strokeLinecap="round"
@@ -81,14 +109,14 @@ export function Accordion({ items }: AccordionProps) {
               aria-labelledby={`accordion-button-${item.id}`}
               className={cn(
                 "overflow-hidden transition-all duration-200 ease-out",
-                isOpen
+                itemIsOpen
                   ? "max-h-96 opacity-100 visible"
                   : "max-h-0 opacity-0 invisible"
               )}
               style={{
-                padding: isOpen ? `${Spacing.sm} ${Spacing.md}` : 0,
-                fontSize: Typography.fontSizeSm,
-                color: Colors.neutral800,
+                padding: itemIsOpen ? "0.75rem 1rem" : 0,
+                fontSize: "0.875rem",
+                color: "var(--color-text)",
               }}
             >
               {item.content}
