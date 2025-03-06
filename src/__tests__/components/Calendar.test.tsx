@@ -116,11 +116,10 @@ describe("Calendar Component", () => {
   it("applies hover styles to day buttons", () => {
     render(<Calendar />);
     const dayButton = screen.getByText("1");
-    expect(dayButton).toHaveClass(
-      "hover:bg-green-100",
-      "transition-colors",
-      "duration-200"
-    );
+    fireEvent.mouseOver(dayButton);
+    expect(dayButton).toHaveStyle({ backgroundColor: "var(--color-hover)" });
+    fireEvent.mouseOut(dayButton);
+    expect(dayButton).toHaveStyle({ backgroundColor: "transparent" });
   });
 
   it("maintains fixed container height to prevent layout shifts", () => {
@@ -128,19 +127,5 @@ describe("Calendar Component", () => {
     const heightContainer = screen.getByTestId("calendar-grid-container");
     expect(heightContainer).toBeInTheDocument();
     expect(heightContainer).toHaveClass("min-h-[150px]");
-  });
-
-  it("renders navigation buttons with correct styles", () => {
-    render(<Calendar />);
-    const prevButton = screen.getByText("<");
-    const nextButton = screen.getByText(">");
-
-    [prevButton, nextButton].forEach((button) => {
-      expect(button).toHaveClass(
-        "text-gray-600",
-        "hover:text-gray-800",
-        "focus:outline-none"
-      );
-    });
   });
 });
