@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { inter, poppins, typography } from "@/theme/typography";
 
 interface AccordionItem {
   id: number;
@@ -83,7 +84,12 @@ export function Accordion({
 
   return (
     <div
-      className={cn("border rounded-lg shadow-sm", className)}
+      className={cn(
+        "border rounded-lg shadow-sm",
+        inter.variable,
+        poppins.variable,
+        className
+      )}
       style={{
         backgroundColor: "var(--color-background)",
         borderColor: "var(--color-border)",
@@ -113,13 +119,12 @@ export function Accordion({
               className={cn(
                 "w-full flex items-center justify-between transition",
                 "focus:outline-none hover-effect",
+                typography.h5,
                 focusedIndex === index ? "ring-2 ring-opacity-50" : ""
               )}
               style={{
                 padding: "0.75rem 1rem",
                 color: "var(--color-text)",
-                fontSize: "0.875rem",
-                fontWeight: 600,
               }}
             >
               {item.title}
@@ -149,13 +154,13 @@ export function Accordion({
               aria-labelledby={`accordion-button-${item.id}`}
               className={cn(
                 "overflow-hidden transition-all duration-200 ease-out",
+                typography.body2,
                 itemIsOpen
                   ? "max-h-96 opacity-100 visible"
                   : "max-h-0 opacity-0 invisible"
               )}
               style={{
                 padding: itemIsOpen ? "0.75rem 1rem" : 0,
-                fontSize: "0.875rem",
                 color: "var(--color-text)",
               }}
             >

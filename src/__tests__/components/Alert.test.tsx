@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Alert } from "@/components/General/Alert/Alert";
+import { Colors } from "@/theme/tokens";
 
 describe("Alert Component", () => {
   test("renders with the correct message", () => {
@@ -9,13 +10,14 @@ describe("Alert Component", () => {
     expect(screen.getByText(/Test Alert/i)).toBeInTheDocument();
   });
 
-  test("applies the correct variant classes", () => {
+  test("applies the correct variant styles for success", () => {
     const { container } = render(
       <Alert message="Success Alert" variant="success" />
     );
-    expect(container.firstChild).toHaveClass(
-      "bg-green-100 border border-green-500 text-green-800"
-    );
+    const alertDiv = container.firstChild;
+    expect(alertDiv).toHaveStyle(`background-color: ${Colors.successBg}`);
+    expect(alertDiv).toHaveStyle(`border: 1px solid ${Colors.successText}`);
+    expect(alertDiv).toHaveStyle(`color: ${Colors.successText}`);
   });
 
   test("renders close button when dismissible is true", () => {
@@ -27,13 +29,10 @@ describe("Alert Component", () => {
   test("calls onClose and hides the alert when close button is clicked", async () => {
     const onCloseMock = jest.fn();
     render(<Alert message="Close Me" dismissible onClose={onCloseMock} />);
-
     const user = userEvent.setup();
     const closeButton = screen.getByRole("button", { name: /close alert/i });
     await user.click(closeButton);
-
     expect(onCloseMock).toHaveBeenCalledTimes(1);
-
     expect(screen.queryByText(/Close Me/i)).not.toBeInTheDocument();
   });
 
