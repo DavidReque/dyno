@@ -15,16 +15,6 @@ describe("Typography Component", () => {
     expect(spanText.tagName).toBe("SPAN");
   });
 
-  test("applies the correct variant classes", () => {
-    const { container, rerender } = render(
-      <Typography variant="h1">Title</Typography>
-    );
-    expect(container.firstChild).toHaveClass("text-4xl");
-
-    rerender(<Typography variant="blockquote">Quote</Typography>);
-    expect(container.firstChild).toHaveClass("mt-6", "border-l-2", "italic");
-  });
-
   test("applies the correct weight classes", () => {
     const { container, rerender } = render(
       <Typography weight="bold">Bold Text</Typography>

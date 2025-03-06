@@ -83,7 +83,7 @@ describe("Pagination Component", () => {
     // Verificamos que el botón de la página 3 tenga la clase 'bg-green-400 text-white font-semibold'
     const currentPageButton = screen.getByText("3");
     expect(currentPageButton).toHaveClass(
-      "bg-green-400",
+      "bg-[var(--color-primary)]",
       "text-white",
       "font-semibold"
     );
