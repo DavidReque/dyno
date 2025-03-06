@@ -1,7 +1,6 @@
-import { Radius, Spacing } from "@/theme/spacing";
-import { Colors } from "@/theme/tokens";
-import { Typography } from "@/theme/typography";
-import React, { useState } from "react";
+import React from "react";
+import { cn } from "@/lib/utils";
+import { typography } from "@/theme/typography";
 
 export interface ButtonProps {
   variant?: "primary" | "secondary" | "ghost" | "destructive" | "rounded";
@@ -26,83 +25,57 @@ export const Button = ({
   children,
   ...props
 }: ButtonProps) => {
-  const [isHover, setIsHover] = useState(false);
-
-  const baseStyles: React.CSSProperties = {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontWeight: Typography.fontWeightRegular,
-    transition: "all 150ms ease-in-out",
-    opacity: disabled ? 0.5 : 1,
-    pointerEvents: disabled ? "none" : "auto",
-    cursor: "pointer",
-    border: "none",
-    outline: "none",
-    userSelect: "none",
-  };
+  const baseStyles = cn(
+    "inline-flex items-center justify-center transition-all duration-150 ease-in-out",
+    "border-none outline-none select-none",
+    disabled && "opacity-50 pointer-events-none",
+    !disabled && "cursor-pointer",
+    typography.medium
+  );
 
   const variantStyles = {
-    primary: {
-      normalBg: Colors.primary400,
-      hoverBg: Colors.primary600,
-      textColor: Colors.white,
-    },
-    secondary: {
-      normalBg: Colors.secondary400,
-      hoverBg: Colors.secondary600,
-      textColor: Colors.white,
-    },
-    ghost: {
-      normalBg: "transparent",
-      hoverBg: Colors.neutral100,
-      textColor: Colors.neutral700,
-    },
-    destructive: {
-      normalBg: Colors.destructive500,
-      hoverBg: Colors.destructive600,
-      textColor: Colors.white,
-    },
-    rounded: {
-      normalBg: Colors.primary400,
-      hoverBg: Colors.primary600,
-      textColor: Colors.white,
-      isRounded: true,
-    },
+    primary: cn(
+      "bg-[var(--color-primary)] text-white",
+      "hover:bg-[var(--color-primary)]/90 hover:shadow-lg hover:shadow-[var(--color-primary)]/20",
+      "active:bg-[var(--color-primary)]/80",
+      "focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+    ),
+    secondary: cn(
+      "bg-[var(--color-secondary)] text-white",
+      "hover:bg-[var(--color-secondary)]/90 hover:shadow-lg hover:shadow-[var(--color-secondary)]/20",
+      "active:bg-[var(--color-secondary)]/80",
+      "focus:ring-2 focus:ring-[var(--color-secondary)] focus:ring-offset-2"
+    ),
+    ghost: cn(
+      "bg-transparent text-[var(--color-text)]",
+      "hover:bg-[var(--color-hover)] hover:text-[var(--color-primary)]",
+      "active:bg-[var(--color-hover)]/80",
+      "focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+    ),
+    destructive: cn(
+      "bg-[var(--color-error)] text-white",
+      "hover:bg-[var(--color-error)]/90 hover:shadow-lg hover:shadow-[var(--color-error)]/20",
+      "active:bg-[var(--color-error)]/80",
+      "focus:ring-2 focus:ring-[var(--color-error)] focus:ring-offset-2"
+    ),
+    rounded: cn(
+      "bg-[var(--color-primary)] text-white rounded-full",
+      "hover:bg-[var(--color-primary)]/90 hover:shadow-lg hover:shadow-[var(--color-primary)]/20",
+      "active:bg-[var(--color-primary)]/80",
+      "focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2"
+    ),
   };
 
   const sizeStyles = {
-    sm: {
-      fontSize: Typography.fontSizeSm,
-      padding: `${Spacing.xs} ${Spacing.sm}`,
-      borderRadius: variant === "rounded" ? Radius.full : Radius.sm,
-      gap: Spacing.xs,
-    },
-    md: {
-      fontSize: Typography.fontSizeSm,
-      padding: `${Spacing.sm} ${Spacing.md}`,
-      borderRadius: variant === "rounded" ? Radius.full : Radius.base,
-      gap: Spacing.sm,
-    },
-    lg: {
-      fontSize: Typography.fontSizeMd,
-      padding: `${Spacing.md} ${Spacing.lg}`,
-      borderRadius: variant === "rounded" ? Radius.full : Radius.base,
-      gap: Spacing.sm,
-    },
+    sm: cn(typography.body3, "px-3 py-1.5 gap-1"),
+    md: cn(typography.body2, "px-4 py-2 gap-2"),
+    lg: cn(typography.body1, "px-6 py-3 gap-2"),
   };
 
-  const config = variantStyles[variant];
-  const sizeConfig = sizeStyles[size];
-
-  const backgroundColor = isHover ? config.hoverBg : config.normalBg;
-
-  const finalStyle: React.CSSProperties = {
-    ...baseStyles,
-    ...sizeConfig,
-    backgroundColor,
-    color: config.textColor,
-    borderRadius: "isRounded" in config ? Radius.full : sizeConfig.borderRadius,
+  const borderRadiusStyles = {
+    sm: variant === "rounded" ? "rounded-full" : "rounded-sm",
+    md: variant === "rounded" ? "rounded-full" : "rounded-md",
+    lg: variant === "rounded" ? "rounded-full" : "rounded-lg",
   };
 
   return (
@@ -114,15 +87,18 @@ export const Button = ({
           onClick?.();
         }
       }}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-      style={finalStyle}
-      className={className}
+      className={cn(
+        baseStyles,
+        variantStyles[variant],
+        sizeStyles[size],
+        borderRadiusStyles[size],
+        className
+      )}
       onClick={onClick}
       disabled={disabled}
       {...props}
     >
-      {Icon && <Icon />}
+      {Icon && <Icon className="w-4 h-4" />}
       {label || children}
     </button>
   );

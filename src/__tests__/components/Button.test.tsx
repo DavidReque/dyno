@@ -40,12 +40,20 @@ describe("Button Component", () => {
 
   test("applies correct variant class", () => {
     const { container } = render(<Button label="Primary" variant="primary" />);
-    expect(container.firstChild).toHaveClass("bg-green-400 text-white");
+    expect(container.firstChild).toHaveClass(
+      "bg-[var(--color-primary)]",
+      "text-white"
+    );
   });
 
   test("applies correct size class", () => {
     const { container } = render(<Button label="Large" size="lg" />);
-    expect(container.firstChild).toHaveClass("text-md px-6 py-3 rounded-lg");
+    expect(container.firstChild).toHaveClass(
+      "text-base",
+      "px-6",
+      "py-3",
+      "rounded-lg"
+    );
   });
 
   /*test("renders icon when provided", () => {
