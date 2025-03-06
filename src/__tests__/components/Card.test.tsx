@@ -23,15 +23,20 @@ describe("Card Component", () => {
 
   test("applies correct variant classes", () => {
     const { container, rerender } = render(<Card variant="default" />);
-    // 'default' => Debería tener 'bg-white' y 'shadow-sm'
-    expect(container.firstChild).toHaveClass("bg-white", "shadow-sm");
+    // 'default' => debe tener inline style backgroundColor de "var(--color-background)" y la clase "shadow-sm"
+    expect(container.firstChild).toHaveStyle({
+      backgroundColor: "var(--color-background)",
+    });
+    expect(container.firstChild).toHaveClass("shadow-sm");
 
     rerender(<Card variant="ghost" />);
-    // 'ghost' => Debería tener 'bg-transparent'
-    expect(container.firstChild).toHaveClass("bg-transparent");
+    // 'ghost' => debe tener inline style backgroundColor de "transparent"
+    expect(container.firstChild).toHaveStyle({
+      backgroundColor: "transparent",
+    });
 
     rerender(<Card variant="outline" />);
-    // 'outline' => Debería tener 'border'
+    // 'outline' => debe tener la clase "border"
     expect(container.firstChild).toHaveClass("border");
   });
 
