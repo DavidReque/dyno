@@ -1,15 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Breadcrumb } from "@/components/General/Breadcrumb/Breadcrumb";
+import { Typography } from "@/theme/typography";
 
 // Mock Next.js Link component
 jest.mock("next/link", () => {
   const MockLink: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({
     children,
     ...props
-  }) => {
-    return <a {...props}>{children}</a>;
-  };
+  }) => <a {...props}>{children}</a>;
   MockLink.displayName = "MockLink";
   return MockLink;
 });
@@ -23,7 +22,6 @@ describe("Breadcrumb Component", () => {
 
   it("renders all breadcrumb items", () => {
     render(<Breadcrumb items={mockItems} />);
-
     mockItems.forEach((item) => {
       expect(screen.getByText(item.label)).toBeInTheDocument();
     });
@@ -32,20 +30,16 @@ describe("Breadcrumb Component", () => {
   it("renders the correct number of separators", () => {
     const { container } = render(<Breadcrumb items={mockItems} />);
     const separators = container.querySelectorAll("svg");
-    // Should have separators between items, but not after the last item
     expect(separators).toHaveLength(mockItems.length - 1);
   });
 
   it("renders links for items with href and spans for items without href", () => {
     render(<Breadcrumb items={mockItems} />);
-
-    // Check links
     const links = screen.getAllByRole("link");
-    expect(links).toHaveLength(2); // First two items should be links
+    expect(links).toHaveLength(2);
     expect(links[0]).toHaveAttribute("href", "/");
     expect(links[1]).toHaveAttribute("href", "/products");
 
-    // Check current page (should be a span)
     const currentPage = screen.getByText("Current Page");
     expect(currentPage.tagName).toBe("SPAN");
   });
@@ -53,20 +47,24 @@ describe("Breadcrumb Component", () => {
   it("applies the correct styles to links and current item", () => {
     render(<Breadcrumb items={mockItems} />);
 
-    // Check link styles
+    // Los links deben tener las clases definidas en el componente:
+    // "transition-colors", "duration-300", "hover:text-[var(--color-primary)]", "text-[var(--color-placeholder)]"
     const links = screen.getAllByRole("link");
     links.forEach((link) => {
       expect(link).toHaveClass(
-        "text-gray-400",
-        "hover:text-green-400",
         "transition-colors",
-        "duration-300"
+        "duration-300",
+        "hover:text-[var(--color-primary)]",
+        "text-[var(--color-placeholder)]"
       );
     });
 
-    // Check current page styles
+    // La página actual se renderiza en un span con inline style para color y fontWeight
     const currentPage = screen.getByText("Current Page");
-    expect(currentPage).toHaveClass("text-white", "font-semibold");
+    expect(currentPage).toHaveStyle({
+      color: "var(--color-text)",
+      fontWeight: Typography.fontWeightSemibold.toString(),
+    });
   });
 
   it("applies additional className to the nav element if provided", () => {
@@ -80,7 +78,8 @@ describe("Breadcrumb Component", () => {
   it("applies base classes to the nav element", () => {
     const { container } = render(<Breadcrumb items={mockItems} />);
     const nav = container.firstChild as HTMLElement;
-    expect(nav).toHaveClass("flex", "items-center", "text-sm");
+    expect(nav).toHaveClass("flex", "items-center");
+    expect(nav).toHaveStyle({ fontSize: Typography.fontSizeSm });
   });
 
   it("sets the correct aria-label on the nav element", () => {
@@ -92,10 +91,9 @@ describe("Breadcrumb Component", () => {
   it("renders correctly with a single item", () => {
     const singleItem = [{ label: "Home" }];
     const { container } = render(<Breadcrumb items={singleItem} />);
-
     expect(screen.getByText("Home")).toBeInTheDocument();
     const separators = container.querySelectorAll("svg");
-    expect(separators).toHaveLength(0); // No separators with single item
+    expect(separators).toHaveLength(0);
   });
 
   it("renders correctly with empty items array", () => {
