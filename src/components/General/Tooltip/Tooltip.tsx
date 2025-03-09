@@ -30,7 +30,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   return (
     <div
       className={cn(
-        "relative inline-block color-text-[var(--color-tooltip-text)]",
+        "var(--color-tooltip-bg) relative inline-block color-text-[var(--color-tooltip-text)]",
         className
       )}
       onMouseEnter={() => setVisible(true)}

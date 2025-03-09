@@ -19,7 +19,7 @@ export const Select: React.FC<SelectProps> = ({
   variant = "primary",
   size = "md",
   options,
-  selectedValue,
+  selectedValue: propSelectedValue,
   placeholder = "Select an option",
   disabled = false,
   icon: Icon = ChevronDown,
@@ -27,10 +27,19 @@ export const Select: React.FC<SelectProps> = ({
   onChange,
   ...props
 }) => {
+  // Mantener el estado interno
+  const [internalSelectedValue, setInternalSelectedValue] = useState<
+    string | undefined
+  >(propSelectedValue);
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Actualizar el estado interno cuando cambia la prop
+  useEffect(() => {
+    setInternalSelectedValue(propSelectedValue);
+  }, [propSelectedValue]);
 
   useEffect(() => {
     if (isOpen && activeIndex >= 0) {
@@ -55,9 +64,15 @@ export const Select: React.FC<SelectProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const selectedOption = options.find((opt) => opt.value === selectedValue);
+  // Usar el valor interno para mostrar la opción seleccionada
+  const selectedOption = options.find(
+    (opt) => opt.value === internalSelectedValue
+  );
 
   const handleSelect = (value: string) => {
+    // Actualizar el estado interno
+    setInternalSelectedValue(value);
+    // Notificar al componente padre
     onChange?.(value);
     setIsOpen(false);
     setActiveIndex(-1);
@@ -247,7 +262,7 @@ export const Select: React.FC<SelectProps> = ({
                 <li
                   key={option.value}
                   role="option"
-                  aria-selected={selectedValue === option.value}
+                  aria-selected={internalSelectedValue === option.value}
                   tabIndex={-1}
                   onClick={() => handleSelect(option.value)}
                   onKeyDown={(e) => {
@@ -259,7 +274,8 @@ export const Select: React.FC<SelectProps> = ({
                   className="cursor-pointer px-3 py-2 rounded-lg transition-colors focus:outline-none"
                   style={{
                     backgroundColor:
-                      selectedValue === option.value || activeIndex === index
+                      internalSelectedValue === option.value ||
+                      activeIndex === index
                         ? "var(--color-hover)"
                         : "transparent",
                     color: "var(--color-text)",
@@ -270,7 +286,7 @@ export const Select: React.FC<SelectProps> = ({
                   }}
                   onMouseLeave={(e) => {
                     if (
-                      selectedValue !== option.value &&
+                      internalSelectedValue !== option.value &&
                       activeIndex !== index
                     ) {
                       e.currentTarget.style.backgroundColor = "transparent";
