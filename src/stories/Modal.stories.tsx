@@ -69,16 +69,10 @@ WithoutDescription.args = {
   description: undefined,
 };
 
-export const WithoutCloseButton = Template.bind({});
-WithoutCloseButton.args = {
-  ...Default.args,
-  showCloseButton: false,
-};
-
 export const CustomContent = Template.bind({});
 CustomContent.args = {
   ...Default.args,
-  children: (onClose: () => void) => (
+  children: () => (
     <div className="space-y-4">
       <input
         type="text"

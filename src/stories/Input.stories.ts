@@ -91,11 +91,3 @@ export const Disabled: Story = {
     label: "Disabled Input",
   },
 };
-
-export const WithLabel: Story = {
-  args: {
-    variant: "withLabel",
-    placeholder: "Enter text",
-    label: "Labeled Input",
-  },
-};

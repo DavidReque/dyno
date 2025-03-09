@@ -35,18 +35,11 @@ export const WithCustomContent: Story = {
     panelContent: (
       <div>
         <ul className="space-y-1">
-          <li className="px-2 py-1 rounded hover:bg-gray-100 cursor-pointer">
-            Option 1
-          </li>
-          <li className="px-2 py-1 rounded hover:bg-gray-100 cursor-pointer">
-            Option 2
-          </li>
-          <li className="px-2 py-1 rounded hover:bg-gray-100 cursor-pointer">
-            Option 3
-          </li>
+          <li className="px-2 py-1 rounded">Option 1</li>
+          <li className="px-2 py-1 rounded">Option 2</li>
+          <li className="px-2 py-1 rounded">Option 3</li>
         </ul>
       </div>
     ),
-    panelClassName: "bg-gray-50",
   },
 };
