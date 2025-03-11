@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { Avatar } from "@/components/General/Avatar/Avatar";
+import { Avatar } from "../../../packages/components/General/Avatar/Avatar";
 
 describe("Avatar Component", () => {
   it("renders the image when `src` is provided", () => {
