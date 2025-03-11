@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { TableProps, Column } from "@/components/General/Table/Table";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
+import { Column, TableProps } from "./Table";
 
 export interface SelectableTableProps<T> extends TableProps<T> {
   /** Callback que recibe la lista de elementos seleccionados */

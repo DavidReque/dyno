@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
 import { Table, TableProps } from "./Table";
 
 export interface PaginatedTableProps<T> extends TableProps<T> {

@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
 
 export interface AvatarProps {
   /** URL de la imagen del avatar */

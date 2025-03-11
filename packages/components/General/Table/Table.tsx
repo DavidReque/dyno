@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
 
 export interface Column<T> {
   /** Texto del encabezado de la columna */

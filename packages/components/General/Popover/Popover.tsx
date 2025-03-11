@@ -1,6 +1,6 @@
 import React from "react";
 import { Popover as HeadlessPopover, Transition } from "@headlessui/react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../../lib/utils";
 
 export interface PopoverProps {
   /** Contenido que se muestra en el botón que dispara el popover */
