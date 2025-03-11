@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { typography } from "@/theme/typography";
+import { typography } from "../../../theme/typography";
 
 export interface CardProps {
   title?: string;

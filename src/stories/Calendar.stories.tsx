@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Calendar } from "@/components/General/Calendar/Calendar";
 import type { Meta, StoryFn } from "@storybook/react";
+import { Calendar } from "../../packages/components/General/Calendar/Calendar";
 
 const meta: Meta<typeof Calendar> = {
   title: "General/Calendar",

@@ -1,6 +1,6 @@
-import { Button } from "@/components/General/Button/Button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { File } from "lucide-react";
+import { Button } from "../../packages/components/General/Button/Button";
 
 const meta = {
   title: "General/Button",

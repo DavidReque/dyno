@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Colors } from "@/theme/tokens";
+import { Colors } from "../../../theme/tokens";
 
 export interface AlertProps {
   /** Tipo de alerta */

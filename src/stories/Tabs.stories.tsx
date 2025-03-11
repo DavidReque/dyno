@@ -1,6 +1,6 @@
-import { Tabs } from "@/components/General/Tabs/Tabs";
 import type { Meta, StoryObj } from "@storybook/react";
 import { LucideRefreshCw } from "lucide-react";
+import Tabs from "../../packages/components/General/Tabs/Tabs";
 
 const meta: Meta<typeof Tabs> = {
   title: "General/Tabs",

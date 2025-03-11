@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button } from "@/components/General/Button/Button";
-import { Modal } from "@/components/General/Modal/Modal";
 import type { Meta, StoryFn } from "@storybook/react";
+import { Modal } from "../../packages/components/General/Modal/Modal";
+import { Button } from "../../packages/components/General/Button/Button";
 
 const meta: Meta<typeof Modal> = {
   title: "General/Modal",

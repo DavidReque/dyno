@@ -1,5 +1,5 @@
-import { RadioButton } from "@/components/General/RadioButton/RadioButton";
 import type { Meta, StoryObj } from "@storybook/react";
+import { RadioButton } from "../../packages/components/General/RadioButton/RadioButton";
 
 const meta = {
   title: "General/RadioButton",

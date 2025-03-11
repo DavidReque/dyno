@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/theme/ThemeContext";
-import { ThemeToggle } from "@/components/General/ThemeToggle/ThemeToggle";
-import { inter, poppins } from "@/theme/typography";
+import { GeistSans, GeistMono } from "geist/font";
+import { ThemeProvider } from "../../packages/theme/ThemeContext";
+import { ThemeToggle } from "../../packages/components/General/ThemeToggle/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${poppins.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
         suppressHydrationWarning
       >
         <script

@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import "./preview.css";
 import { ThemeDecorator } from "./ThemeDecorator";
 
 const preview: Preview = {

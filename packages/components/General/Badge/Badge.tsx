@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Colors } from "@/theme/tokens";
+import { Colors } from "../../../theme/tokens";
 
 export interface BadgeProps {
   /** Variante del badge */

@@ -1,27 +1,26 @@
-import React from "react";
-import { Accordion } from "@/components/General/Accordion/Accordion";
 import type { Meta, StoryObj } from "@storybook/react";
+import { Accordion } from "../../packages/components/General/Accordion/Accordion";
 
 interface ItemData {
-  id: string;
+  id: number;
   title: string;
-  content: React.ReactNode;
+  content: string;
 }
 
 const items: ItemData[] = [
   {
-    id: "1",
+    id: 1,
     title: "Accordion Item 1",
     content: "This is the content for item 1. It can include any React node.",
   },
   {
-    id: "2",
+    id: 2,
     title: "Accordion Item 2",
     content:
       "Content for item 2 goes here. You can add more complex elements if needed.",
   },
   {
-    id: "3",
+    id: 3,
     title: "Accordion Item 3",
     content: "Here is the content for item 3. Customize it as you like.",
   },

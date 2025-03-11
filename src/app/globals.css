@@ -1,8 +1,24 @@
-@import "../theme/global.css";
+@import "../../packages/theme/global.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --font-geist-sans: "Geist Sans";
+    --font-geist-mono: "Geist Mono";
+  }
+
+  html {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: var(--font-geist-mono), monospace;
+  }
+}
 
 /* Estilos globales adicionales */
 body {

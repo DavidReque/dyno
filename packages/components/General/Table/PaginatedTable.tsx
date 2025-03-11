@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Table, TableProps } from "@/components/General/Table/Table";
 import { cn } from "@/lib/utils";
+import { Table, TableProps } from "./Table";
 
 export interface PaginatedTableProps<T> extends TableProps<T> {
   /** Número de filas por página */

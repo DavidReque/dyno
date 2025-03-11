@@ -1,6 +1,6 @@
-import { Card } from "@/components/General/Card/Card";
 import type { Meta, StoryObj } from "@storybook/react";
 import { User, Bell, FileText } from "lucide-react";
+import { Card } from "../../packages/components/General/Card/Card";
 
 const meta = {
   title: "General/Card",

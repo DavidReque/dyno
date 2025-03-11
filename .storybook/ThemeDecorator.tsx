@@ -1,5 +1,5 @@
 import React from "react";
-import { ThemeProvider } from "../src/theme/ThemeContext";
+import { ThemeProvider } from "../packages/theme/ThemeContext";
 import "../src/app/globals.css";
 
 export const ThemeDecorator = (Story: React.ComponentType) => {

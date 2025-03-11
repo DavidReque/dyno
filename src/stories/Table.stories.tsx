@@ -1,8 +1,13 @@
 import React from "react";
-import { Table, Column, TableProps } from "@/components/General/Table/Table";
-import { PaginatedTable } from "@/components/General/Table/PaginatedTable";
+
 import type { Meta, StoryObj } from "@storybook/react";
-import { SelectableTable } from "@/components/General/Table/SelectedTable";
+import {
+  Column,
+  Table,
+  TableProps,
+} from "../../packages/components/General/Table/Table";
+import { PaginatedTable } from "../../packages/components/General/Table/PaginatedTable";
+import { SelectableTable } from "../../packages/components/General/Table/SelectedTable";
 
 interface Person {
   name: string;
@@ -79,7 +84,9 @@ export const WithCustomCell: Story = {
 };
 
 export const Paginated: Story = {
-  render: () => <PaginatedTable columns={columns} data={data} pageSize={3} />,
+  render: () => (
+    <PaginatedTable<Person> columns={columns} data={data} pageSize={3} />
+  ),
 };
 
 export const Selectable: Story = {

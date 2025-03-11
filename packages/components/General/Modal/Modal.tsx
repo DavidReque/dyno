@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { Button } from "../Button/Button";
-import { sizeStyles } from "@/theme/spacing";
+import { sizeStyles } from "../../../theme/spacing";
 
 export interface ModalProps {
   isOpen: boolean;

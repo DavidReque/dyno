@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Spacing } from "@/theme/spacing";
+import { Spacing } from "../../../theme/spacing";
 
 export interface TypographyProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";

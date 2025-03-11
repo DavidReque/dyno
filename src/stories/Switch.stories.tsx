@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Switch } from "@/components/General/Switch/Switch";
 import type { Meta, StoryFn } from "@storybook/react";
+import { Switch } from "../../packages/components/General/Switch/Switch";
 
 const meta: Meta<typeof Switch> = {
   title: "General/Switch",

@@ -8,7 +8,7 @@ import {
   ListSkeleton,
   ParagraphSkeleton,
   TableSkeleton,
-} from "@/components/General/Skeleton/Skeleton";
+} from "../../packages/components/General/Skeleton/Skeleton";
 
 const meta: Meta = {
   title: "General/Skeleton",

@@ -1,6 +1,6 @@
-import { Input } from "@/components/General/Input/Input";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Search, X } from "lucide-react";
+import { Input } from "../../packages/components/General/Input/Input";
 
 const meta = {
   title: "General/Input",

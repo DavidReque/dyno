@@ -1,7 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Typography } from "@/theme/typography";
+import { fontTokens } from "../../../theme/typography";
 
 export interface BreadcrumbItem {
   /** Texto que se muestra para el ítem */
@@ -23,7 +23,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
       className={cn("flex items-center", className)}
       aria-label="Breadcrumb"
       style={{
-        fontSize: Typography.fontSizeSm,
+        fontSize: fontTokens.fontSizeSm,
       }}
     >
       {items.map((item, index) => (
@@ -43,7 +43,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
             <span
               style={{
                 color: "var(--color-text)",
-                fontWeight: Typography.fontWeightSemibold,
+                fontWeight: fontTokens.fontWeightSemibold,
               }}
             >
               {item.label}

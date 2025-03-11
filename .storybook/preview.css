@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Importar Geist desde CDN */
+@font-face {
+  font-family: "Geist Sans";
+  src: url("https://vercel.com/static/fonts/geist/Geist-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("https://vercel.com/static/fonts/geist/Geist-Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("https://vercel.com/static/fonts/geist/Geist-SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("https://vercel.com/static/fonts/geist/Geist-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("https://vercel.com/static/fonts/geist-mono/GeistMono-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Aplicar Geist como fuente por defecto */
+body {
+  font-family: "Geist Sans", system-ui, -apple-system, sans-serif;
+}
+
+code,
+pre {
+  font-family: "Geist Mono", monospace;
+}
+
+/* Importar los estilos globales del proyecto */
+@import "../packages/theme/global.css";

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { inter, poppins, typography } from "@/theme/typography";
+import { typography } from "../../../theme/typography";
 
 interface AccordionItem {
   id: number;
@@ -84,12 +84,7 @@ export function Accordion({
 
   return (
     <div
-      className={cn(
-        "border rounded-lg shadow-sm",
-        inter.variable,
-        poppins.variable,
-        className
-      )}
+      className={cn("border rounded-lg shadow-sm", className)}
       style={{
         backgroundColor: "var(--color-background)",
         borderColor: "var(--color-border)",
