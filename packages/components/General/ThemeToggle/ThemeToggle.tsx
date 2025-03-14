@@ -1,6 +1,7 @@
 import React from "react";
-import { useTheme } from "@/theme/ThemeContext";
 import { Button } from "../Button/Button";
+import { useTheme } from "../../../providers";
+import { THEME_LABELS } from "../../../lib";
 
 export const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -10,9 +11,7 @@ export const ThemeToggle: React.FC = () => {
       variant="ghost"
       onClick={toggleTheme}
       className="fixed bottom-4 right-4 p-2 rounded-full"
-      aria-label={
-        theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
-      }
+      aria-label={THEME_LABELS[theme as keyof typeof THEME_LABELS]}
     >
       {theme === "dark" ? (
         <svg
