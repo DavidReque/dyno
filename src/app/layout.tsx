@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans, GeistMono } from "geist/font";
-import { ThemeProvider } from "../../packages/theme/ThemeContext";
+import { AppProviders } from "../../packages/providers";
 import { ThemeToggle } from "../../packages/components/General/ThemeToggle/ThemeToggle";
 
 export const metadata: Metadata = {
@@ -24,16 +24,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const theme = localStorage.getItem('app-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.setAttribute('data-theme', theme);
+                const theme = storage.get('app-theme') || getSystemTheme();
+                setThemeColors(theme, THEME_COLORS[theme]);
               } catch (e) {}
             `,
           }}
         />
-        <ThemeProvider>
+        <AppProviders>
           {children}
           <ThemeToggle />
-        </ThemeProvider>
+        </AppProviders>
       </body>
     </html>
   );
