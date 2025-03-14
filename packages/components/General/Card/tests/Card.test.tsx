@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MyArrowIcon } from "@/icons/MyArrowIcon";
+import { MyArrowIcon } from "../../../../icons/MyArrowIcon";
 import { Card } from "../Card";
 
 describe("Card Component", () => {

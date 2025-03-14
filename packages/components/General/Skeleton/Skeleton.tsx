@@ -8,16 +8,29 @@ export const CardSkeleton: React.FC<{ className?: string }> = ({
   return (
     <div
       className={cn(
-        "animate-pulse bg-gray-200 rounded-lg p-4 space-y-4",
+        "animate-pulse bg-gray-200 rounded-lg p-4 space-y-4 w-full min-h-[120px]",
         className
       )}
       data-testid="skeleton-block"
+      style={{ display: "block", minWidth: "200px" }}
     >
-      <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+      <div
+        className="h-4 bg-gray-300 rounded w-3/4"
+        style={{ display: "block", minWidth: "100px" }}
+      ></div>
       <div className="space-y-2">
-        <div className="h-3 bg-gray-300 rounded w-full"></div>
-        <div className="h-3 bg-gray-300 rounded w-5/6"></div>
-        <div className="h-3 bg-gray-300 rounded w-2/3"></div>
+        <div
+          className="h-3 bg-gray-300 rounded w-full"
+          style={{ display: "block", minWidth: "100px" }}
+        ></div>
+        <div
+          className="h-3 bg-gray-300 rounded w-5/6"
+          style={{ display: "block", minWidth: "100px" }}
+        ></div>
+        <div
+          className="h-3 bg-gray-300 rounded w-2/3"
+          style={{ display: "block", minWidth: "100px" }}
+        ></div>
       </div>
     </div>
   );
@@ -28,14 +41,31 @@ export const FormSkeleton: React.FC<{ className?: string }> = ({
   className,
 }) => {
   return (
-    <div className={cn("animate-pulse space-y-4", className)}>
-      <div className="h-4 bg-gray-300 rounded w-1/3"></div>
+    <div
+      className={cn("animate-pulse space-y-4 w-full min-h-[180px]", className)}
+    >
+      <div
+        className="h-4 bg-gray-300 rounded w-1/3"
+        style={{ display: "block", minWidth: "100px" }}
+      ></div>
       <div className="space-y-3">
-        <div className="h-10 bg-gray-200 rounded"></div>
-        <div className="h-10 bg-gray-200 rounded"></div>
-        <div className="h-10 bg-gray-200 rounded"></div>
+        <div
+          className="h-10 bg-gray-200 rounded w-full"
+          style={{ display: "block", minWidth: "200px" }}
+        ></div>
+        <div
+          className="h-10 bg-gray-200 rounded w-full"
+          style={{ display: "block", minWidth: "200px" }}
+        ></div>
+        <div
+          className="h-10 bg-gray-200 rounded w-full"
+          style={{ display: "block", minWidth: "200px" }}
+        ></div>
       </div>
-      <div className="h-10 bg-gray-200 rounded w-1/2"></div>
+      <div
+        className="h-10 bg-gray-200 rounded w-1/2"
+        style={{ display: "block", minWidth: "150px" }}
+      ></div>
     </div>
   );
 };
@@ -47,14 +77,27 @@ export const CodeSkeleton: React.FC<{ className?: string }> = ({
   return (
     <div
       className={cn(
-        "animate-pulse bg-gray-200 rounded p-4 font-mono space-y-2",
+        "animate-pulse bg-gray-200 rounded p-4 font-mono space-y-2 w-full min-h-[100px]",
         className
       )}
+      style={{ display: "block", minWidth: "200px" }}
     >
-      <div className="h-3 bg-gray-300 rounded w-full"></div>
-      <div className="h-3 bg-gray-300 rounded w-11/12"></div>
-      <div className="h-3 bg-gray-300 rounded w-10/12"></div>
-      <div className="h-3 bg-gray-300 rounded w-9/12"></div>
+      <div
+        className="h-3 bg-gray-300 rounded w-full"
+        style={{ display: "block", minWidth: "100px" }}
+      ></div>
+      <div
+        className="h-3 bg-gray-300 rounded w-11/12"
+        style={{ display: "block", minWidth: "100px" }}
+      ></div>
+      <div
+        className="h-3 bg-gray-300 rounded w-10/12"
+        style={{ display: "block", minWidth: "100px" }}
+      ></div>
+      <div
+        className="h-3 bg-gray-300 rounded w-9/12"
+        style={{ display: "block", minWidth: "100px" }}
+      ></div>
     </div>
   );
 };
@@ -80,9 +123,15 @@ export const ListSkeleton: React.FC<{ className?: string; count?: number }> = ({
   count = 5,
 }) => {
   return (
-    <div className={cn("animate-pulse space-y-2", className)}>
+    <div
+      className={cn("animate-pulse space-y-2 w-full min-h-[80px]", className)}
+    >
       {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="h-3 bg-gray-300 rounded w-full"></div>
+        <div
+          key={i}
+          className="h-3 bg-gray-300 rounded w-full"
+          style={{ display: "block", minWidth: "100px" }}
+        ></div>
       ))}
     </div>
   );
@@ -127,13 +176,16 @@ export const ParagraphSkeleton: React.FC<{
   lines?: number;
 }> = ({ className, lines = 3 }) => {
   return (
-    <div className={cn("animate-pulse space-y-2", className)}>
+    <div
+      className={cn("animate-pulse space-y-2 w-full min-h-[50px]", className)}
+    >
       {Array.from({ length: lines }).map((_, i) => (
         <div
           key={i}
           className={`h-3 bg-gray-300 rounded ${
             i === lines - 1 ? "w-2/3" : "w-full"
           }`}
+          style={{ display: "block", minWidth: "100px" }}
         ></div>
       ))}
     </div>

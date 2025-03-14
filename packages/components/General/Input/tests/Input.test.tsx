@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { LeadingIcon } from "@/icons/LeadingIcon";
-import { TrailingIcon } from "@/icons/TrailingIcon";
+import { LeadingIcon } from "../../../../icons/LeadingIcon";
+import { TrailingIcon } from "../../../../icons/TrailingIcon";
 import { Input } from "../Input";
 
 describe("Input Component", () => {
