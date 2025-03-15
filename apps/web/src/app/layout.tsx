@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { GeistSans, GeistMono } from "geist/font";
-import { AppProviders } from "../../packages/providers";
-import { ThemeToggle } from "../../packages/components/General/ThemeToggle/ThemeToggle";
+import { AppProviders } from "../../../../packages/providers";
+import { ThemeToggle } from "../../../../packages/components/General/ThemeToggle/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Create Next App",
