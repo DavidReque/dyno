@@ -24,8 +24,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const theme = storage.get('app-theme') || getSystemTheme();
-                setThemeColors(theme, THEME_COLORS[theme]);
+                if (typeof window !== 'undefined') {
+                  const storage = localStorage;
+                  const theme = storage.getItem('app-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                  document.documentElement.setAttribute('data-theme', theme);
+                }
               } catch (e) {}
             `,
           }}
