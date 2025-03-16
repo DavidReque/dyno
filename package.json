@@ -17,7 +17,8 @@
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "chromatic": "npx chromatic --project-token=chpt_40dfe3df0e8ae99"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
