@@ -18,8 +18,13 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
-      - run: pnpm
-      #👇 Adds Chromatic as a step in the workflow
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - run: pnpm install
       - uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
         with:
