@@ -25,6 +25,9 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
+           - name: Disable husky
+        run: echo "HUSKY=0" >> $GITHUB_ENV
+
       - run: pnpm install
 
       - uses: chromaui/action@latest
