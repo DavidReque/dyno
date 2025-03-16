@@ -1,28 +1,28 @@
-# Name of our action
-name: "Chromatic"
-# The event that will trigger the action
+# Workflow name
+name: "Chromatic Publish"
+
+# Event for the workflow
 on: push
 
-# What the action will do
+# List of jobs
 jobs:
   test:
-    # The operating system it will run on
+    # Operating System
     runs-on: ubuntu-latest
-    # The list of steps that the action will go through
+    # Job steps
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
-          #👇 Fetches all history so Chromatic can compare against previous builds
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          #👇 Sets the version of Node.js to use
           node-version: 20
-      - run: yarn
-        #👇 Adds Chromatic as a step in the workflow
-      - uses: chromaui/action@v1
+          cache: "pnpm"
+      - run: pnpm
+      #👇 Adds Chromatic as a step in the workflow
+      - uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
         with:
-          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/design-systems-for-developers/react/en/review/ to obtain it
+          #👇 Chromatic projectToken,
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
