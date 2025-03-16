@@ -25,10 +25,7 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-           - name: Disable husky
-        run: echo "HUSKY=0" >> $GITHUB_ENV
-
-      - run: pnpm install
+      - run: pnpm install --ignore-scripts
 
       - uses: chromaui/action@latest
         # Options required for Chromatic's GitHub Action
