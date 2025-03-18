@@ -24,17 +24,3 @@ export const Default: Story = {
     color: "border-t-green-400",
   },
 };
-
-export const Small: Story = {
-  args: {
-    size: "sm",
-    color: "border-t-blue-400",
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: "lg",
-    color: "border-t-red-400",
-  },
-};

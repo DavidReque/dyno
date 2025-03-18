@@ -25,7 +25,9 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   const baseStyles = cn(
     "w-full px-4 py-2.5 text-sm border rounded-xl transition-all duration-300 shadow-md hover:shadow-lg",
-    "focus:outline-none focus:ring-2 focus:ring-[var(--color-focus)] focus:ring-opacity-50",
+    error
+      ? "focus:outline-none focus:ring-2 focus:ring-[var(--color-error)] focus:ring-opacity-50"
+      : "focus:outline-none focus:ring-2 focus:ring-[var(--color-focus)] focus:ring-opacity-50",
     "placeholder-[var(--color-placeholder)]",
     "bg-[var(--color-background)] text-[var(--color-text)]",
     "border-[var(--color-border)]"
@@ -81,7 +83,9 @@ export const Input: React.FC<InputProps> = ({
             className={cn(
               iconStyles,
               "left-3",
-              "group-focus-within:text-[var(--color-primary)]"
+              error
+                ? "group-focus-within:text-[var(--color-error)]"
+                : "group-focus-within:text-[var(--color-primary)]"
             )}
           />
         )}
@@ -101,7 +105,9 @@ export const Input: React.FC<InputProps> = ({
             LeadingIcon ? "pl-10" : "",
             TrailingIcon ? "pr-10" : "",
             className,
-            "focus:ring-2 focus:ring-[var(--color-focus)] focus:outline-none"
+            error
+              ? "focus:ring-2 focus:ring-[var(--color-error)] focus:outline-none"
+              : "focus:ring-2 focus:ring-[var(--color-focus)] focus:outline-none"
           )}
           disabled={variant === "disabled" || disabled}
           {...props}
@@ -112,7 +118,9 @@ export const Input: React.FC<InputProps> = ({
             className={cn(
               iconStyles,
               "right-3",
-              "group-focus-within:text-[var(--color-primary)]"
+              error
+                ? "group-focus-within:text-[var(--color-error)]"
+                : "group-focus-within:text-[var(--color-primary)]"
             )}
           />
         )}

@@ -1,13 +1,14 @@
 import React from "react";
 import { cn } from "../../../lib/utils";
 import { typography } from "../../../theme/typography";
+import { getBorderColor } from "../../../lib";
 
 export interface CardProps {
   title?: string;
   subtitle?: string;
   children?: React.ReactNode;
   footer?: React.ReactNode;
-  variant?: "default" | "ghost" | "outline";
+  variant?: "default";
   icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   className?: string;
   onClick?: () => void;
@@ -18,15 +19,14 @@ export const Card: React.FC<CardProps> = ({
   subtitle,
   children,
   footer,
-  variant = "default",
   icon: Icon,
   className,
   onClick,
 }) => {
   const baseStyles = cn(
     "group rounded-xl overflow-hidden transition-all duration-300",
-    variant === "default" && "shadow-sm hover:shadow-lg",
-    variant === "outline" && "border",
+    "border",
+    "shadow-sm hover:shadow-lg",
     className
   );
 
@@ -35,19 +35,8 @@ export const Card: React.FC<CardProps> = ({
       className={baseStyles}
       onClick={onClick}
       style={{
-        backgroundColor:
-          variant === "ghost" ? "transparent" : "var(--color-background)",
-        borderColor: variant === "outline" ? "var(--color-border)" : undefined,
-      }}
-      onMouseEnter={(e) => {
-        if (variant === "ghost") {
-          e.currentTarget.style.backgroundColor = "var(--color-hover)";
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (variant === "ghost") {
-          e.currentTarget.style.backgroundColor = "transparent";
-        }
+        backgroundColor: "var(--color-background)",
+        borderColor: getBorderColor("default"),
       }}
     >
       {/* Header */}
@@ -75,10 +64,7 @@ export const Card: React.FC<CardProps> = ({
                   "transition-colors group-hover:text-green-500"
                 )}
                 style={{
-                  color:
-                    variant === "ghost"
-                      ? "var(--color-primary)"
-                      : "var(--color-text)",
+                  color: "var(--color-text)",
                 }}
               >
                 {title}
@@ -97,8 +83,7 @@ export const Card: React.FC<CardProps> = ({
       <div
         className={cn("p-4 space-y-2 transition-colors", typography.body1)}
         style={{
-          color:
-            variant === "ghost" ? "var(--color-primary)" : "var(--color-text)",
+          color: "var(--color-text)",
         }}
       >
         {children}
@@ -114,8 +99,7 @@ export const Card: React.FC<CardProps> = ({
           )}
           style={{
             borderColor: "var(--color-border)",
-            backgroundColor:
-              variant === "ghost" ? "transparent" : "var(--color-hover)",
+            backgroundColor: "var(--color-hover)",
           }}
         >
           {footer}

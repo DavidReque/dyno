@@ -36,14 +36,3 @@ export const Simple: Story = {
     ],
   },
 };
-
-export const WithCustomStyles: Story = {
-  args: {
-    items: [
-      { label: "Inicio", href: "/" },
-      { label: "Categoría", href: "/categoria" },
-      { label: "Producto" },
-    ],
-    className: "bg-gray-800 p-2 rounded",
-  },
-};

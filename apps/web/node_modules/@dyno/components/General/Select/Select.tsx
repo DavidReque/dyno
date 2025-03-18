@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { cn } from "../../../lib/utils";
 import { ChevronDown, LucideIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getFocusRingColor } from "../../../lib";
 
 export interface SelectProps {
   variant?: "primary" | "secondary" | "ghost" | "destructive";
@@ -182,9 +183,10 @@ export const Select: React.FC<SelectProps> = ({
   };
 
   const baseStyles = cn(
-    "appearance-none w-full focus:outline-none focus:ring-2 transition-all duration-300 rounded-lg",
+    "appearance-none w-full transition-all duration-300 rounded-lg",
     sizeStyles[size],
     "pr-10 w-full text-left",
+    "focus:outline-none",
     className
   );
 
@@ -212,6 +214,19 @@ export const Select: React.FC<SelectProps> = ({
           color: getTextColor(),
           cursor: disabled ? "not-allowed" : "pointer",
           opacity: getOpacity(),
+          boxShadow: isOpen
+            ? `0 0 0 2px ${getFocusRingColor(variant)}`
+            : "none",
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.boxShadow = `0 0 0 2px ${getFocusRingColor(
+            variant
+          )}`;
+        }}
+        onBlur={(e) => {
+          if (!isOpen) {
+            e.currentTarget.style.boxShadow = "none";
+          }
         }}
         onMouseEnter={(e) => {
           if (variant === "ghost" && !disabled) {

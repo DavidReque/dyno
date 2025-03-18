@@ -1,5 +1,6 @@
 import React, { useState, useRef, KeyboardEvent } from "react";
 import { cn } from "../../../lib/utils";
+import { CalendarIcon } from "../../../icons/CalendarIcon";
 
 export interface DatePickerProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -7,12 +8,15 @@ export interface DatePickerProps
   label?: string;
   /** Clases adicionales para el contenedor */
   className?: string;
+  /** Ancho personalizado del componente */
+  width?: string;
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   label,
   className,
   disabled,
+  width,
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -60,10 +64,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   return (
     <div
       className={cn(
-        "flex flex-col space-y-2 transition-all duration-200 ease-in-out",
+        "flex flex-col space-y-2 transition-all duration-200 ease-in-out w-full",
         isFocused && "transform scale-[1.01]",
         className
       )}
+      style={{ maxWidth: width || "100%" }}
     >
       {label && (
         <label
@@ -77,7 +82,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           {label}
         </label>
       )}
-      <div className="relative group">
+      <div className="relative group w-full">
         <div
           className={cn(
             "absolute inset-0 bg-gradient-to-r opacity-0 rounded-lg transition-opacity duration-200",
@@ -85,7 +90,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             isFocused && "opacity-100"
           )}
         />
-        <div className="relative flex items-center">
+        <div className="relative flex items-center w-full">
           <input
             ref={inputRef}
             type="date"
@@ -103,7 +108,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               "hover:border-[var(--color-primary)]",
               disabled &&
                 "bg-[var(--color-disabled)] cursor-not-allowed opacity-60",
-              "peer"
+              "peer min-w-0 flex-1"
             )}
             {...props}
           />
@@ -118,26 +123,15 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               disabled && "cursor-not-allowed"
             )}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
+            <CalendarIcon
               className={cn(
-                "size-6 transition-colors duration-200",
+                "size-5 transition-colors duration-200",
                 isFocused
                   ? "text-[var(--color-primary)]"
                   : "text-[var(--color-placeholder)]",
                 disabled && "opacity-60"
               )}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-              />
-            </svg>
+            />
           </button>
         </div>
       </div>

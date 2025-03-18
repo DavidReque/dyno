@@ -43,24 +43,6 @@ export const Default: Story = {
   },
 };
 
-export const Outlined: Story = {
-  args: {
-    title: "Outlined Card",
-    subtitle: "This card has a border outline.",
-    variant: "outline",
-    children: "This is the main content of the outlined card.",
-  },
-};
-
-export const Ghost: Story = {
-  args: {
-    title: "Ghost Card",
-    subtitle: "This card has a subtle hover effect.",
-    variant: "ghost",
-    children: "This is the main content of the ghost card.",
-  },
-};
-
 export const WithIcon: Story = {
   args: {
     title: "Card with Icon",
@@ -99,7 +81,6 @@ export const FileCard: Story = {
     title: "File Upload",
     subtitle: "Manage your uploaded files.",
     icon: FileText,
-    variant: "outline",
     children: ["Document.pdf", "Presentation.pptx", "Spreadsheet.xlsx"].join(
       ", "
     ),

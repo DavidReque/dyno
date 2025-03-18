@@ -4,7 +4,7 @@ import { cn } from "../../../lib/utils";
 
 export interface SpinnerProps {
   /** Tamaño del spinner: sm, md o lg */
-  size?: "sm" | "md" | "lg";
+  size?: "md";
   /** Clase Tailwind para el color del borde superior, p.ej. "border-t-green-400" */
   color?: string;
   /** Clases adicionales */
@@ -12,9 +12,7 @@ export interface SpinnerProps {
 }
 
 const sizeClasses: Record<NonNullable<SpinnerProps["size"]>, string> = {
-  sm: "w-6 h-6",
   md: "w-10 h-10",
-  lg: "w-16 h-16",
 };
 
 export const Spinner: React.FC<SpinnerProps> = ({
