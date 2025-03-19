@@ -38,7 +38,7 @@ export const Typography = ({
     body1: "leading-7",
     blockquote: "border-l-2 pl-6 italic",
     caption: "text-xs leading-normal",
-    code: "relative rounded bg-gray-500 px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
+    code: "relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
   };
 
   const spacingInlineStyle: React.CSSProperties = {};
@@ -55,15 +55,24 @@ export const Typography = ({
     extrabold: "font-extrabold",
   };
 
-  // Mapeo de colores
   const colorStyles = {
-    default: "text-neutral-900",
-    primary: "text-white",
-    secondary: "text-neutral-600",
-    success: "text-green-600",
-    error: "text-red-600",
-    warning: "text-yellow-600",
+    default: "text-[var(--color-text)]",
+    primary: "text-[var(--color-primary)]",
+    secondary: "text-[var(--color-secondary)]",
+    success: "text-[var(--color-success)]",
+    error: "text-[var(--color-error)]",
+    warning: "text-[var(--color-warning)]",
   };
+
+  const variantSpecificStyles = {
+    code: "bg-[var(--color-hover)] ",
+    blockquote: "border-l-[var(--color-border)]",
+    h2: "border-b-[var(--color-border)]",
+  };
+
+  // Estilos específicos para la variante actual
+  const currentVariantSpecificStyle =
+    variantSpecificStyles[variant as keyof typeof variantSpecificStyles] || "";
 
   return (
     <Component
@@ -71,6 +80,7 @@ export const Typography = ({
         variantClasses[variant],
         weightStyles[weight],
         colorStyles[color],
+        currentVariantSpecificStyle,
         className
       )}
       style={spacingInlineStyle}
