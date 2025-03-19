@@ -74,6 +74,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         <label
           className={cn(
             "text-sm font-medium transition-colors duration-200",
+            "truncate",
             isFocused
               ? "text-[var(--color-primary)]"
               : "text-[var(--color-text)]"
@@ -106,6 +107,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
               "focus:outline-none focus:ring-2 focus:ring-[var(--color-focus)]",
               "border-[var(--color-border)]",
               "hover:border-[var(--color-primary)]",
+              "peer min-w-0 flex-1 pr-10",
+              "text-ellipsis overflow-hidden whitespace-nowrap",
+              "appearance-none",
+              "[&::-webkit-inner-spin-button]:appearance-none",
+              "[&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0",
               disabled &&
                 "bg-[var(--color-disabled)] cursor-not-allowed opacity-60",
               "peer min-w-0 flex-1"
@@ -125,7 +131,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
           >
             <CalendarIcon
               className={cn(
-                "size-5 transition-colors duration-200",
+                "size-4 sm:size-5 transition-colors duration-200",
                 isFocused
                   ? "text-[var(--color-primary)]"
                   : "text-[var(--color-placeholder)]",
