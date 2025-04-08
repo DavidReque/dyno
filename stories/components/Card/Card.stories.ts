@@ -7,33 +7,44 @@ const meta = {
   component: Card,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Un componente Card que agrupa contenido relacionado en un contenedor visual.",
+      },
+    },
   },
-  tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
       options: ["default", "ghost", "outline"],
+      description: "La variante visual de la card",
     },
     title: {
       control: "text",
+      description: "Título de la card",
     },
     subtitle: {
       control: "text",
+      description: "Subtítulo de la card",
     },
     icon: {
-      control: false, // Icons cannot be controlled via Storybook's UI
+      control: false,
+      description: "Icono opcional para la card",
     },
     footer: {
-      control: false, // Footer content is typically custom
+      control: false,
+      description: "Contenido del footer de la card",
     },
     className: {
-      control: false, // ClassName is for advanced customization
+      control: false,
+      description: "Clases CSS adicionales para la card",
     },
   },
 } satisfies Meta<typeof Card>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
   args: {

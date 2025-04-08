@@ -1,0 +1,55 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as CardStories from "./Card.stories";
+
+<Meta of={CardStories} />
+
+# Card
+
+El componente Card es un contenedor que agrupa contenido relacionado.
+
+## Características
+
+- Múltiples variantes (default, ghost, outline)
+- Soporte para título, subtítulo e icono
+- Personalizable mediante className
+- Integración con el sistema de diseño
+
+## Uso
+
+```tsx
+import { Card } from "@your-package/components";
+import { User } from "lucide-react";
+
+// Card básica
+<Card
+  title="Card Title"
+  subtitle="Card Subtitle"
+  children="Card content goes here"
+/>
+
+// Card con icono
+<Card
+  title="Card with Icon"
+  subtitle="This card displays an icon"
+  icon={User}
+  children="The icon enhances the visual appeal"
+/>
+
+// Card con footer
+<Card
+  title="Card with Footer"
+  subtitle="This card includes a footer"
+  children="Main content"
+  footer="Learn More"
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Card por defecto
+
+<Story of={CardStories.Default} />{" "}

@@ -1,21 +1,34 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Badge } from "../../../packages/components/General/Badge/Badge";
 
-const meta: Meta<typeof Badge> = {
+const meta = {
   title: "General/Badge",
   component: Badge,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Un componente Badge que muestra información o estado de forma visual.",
+      },
+    },
   },
-  tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
       options: ["success", "error", "warning", "info"],
+      description: "La variante visual del badge",
     },
-    className: { control: false },
+    children: {
+      control: "text",
+      description: "Contenido del badge",
+    },
+    className: {
+      control: false,
+      description: "Clases CSS adicionales para el badge",
+    },
   },
-};
+} satisfies Meta<typeof Badge>;
 
 export default meta;
 type Story = StoryObj<typeof Badge>;

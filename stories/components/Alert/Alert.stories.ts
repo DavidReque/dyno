@@ -1,27 +1,51 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "../../../packages/components/General/Alert/Alert";
 
-const meta: Meta<typeof Alert> = {
+const meta = {
   title: "General/Alert",
   component: Alert,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Un componente Alert que muestra mensajes importantes al usuario.",
+      },
+    },
   },
-  tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
       options: ["success", "error", "warning", "info"],
+      description: "La variante visual de la alerta",
     },
-    message: { control: "text" },
-    dismissible: { control: "boolean" },
-    onClose: { action: "closed" },
-    className: { control: false },
+    message: {
+      control: "text",
+      description: "El mensaje a mostrar en la alerta",
+    },
+    dismissible: {
+      control: "boolean",
+      description: "Si la alerta puede ser cerrada por el usuario",
+    },
+    onClose: {
+      action: "closed",
+      description: "Función llamada cuando se cierra la alerta",
+    },
+    className: {
+      control: false,
+      description: "Clases CSS adicionales para la alerta",
+    },
   },
 } satisfies Meta<typeof Alert>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Alert>;
+
+export const Default: Story = {
+  args: {
+    message: "This is a default alert message",
+  },
+};
 
 export const Success: Story = {
   args: {

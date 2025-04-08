@@ -7,38 +7,60 @@ const meta = {
   component: Input,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Un componente Input que permite a los usuarios ingresar texto y datos en formularios.",
+      },
+    },
   },
-  tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
       options: ["default", "withButton", "file", "disabled", "withLabel"],
+      description: "La variante visual del input",
     },
     disabled: {
       control: "boolean",
+      description: "Si el input está deshabilitado",
     },
     error: {
       control: "boolean",
+      description: "Si el input muestra un estado de error",
     },
     leadingIcon: {
-      control: false, // Icons cannot be controlled via Storybook's UI
+      control: false,
+      description: "Icono opcional para mostrar al inicio del input",
     },
     trailingIcon: {
       control: false,
+      description: "Icono opcional para mostrar al final del input",
     },
     onButtonClick: {
-      action: "button clicked", // For tracking the button click in "withButton" variant
+      action: "button clicked",
+      description: "Función llamada cuando se hace clic en el botón del input",
+    },
+    label: {
+      control: "text",
+      description: "Etiqueta opcional para el input",
+    },
+    placeholder: {
+      control: "text",
+      description: "Texto de placeholder para el input",
+    },
+    className: {
+      control: false,
+      description: "Clases CSS adicionales para el input",
     },
   },
 } satisfies Meta<typeof Input>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   args: {
-    placeholder: "Enter text",
-    label: "Default Input",
+    placeholder: "Enter text...",
   },
 };
 

@@ -1,0 +1,49 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as AlertStories from "./Alert.stories";
+
+<Meta of={AlertStories} />
+
+# Alert
+
+El componente Alert es un elemento de notificación que muestra mensajes importantes al usuario.
+
+## Características
+
+- Múltiples variantes (success, error, warning, info)
+- Opción para cerrar (dismissible)
+- Personalizable mediante className
+- Integración con el sistema de diseño
+
+## Uso
+
+```tsx
+import { Alert } from "@your-package/components";
+
+// Alerta básica
+<Alert message="This is an alert message" />
+
+// Alerta con variante y opción para cerrar
+<Alert
+  variant="success"
+  message="Operation completed successfully!"
+  dismissible={true}
+  onClose={() => console.log("Alert closed")}
+/>
+
+// Alerta de error
+<Alert
+  variant="error"
+  message="An error occurred. Please try again."
+  dismissible={true}
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Alerta por defecto
+
+<Story of={AlertStories.Default} />{" "}

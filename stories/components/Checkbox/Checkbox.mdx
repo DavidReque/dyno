@@ -1,0 +1,51 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as CheckboxStories from "./Checkbox.stories";
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+El componente Checkbox es un control de entrada que permite a los usuarios seleccionar una opción.
+
+## Características
+
+- Estado seleccionado/no seleccionado
+- Soporte para etiquetas
+- Estado deshabilitado
+- Personalizable mediante className
+
+## Uso
+
+```tsx
+import { Checkbox } from "@your-package/components";
+
+// Checkbox básico
+<Checkbox
+  label="Default Checkbox"
+  defaultChecked={false}
+/>
+
+// Checkbox deshabilitado
+<Checkbox
+  label="Disabled Checkbox"
+  defaultChecked={false}
+  disabled={true}
+/>
+
+// Checkbox con evento onChange
+<Checkbox
+  label="Checkbox with onChange"
+  defaultChecked={false}
+  onChange={(checked) => console.log("Checked:", checked)}
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Checkbox por defecto
+
+<Story of={CheckboxStories.Default} />{" "}

@@ -1,0 +1,45 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as BadgeStories from "./Badge.stories";
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+El componente Badge es un elemento visual que muestra información o estado.
+
+## Características
+
+- Múltiples variantes (success, error, warning, info)
+- Personalizable mediante className
+- Integración con el sistema de diseño
+- Soporte para contenido personalizado
+
+## Uso
+
+```tsx
+import { Badge } from "@your-package/components";
+
+// Badge básico
+<Badge>Default Badge</Badge>
+
+// Badge con variante
+<Badge variant="success">Success Badge</Badge>
+
+// Badge con contenido personalizado
+<Badge variant="error">
+  <span className="flex items-center">
+    <span className="w-2 h-2 bg-red-500 rounded-full mr-1"></span>
+    Error Badge
+  </span>
+</Badge>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Badge por defecto
+
+<Story of={BadgeStories.Default} />{" "}

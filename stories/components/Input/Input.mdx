@@ -1,0 +1,50 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as InputStories from "./Input.stories";
+
+<Meta of={InputStories} />
+
+# Input
+
+El componente Input es un campo de entrada de texto que permite a los usuarios ingresar datos.
+
+## Características
+
+- Múltiples variantes (default, withButton, file, disabled, withLabel)
+- Soporte para iconos (leading y trailing)
+- Estados (disabled, error)
+- Personalizable mediante className
+- Integración con formularios
+
+## Uso
+
+```tsx
+import { Input } from "@your-package/components";
+import { Search } from "lucide-react";
+
+// Input básico
+<Input placeholder="Enter text..." />
+
+// Input con icono
+<Input
+  leadingIcon={Search}
+  placeholder="Search..."
+  label="Search Input"
+/>
+
+// Input con botón
+<Input
+  variant="withButton"
+  placeholder="Enter email"
+  onButtonClick={() => console.log("Button clicked")}
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Input por defecto
+
+<Story of={InputStories.Default} />{" "}

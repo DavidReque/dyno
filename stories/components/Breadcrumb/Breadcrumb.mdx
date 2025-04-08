@@ -1,0 +1,50 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as BreadcrumbStories from "./Breadcrumb.stories";
+
+<Meta of={BreadcrumbStories} />
+
+# Breadcrumb
+
+El componente Breadcrumb es un elemento de navegación que muestra la jerarquía de la ubicación actual.
+
+## Características
+
+- Navegación jerárquica
+- Soporte para enlaces
+- Personalizable mediante className
+- Integración con el sistema de diseño
+
+## Uso
+
+```tsx
+import { Breadcrumb } from "@your-package/components";
+
+// Breadcrumb básico
+<Breadcrumb
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Library", href: "/library" },
+    { label: "Current Page" }
+  ]}
+/>
+
+// Breadcrumb con items personalizados
+<Breadcrumb
+  items={[
+    { label: "Dashboard", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Project Alpha" }
+  ]}
+  className="custom-breadcrumb"
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Breadcrumb por defecto
+
+<Story of={BreadcrumbStories.Default} />{" "}

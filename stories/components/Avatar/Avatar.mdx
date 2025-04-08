@@ -1,0 +1,52 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as AvatarStories from "./Avatar.stories";
+
+<Meta of={AvatarStories} />
+
+# Avatar
+
+El componente Avatar es un elemento visual que representa a un usuario o entidad.
+
+## Características
+
+- Diferentes tamaños (sm, md, lg)
+- Soporte para imágenes y fallback
+- Personalizable mediante className
+- Integración con el sistema de diseño
+
+## Uso
+
+```tsx
+import { Avatar } from "@your-package/components";
+
+// Avatar básico con imagen
+<Avatar
+  src="https://example.com/avatar.jpg"
+  alt="User Avatar"
+  size="md"
+/>
+
+// Avatar con fallback
+<Avatar
+  alt="John Doe"
+  size="lg"
+  fallback="JD"
+/>
+
+// Avatar pequeño
+<Avatar
+  src="https://example.com/avatar.jpg"
+  alt="Small Avatar"
+  size="sm"
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Avatar por defecto
+
+<Story of={AvatarStories.Default} />{" "}

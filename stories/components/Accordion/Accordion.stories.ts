@@ -26,17 +26,29 @@ const items: ItemData[] = [
   },
 ];
 
-const meta: Meta<typeof Accordion> = {
+const meta = {
   title: "General/Accordion",
   component: Accordion,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Un componente Accordion que permite mostrar y ocultar contenido de forma organizada.",
+      },
+    },
   },
-  tags: ["autodocs"],
   argTypes: {
-    className: { control: false },
+    items: {
+      description: "Array de elementos para mostrar en el accordion",
+      control: "object",
+    },
+    className: {
+      control: false,
+      description: "Clases CSS adicionales para el componente",
+    },
   },
-};
+} satisfies Meta<typeof Accordion>;
 
 export default meta;
 type Story = StoryObj<typeof Accordion>;
