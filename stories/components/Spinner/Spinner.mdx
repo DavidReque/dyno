@@ -1,0 +1,46 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as SpinnerStories from "./Spinner.stories.ts";
+
+<Meta of={SpinnerStories} />
+
+# Spinner
+
+El componente Spinner es un elemento de interfaz que muestra un indicador de carga giratorio para indicar que se está procesando una acción.
+
+## Características
+
+- Diferentes tamaños (sm, md, lg)
+- Color personalizable
+- Clases CSS personalizables
+- Diseño centrado por defecto
+
+## Uso
+
+```tsx
+import { Spinner } from "@your-package/components";
+
+// Spinner básico
+<Spinner />
+
+// Spinner con tamaño y color personalizados
+<Spinner
+  size="md"
+  color="border-t-green-400"
+/>
+
+// Spinner pequeño
+<Spinner size="sm" />
+
+// Spinner grande
+<Spinner size="lg" />
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Spinner por defecto
+
+<Story of={SpinnerStories.Default} />

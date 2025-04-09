@@ -3,12 +3,11 @@ import { ChevronUp } from "lucide-react";
 import { Select } from "../../../packages/components/General/Select/Select";
 
 const meta = {
-  title: "General/DropdownSelect",
+  title: "General/Select",
   component: Select,
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",

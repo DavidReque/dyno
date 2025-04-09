@@ -1,0 +1,55 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as TabsStories from "./Tabs.stories.tsx";
+
+<Meta of={TabsStories} />
+
+# Tabs
+
+El componente Tabs es un elemento de interfaz que permite a los usuarios navegar entre diferentes secciones de contenido sin cambiar de página.
+
+## Características
+
+- Pestañas personalizables con etiquetas
+- Contenido personalizable para cada pestaña
+- Soporte para iconos en las pestañas
+- Documentación automática
+
+## Uso
+
+```tsx
+import Tabs from "@your-package/components";
+import { LucideRefreshCw } from "lucide-react";
+
+// Tabs básico
+<Tabs
+  tabs={[
+    { id: "tab1", label: "Pestaña 1", content: <p>Contenido de Pestaña 1</p> },
+    { id: "tab2", label: "Pestaña 2", content: <p>Contenido de Pestaña 2</p> },
+    { id: "tab3", label: "Pestaña 3", content: <p>Contenido de Pestaña 3</p> }
+  ]}
+/>
+
+// Tabs con icono
+<Tabs
+  tabs={[
+    { id: "tab1", label: "Pestaña 1", content: <p>Contenido de Pestaña 1</p> },
+    {
+      id: "tab2",
+      label: "Pestaña 2 con icono",
+      content: <p>Contenido de Pestaña 2</p>,
+      icon: <LucideRefreshCw size={16} />
+    },
+    { id: "tab3", label: "Pestaña 3", content: <p>Contenido de Pestaña 3</p> }
+  ]}
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Tabs por defecto
+
+<Story of={TabsStories.Default} />

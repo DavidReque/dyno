@@ -44,7 +44,6 @@ const meta: Meta<TableProps<Person>> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     className: { control: false },
   },

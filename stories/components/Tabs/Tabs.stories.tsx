@@ -5,7 +5,6 @@ import Tabs from "../../../packages/components/General/Tabs/Tabs";
 const meta: Meta<typeof Tabs> = {
   title: "General/Tabs",
   component: Tabs,
-  tags: ["autodocs"],
 };
 
 export default meta;

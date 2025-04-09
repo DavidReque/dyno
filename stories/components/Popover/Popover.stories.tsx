@@ -8,7 +8,6 @@ const meta: Meta<typeof Popover> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     className: { control: false },
     panelClassName: { control: false },

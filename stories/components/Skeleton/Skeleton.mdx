@@ -1,0 +1,98 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as SkeletonStories from "./Skeleton.stories.tsx";
+
+<Meta of={SkeletonStories} />
+
+# Skeleton
+
+El componente Skeleton es un elemento de interfaz que muestra un esqueleto de carga para indicar que el contenido está cargando.
+
+## Características
+
+- Múltiples tipos de esqueletos (Card, Form, Code, Icon, List, Table, Paragraph)
+- Personalizable mediante clases CSS
+- Diseño centrado por defecto
+- Contador personalizable para listas
+
+## Uso
+
+```tsx
+import {
+  CardSkeleton,
+  FormSkeleton,
+  CodeSkeleton,
+  IconSkeleton,
+  ListSkeleton,
+  TableSkeleton,
+  ParagraphSkeleton
+} from "@your-package/components";
+
+// Esqueleto de tarjeta
+<div className="w-80">
+  <CardSkeleton />
+</div>
+
+// Esqueleto de formulario
+<div className="w-80">
+  <FormSkeleton />
+</div>
+
+// Esqueleto de código
+<div className="w-80">
+  <CodeSkeleton />
+</div>
+
+// Esqueleto de icono
+<div className="flex items-center justify-center p-4">
+  <IconSkeleton />
+</div>
+
+// Esqueleto de lista
+<div className="w-80">
+  <ListSkeleton count={5} />
+</div>
+
+// Esqueleto de tabla
+<div className="w-full max-w-lg">
+  <TableSkeleton rows={5} />
+</div>
+
+// Esqueleto de párrafo
+<div className="w-80">
+  <ParagraphSkeleton lines={4} />
+</div>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Esqueleto de tarjeta
+
+<Story of={SkeletonStories.CardSkeletonExample} />
+
+### Esqueleto de formulario
+
+<Story of={SkeletonStories.FormSkeletonExample} />
+
+### Esqueleto de código
+
+<Story of={SkeletonStories.CodeSkeletonExample} />
+
+### Esqueleto de icono
+
+<Story of={SkeletonStories.IconSkeletonExample} />
+
+### Esqueleto de lista
+
+<Story of={SkeletonStories.ListSkeletonExample} />
+
+### Esqueleto de tabla
+
+<Story of={SkeletonStories.TableSkeletonExample} />
+
+### Esqueleto de párrafo
+
+<Story of={SkeletonStories.ParagraphSkeletonExample} />

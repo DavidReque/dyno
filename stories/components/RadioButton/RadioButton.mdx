@@ -1,0 +1,57 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as RadioButtonStories from "./RadioButton.stories.tsx";
+
+<Meta of={RadioButtonStories} />
+
+# RadioButton
+
+El componente RadioButton es un elemento de formulario que permite a los usuarios seleccionar una opción de un conjunto de opciones mutuamente excluyentes.
+
+## Características
+
+- Etiqueta personalizable
+- Valor personalizable
+- Estado por defecto seleccionado
+- Estado deshabilitado
+- Clases CSS personalizables
+- Evento onChange para manejar la selección
+
+## Uso
+
+```tsx
+import { RadioButton } from "@your-package/components";
+
+// RadioButton básico
+<RadioButton
+  label="Opción por defecto"
+  value="default"
+/>
+
+// RadioButton deshabilitado
+<RadioButton
+  label="Opción deshabilitada"
+  value="disabled"
+  disabled={true}
+/>
+
+// RadioButton con estado inicial seleccionado
+<RadioButton
+  label="Opción preseleccionada"
+  value="preselected"
+  defaultChecked={true}
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### RadioButton por defecto
+
+<Story of={RadioButtonStories.RadioDefault} />
+
+### RadioButton deshabilitado
+
+<Story of={RadioButtonStories.RadioDisabled} />

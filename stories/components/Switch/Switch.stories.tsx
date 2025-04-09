@@ -6,7 +6,6 @@ const meta: Meta<typeof Switch> = {
   title: "General/Switch",
   component: Switch,
   parameters: { layout: "centered" },
-  tags: ["autodocs"],
 };
 
 export default meta;

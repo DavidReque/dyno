@@ -1,0 +1,43 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as SwitchStories from "./Switch.stories.tsx";
+
+<Meta of={SwitchStories} />
+
+# Switch
+
+El componente Switch es un elemento de interfaz que permite a los usuarios alternar entre dos estados, generalmente activado y desactivado.
+
+## Características
+
+- Estado controlado mediante checked y onChange
+- Diseño centrado por defecto
+- Documentación automática
+
+## Uso
+
+```tsx
+import { Switch } from "@your-package/components";
+import { useState } from "react";
+
+// Switch básico con estado controlado
+const MyComponent = () => {
+  const [value, setValue] = useState(false);
+  return <Switch checked={value} onChange={setValue} />;
+};
+
+// Switch con estado inicial
+const MyComponentWithInitialState = () => {
+  const [value, setValue] = useState(true);
+  return <Switch checked={value} onChange={setValue} />;
+};
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Switch por defecto
+
+<Story of={SwitchStories.Default} />

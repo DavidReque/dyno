@@ -1,0 +1,102 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as TableStories from "./Table.stories.tsx";
+
+<Meta of={TableStories} />
+
+# Table
+
+El componente Table es un elemento de interfaz que muestra datos en formato tabular con filas y columnas.
+
+## Características
+
+- Columnas personalizables
+- Datos personalizables
+- Celdas personalizables
+- Clases CSS personalizables
+- Versiones paginadas y seleccionables
+
+## Uso
+
+```tsx
+import { Table, Column, PaginatedTable, SelectableTable } from "@your-package/components";
+
+// Definir columnas
+const columns: Column<Person>[] = [
+  {
+    header: "Nombre",
+    accessor: "name",
+  },
+  {
+    header: "Edad",
+    accessor: "age",
+  },
+  {
+    header: "Email",
+    accessor: "email",
+  },
+];
+
+// Definir datos
+const data: Person[] = [
+  { name: "Juan Pérez", age: 28, email: "juan.perez@example.com" },
+  { name: "María López", age: 34, email: "maria.lopez@example.com" },
+  { name: "Carlos Ruiz", age: 42, email: "carlos.ruiz@example.com" },
+];
+
+// Tabla básica
+<Table columns={columns} data={data} />
+
+// Tabla con celdas personalizadas
+<Table
+  columns={[
+    {
+      header: "Nombre",
+      accessor: "name",
+    },
+    {
+      header: "Edad",
+      accessor: "age",
+      cell: (row: Person) => (
+        <span className="font-bold">{row.age} años</span>
+      ),
+    },
+    {
+      header: "Email",
+      accessor: "email",
+    },
+  ]}
+  data={data}
+/>
+
+// Tabla paginada
+<PaginatedTable<Person> columns={columns} data={data} pageSize={3} />
+
+// Tabla seleccionable
+<SelectableTable
+  columns={columns}
+  data={data}
+  onSelectionChange={(selected) => console.log("Filas seleccionadas:", selected)}
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Tabla por defecto
+
+<Story of={TableStories.Default} />
+
+### Tabla con celdas personalizadas
+
+<Story of={TableStories.WithCustomCell} />
+
+### Tabla paginada
+
+<Story of={TableStories.Paginated} />
+
+### Tabla seleccionable
+
+<Story of={TableStories.Selectable} />

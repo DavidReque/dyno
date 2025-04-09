@@ -7,7 +7,6 @@ const meta: Meta<typeof Spinner> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
     color: { control: "text" },

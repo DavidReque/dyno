@@ -7,7 +7,6 @@ const meta: Meta<typeof Tooltip> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     text: { control: "text" },
     position: {

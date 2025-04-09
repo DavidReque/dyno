@@ -1,0 +1,75 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as TooltipStories from "./Tooltip.stories.tsx";
+
+<Meta of={TooltipStories} />
+
+# Tooltip
+
+El componente Tooltip es un elemento de interfaz que muestra información adicional cuando el usuario pasa el cursor sobre un elemento.
+
+## Características
+
+- Texto personalizable
+- Posición personalizable (top, bottom, left, right)
+- Clases CSS personalizables
+- Diseño centrado por defecto
+
+## Uso
+
+```tsx
+import { Tooltip } from "@your-package/components";
+
+// Tooltip básico
+<Tooltip
+  text="Este es un tooltip"
+  position="top"
+>
+  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+</Tooltip>
+
+// Tooltip en la parte inferior
+<Tooltip
+  text="Tooltip en la parte inferior"
+  position="bottom"
+>
+  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+</Tooltip>
+
+// Tooltip a la izquierda
+<Tooltip
+  text="Tooltip a la izquierda"
+  position="left"
+>
+  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+</Tooltip>
+
+// Tooltip a la derecha
+<Tooltip
+  text="Tooltip a la derecha"
+  position="right"
+>
+  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+</Tooltip>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Tooltip por defecto
+
+<Story of={TooltipStories.Default} />
+
+### Tooltip en la parte inferior
+
+<Story of={TooltipStories.Bottom} />
+
+### Tooltip a la izquierda
+
+<Story of={TooltipStories.Left} />
+
+### Tooltip a la derecha
+
+<Story of={TooltipStories.Right} />

@@ -1,0 +1,99 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as SelectStories from "./Select.stories.ts";
+
+<Meta of={SelectStories} />
+
+# Select
+
+El componente Select es un elemento de formulario que permite a los usuarios seleccionar una opción de una lista desplegable.
+
+## Características
+
+- Múltiples variantes (primary, secondary, ghost, destructive)
+- Diferentes tamaños (sm, md, lg)
+- Estado deshabilitado
+- Opciones personalizables
+- Valor seleccionado personalizable
+- Texto de marcador de posición personalizable
+- Icono personalizable
+
+## Uso
+
+```tsx
+import { Select } from "@your-package/components";
+
+// Select básico
+<Select
+  options={[
+    { value: "1", label: "Opción 1" },
+    { value: "2", label: "Opción 2" },
+    { value: "3", label: "Opción 3" }
+  ]}
+  placeholder="Selecciona una opción"
+/>
+
+// Select con variante y tamaño
+<Select
+  options={[
+    { value: "1", label: "Opción 1" },
+    { value: "2", label: "Opción 2" },
+    { value: "3", label: "Opción 3" }
+  ]}
+  variant="primary"
+  size="md"
+  placeholder="Selecciona una opción"
+/>
+
+// Select deshabilitado
+<Select
+  options={[
+    { value: "1", label: "Opción 1" },
+    { value: "2", label: "Opción 2" },
+    { value: "3", label: "Opción 3" }
+  ]}
+  disabled={true}
+  placeholder="Selecciona una opción"
+/>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Select por defecto
+
+<Story of={SelectStories.Default} />
+
+### Select con variante primaria
+
+<Story of={SelectStories.PrimaryVariant} />
+
+### Select con variante secundaria
+
+<Story of={SelectStories.SecondaryVariant} />
+
+### Select con variante fantasma
+
+<Story of={SelectStories.GhostVariant} />
+
+### Select con variante destructiva
+
+<Story of={SelectStories.DestructiveVariant} />
+
+### Select pequeño
+
+<Story of={SelectStories.SmallSize} />
+
+### Select grande
+
+<Story of={SelectStories.LargeSize} />
+
+### Select deshabilitado
+
+<Story of={SelectStories.DisabledState} />
+
+### Select con icono personalizado
+
+<Story of={SelectStories.CustomIcon} />

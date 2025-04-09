@@ -1,0 +1,91 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as TypographyStories from "./Typography.stories.ts";
+
+<Meta of={TypographyStories} />
+
+# Typography
+
+El componente Typography es un elemento de interfaz que proporciona una forma consistente de mostrar texto con diferentes estilos, tamaños y pesos.
+
+## Características
+
+- Múltiples variantes (display, h1, h2, h3, h4, body1, body2, caption, overline)
+- Diferentes pesos (regular, medium, semibold, bold)
+- Diferentes colores (default, primary, secondary, success, error, warning)
+- Elemento HTML personalizable (h1, h2, h3, h4, h5, h6, p, span)
+- Diseño centrado por defecto
+
+## Uso
+
+```tsx
+import { Typography } from "@your-package/components";
+
+// Texto de visualización
+<Typography variant="display">
+  Texto de visualización
+</Typography>
+
+// Encabezado 1
+<Typography variant="h1" weight="extrabold">
+  Encabezado 1
+</Typography>
+
+// Encabezado 2
+<Typography variant="h2" weight="semibold">
+  Encabezado 2
+</Typography>
+
+// Cuerpo 1
+<Typography variant="body1">
+  Texto de cuerpo 1 para contenido principal. Este es un ejemplo más largo para mostrar cómo se ajusta el texto y cómo funciona la altura de línea.
+</Typography>
+
+// Cita
+<Typography variant="blockquote">
+  Texto de cita. Este es un ejemplo más largo para mostrar cómo se ajusta el texto y cómo funciona la altura de línea.
+</Typography>
+
+// Pie de texto
+<Typography variant="caption">
+  Texto de pie para detalles pequeños
+</Typography>
+
+// Código
+<Typography variant="code" color="primary">
+  pnpm install
+</Typography>
+```
+
+## Props
+
+<Controls />
+
+## Ejemplos
+
+### Texto de visualización
+
+<Story of={TypographyStories.Display} />
+
+### Encabezado 1
+
+<Story of={TypographyStories.Heading1} />
+
+### Encabezado 2
+
+<Story of={TypographyStories.Heading2} />
+
+### Cuerpo 1
+
+<Story of={TypographyStories.Body1} />
+
+### Cita
+
+<Story of={TypographyStories.blockquote} />
+
+### Pie de texto
+
+<Story of={TypographyStories.Caption} />
+
+### Código
+
+<Story of={TypographyStories.Code} />
