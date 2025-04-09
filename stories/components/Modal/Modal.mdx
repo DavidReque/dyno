@@ -1,0 +1,67 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as ModalStories from "./Modal.stories";
+
+<Meta of={ModalStories} />
+
+# Modal
+
+The Modal component is a popup window that appears over the main content of the application.
+
+## Features
+
+- Different sizes (sm, md, lg)
+- Optional close button
+- Title and description support
+- Customizable content
+- Responsive design
+- Built-in accessibility
+
+## Usage
+
+```tsx
+import { Modal } from "@your-package/components";
+
+const MyComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Modal Title"
+        description="Modal description"
+      >
+        Modal content...
+      </Modal>
+    </>
+  );
+};
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+### Default Modal
+
+<Story of={ModalStories.Default} />
+
+### Small Modal
+
+<Story of={ModalStories.SmallSize} />
+
+### Large Modal
+
+<Story of={ModalStories.LargeSize} />
+
+### Modal without Description
+
+<Story of={ModalStories.WithoutDescription} />
+
+### Modal with Custom Content
+
+<Story of={ModalStories.CustomContent} />{" "}

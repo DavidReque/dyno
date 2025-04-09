@@ -1,0 +1,43 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as DatePickerStories from "./DatePicker.stories";
+
+<Meta of={DatePickerStories} />
+
+# DatePicker
+
+The DatePicker component allows users to select a date in an intuitive and visual way.
+
+## Features
+
+- Visual calendar interface
+- Date selection via click
+- Disabled state support
+- CSS class customization
+- Customizable labels
+- Responsive design
+
+## Usage
+
+```tsx
+import { DatePicker } from "@your-package/components";
+
+const MyComponent = () => {
+  return (
+    <DatePicker label="Select Date" onChange={(date) => console.log(date)} />
+  );
+};
+```
+
+## Props
+
+<Controls />
+
+## Examples
+
+### Default DatePicker
+
+<Story of={DatePickerStories.Default} />
+
+### Disabled DatePicker
+
+<Story of={DatePickerStories.Disabled} />{" "}
