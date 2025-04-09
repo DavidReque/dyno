@@ -5,18 +5,18 @@ import * as PaginationStories from "./Pagination.stories";
 
 # Pagination
 
-El componente **Pagination** permite al usuario navegar entre diferentes páginas de contenido mediante botones de navegación. Esto es especialmente útil para interfaces que requieren paginación, donde se muestra una parte del contenido total y se permite al usuario cambiar de página de manera intuitiva.
+The **Pagination** component allows users to navigate between different content pages using navigation buttons. This is especially useful for interfaces that require pagination, where a portion of the total content is displayed and users are allowed to change pages intuitively.
 
-## Características
+## Features
 
-- **Navegación entre páginas:** Permite cambiar la página activa.
-- **Manejo de estado interno:** Se integra con el estado de la aplicación para actualizar la página actual.
-- **Diseño centrado:** Se adapta a diferentes layouts y resoluciones.
-- **Interacción mediante eventos:** Notifica mediante un callback cada vez que se cambia la página para que el estado pueda ser actualizado externamente.
+- **Navigation between pages:** Allows changing the active page.
+- **Internal state management:** Integrates with the application state to update the current page.
+- **Centered design:** Adapts to different layouts and resolutions.
+- **Interaction through events:** Notifies through a callback each time the page is changed so the state can be updated externally.
 
-## Uso
+## Usage
 
-Para utilizar el componente, es necesario manejar el estado de la página actual y actualizarlo a través de la función `onPageChange`. A continuación, un ejemplo de cómo implementar el componente:
+To use the component, it is necessary to manage the current page state and update it through the `onPageChange` function. Below is an example of how to implement the component:
 
 ```tsx
 import React, { useState } from "react";
@@ -37,8 +37,8 @@ const Example = () => {
 export default Example;
 ```
 
-## Ejemplos
+## Examples
 
-### Accordion por defecto
+### Default Accordion
 
 <Story of={PaginationStories.Default} />

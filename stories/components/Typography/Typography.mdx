@@ -5,52 +5,52 @@ import * as TypographyStories from "./Typography.stories.ts";
 
 # Typography
 
-El componente Typography es un elemento de interfaz que proporciona una forma consistente de mostrar texto con diferentes estilos, tamaños y pesos.
+The Typography component is a UI element that provides a consistent way to display text with different styles, sizes, and weights.
 
-## Características
+## Features
 
-- Múltiples variantes (display, h1, h2, h3, h4, body1, body2, caption, overline)
-- Diferentes pesos (regular, medium, semibold, bold)
-- Diferentes colores (default, primary, secondary, success, error, warning)
-- Elemento HTML personalizable (h1, h2, h3, h4, h5, h6, p, span)
-- Diseño centrado por defecto
+- Multiple variants (display, h1, h2, h3, h4, body1, body2, caption, overline)
+- Different weights (regular, medium, semibold, bold)
+- Different colors (default, primary, secondary, success, error, warning)
+- Customizable HTML element (h1, h2, h3, h4, h5, h6, p, span)
+- Centered layout by default
 
-## Uso
+## Usage
 
 ```tsx
 import { Typography } from "@your-package/components";
 
-// Texto de visualización
+// Display text
 <Typography variant="display">
-  Texto de visualización
+  Display text
 </Typography>
 
-// Encabezado 1
+// Heading 1
 <Typography variant="h1" weight="extrabold">
-  Encabezado 1
+  Heading 1
 </Typography>
 
-// Encabezado 2
+// Heading 2
 <Typography variant="h2" weight="semibold">
-  Encabezado 2
+  Heading 2
 </Typography>
 
-// Cuerpo 1
+// Body 1
 <Typography variant="body1">
-  Texto de cuerpo 1 para contenido principal. Este es un ejemplo más largo para mostrar cómo se ajusta el texto y cómo funciona la altura de línea.
+  Body 1 text for main content. This is a longer example to show how text wraps and how line height works.
 </Typography>
 
-// Cita
+// Blockquote
 <Typography variant="blockquote">
-  Texto de cita. Este es un ejemplo más largo para mostrar cómo se ajusta el texto y cómo funciona la altura de línea.
+  Blockquote text. This is a longer example to show how text wraps and how line height works.
 </Typography>
 
-// Pie de texto
+// Caption
 <Typography variant="caption">
-  Texto de pie para detalles pequeños
+  Caption text for small details
 </Typography>
 
-// Código
+// Code
 <Typography variant="code" color="primary">
   pnpm install
 </Typography>
@@ -60,32 +60,32 @@ import { Typography } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Texto de visualización
+### Display Text
 
 <Story of={TypographyStories.Display} />
 
-### Encabezado 1
+### Heading 1
 
 <Story of={TypographyStories.Heading1} />
 
-### Encabezado 2
+### Heading 2
 
 <Story of={TypographyStories.Heading2} />
 
-### Cuerpo 1
+### Body 1
 
 <Story of={TypographyStories.Body1} />
 
-### Cita
+### Blockquote
 
 <Story of={TypographyStories.blockquote} />
 
-### Pie de texto
+### Caption
 
 <Story of={TypographyStories.Caption} />
 
-### Código
+### Code
 
 <Story of={TypographyStories.Code} />

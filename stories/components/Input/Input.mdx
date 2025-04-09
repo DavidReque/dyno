@@ -5,33 +5,33 @@ import * as InputStories from "./Input.stories";
 
 # Input
 
-El componente Input es un campo de entrada de texto que permite a los usuarios ingresar datos.
+The Input component is a text input field that allows users to enter data.
 
-## Características
+## Features
 
-- Múltiples variantes (default, withButton, file, disabled, withLabel)
-- Soporte para iconos (leading y trailing)
-- Estados (disabled, error)
-- Personalizable mediante className
-- Integración con formularios
+- Multiple variants (default, withButton, file, disabled, withLabel)
+- Support for icons (leading and trailing)
+- States (disabled, error)
+- Customizable via className
+- Integration with forms
 
-## Uso
+## Usage
 
 ```tsx
 import { Input } from "@your-package/components";
 import { Search } from "lucide-react";
 
-// Input básico
+// Basic Input
 <Input placeholder="Enter text..." />
 
-// Input con icono
+// Input with icon
 <Input
   leadingIcon={Search}
   placeholder="Search..."
   label="Search Input"
 />
 
-// Input con botón
+// Input with button
 <Input
   variant="withButton"
   placeholder="Enter email"
@@ -43,8 +43,8 @@ import { Search } from "lucide-react";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Input por defecto
+### Default Input
 
 <Story of={InputStories.Default} />{" "}

@@ -5,41 +5,41 @@ import * as TabsStories from "./Tabs.stories.tsx";
 
 # Tabs
 
-El componente Tabs es un elemento de interfaz que permite a los usuarios navegar entre diferentes secciones de contenido sin cambiar de página.
+The Tabs component is a UI element that allows users to navigate between different sections of content without changing pages.
 
-## Características
+## Features
 
-- Pestañas personalizables con etiquetas
-- Contenido personalizable para cada pestaña
-- Soporte para iconos en las pestañas
-- Documentación automática
+- Customizable tabs with labels
+- Customizable content for each tab
+- Support for icons in tabs
+- Automatic documentation
 
-## Uso
+## Usage
 
 ```tsx
 import Tabs from "@your-package/components";
 import { LucideRefreshCw } from "lucide-react";
 
-// Tabs básico
+// Basic Tabs
 <Tabs
   tabs={[
-    { id: "tab1", label: "Pestaña 1", content: <p>Contenido de Pestaña 1</p> },
-    { id: "tab2", label: "Pestaña 2", content: <p>Contenido de Pestaña 2</p> },
-    { id: "tab3", label: "Pestaña 3", content: <p>Contenido de Pestaña 3</p> }
+    { id: "tab1", label: "Tab 1", content: <p>Tab 1 Content</p> },
+    { id: "tab2", label: "Tab 2", content: <p>Tab 2 Content</p> },
+    { id: "tab3", label: "Tab 3", content: <p>Tab 3 Content</p> }
   ]}
 />
 
-// Tabs con icono
+// Tabs with icon
 <Tabs
   tabs={[
-    { id: "tab1", label: "Pestaña 1", content: <p>Contenido de Pestaña 1</p> },
+    { id: "tab1", label: "Tab 1", content: <p>Tab 1 Content</p> },
     {
       id: "tab2",
-      label: "Pestaña 2 con icono",
-      content: <p>Contenido de Pestaña 2</p>,
+      label: "Tab 2 with icon",
+      content: <p>Tab 2 Content</p>,
       icon: <LucideRefreshCw size={16} />
     },
-    { id: "tab3", label: "Pestaña 3", content: <p>Contenido de Pestaña 3</p> }
+    { id: "tab3", label: "Tab 3", content: <p>Tab 3 Content</p> }
   ]}
 />
 ```
@@ -48,8 +48,8 @@ import { LucideRefreshCw } from "lucide-react";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Tabs por defecto
+### Default Tabs
 
 <Story of={TabsStories.Default} />

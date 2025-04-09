@@ -5,34 +5,34 @@ import * as CheckboxStories from "./Checkbox.stories";
 
 # Checkbox
 
-El componente Checkbox es un control de entrada que permite a los usuarios seleccionar una opción.
+The Checkbox component is an input control that allows users to select an option.
 
-## Características
+## Features
 
-- Estado seleccionado/no seleccionado
-- Soporte para etiquetas
-- Estado deshabilitado
-- Personalizable mediante className
+- Selected/unselected state
+- Support for labels
+- Disabled state
+- Customizable via className
 
-## Uso
+## Usage
 
 ```tsx
 import { Checkbox } from "@your-package/components";
 
-// Checkbox básico
+// Basic Checkbox
 <Checkbox
   label="Default Checkbox"
   defaultChecked={false}
 />
 
-// Checkbox deshabilitado
+// Disabled Checkbox
 <Checkbox
   label="Disabled Checkbox"
   defaultChecked={false}
   disabled={true}
 />
 
-// Checkbox con evento onChange
+// Checkbox with onChange event
 <Checkbox
   label="Checkbox with onChange"
   defaultChecked={false}
@@ -44,8 +44,8 @@ import { Checkbox } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Checkbox por defecto
+### Default Checkbox
 
 <Story of={CheckboxStories.Default} />{" "}

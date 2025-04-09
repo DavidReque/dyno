@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Un componente Avatar que representa visualmente a un usuario o entidad.",
+          "An Avatar component that visually represents a user or entity.",
       },
     },
   },
@@ -17,23 +17,23 @@ const meta = {
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
-      description: "El tamaño del avatar",
+      description: "The size of the avatar",
     },
     src: {
       control: "text",
-      description: "URL de la imagen del avatar",
+      description: "URL of the avatar image",
     },
     alt: {
       control: "text",
-      description: "Texto alternativo para la imagen",
+      description: "Alternative text for the image",
     },
     fallback: {
       control: "text",
-      description: "Texto a mostrar cuando no hay imagen disponible",
+      description: "Text to display when no image is available",
     },
     className: {
       control: false,
-      description: "Clases CSS adicionales para el avatar",
+      description: "Additional CSS classes for the avatar",
     },
   },
 } satisfies Meta<typeof Avatar>;

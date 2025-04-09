@@ -5,16 +5,16 @@ import * as SkeletonStories from "./Skeleton.stories.tsx";
 
 # Skeleton
 
-El componente Skeleton es un elemento de interfaz que muestra un esqueleto de carga para indicar que el contenido está cargando.
+The Skeleton component is a UI element that displays a loading skeleton to indicate that content is loading.
 
-## Características
+## Features
 
-- Múltiples tipos de esqueletos (Card, Form, Code, Icon, List, Table, Paragraph)
-- Personalizable mediante clases CSS
-- Diseño centrado por defecto
-- Contador personalizable para listas
+- Multiple skeleton types (Card, Form, Code, Icon, List, Table, Paragraph)
+- Customizable via CSS classes
+- Centered layout by default
+- Customizable count for lists
 
-## Uso
+## Usage
 
 ```tsx
 import {
@@ -27,37 +27,37 @@ import {
   ParagraphSkeleton
 } from "@your-package/components";
 
-// Esqueleto de tarjeta
+// Card skeleton
 <div className="w-80">
   <CardSkeleton />
 </div>
 
-// Esqueleto de formulario
+// Form skeleton
 <div className="w-80">
   <FormSkeleton />
 </div>
 
-// Esqueleto de código
+// Code skeleton
 <div className="w-80">
   <CodeSkeleton />
 </div>
 
-// Esqueleto de icono
+// Icon skeleton
 <div className="flex items-center justify-center p-4">
   <IconSkeleton />
 </div>
 
-// Esqueleto de lista
+// List skeleton
 <div className="w-80">
   <ListSkeleton count={5} />
 </div>
 
-// Esqueleto de tabla
+// Table skeleton
 <div className="w-full max-w-lg">
   <TableSkeleton rows={5} />
 </div>
 
-// Esqueleto de párrafo
+// Paragraph skeleton
 <div className="w-80">
   <ParagraphSkeleton lines={4} />
 </div>
@@ -67,32 +67,32 @@ import {
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Esqueleto de tarjeta
+### Card Skeleton
 
 <Story of={SkeletonStories.CardSkeletonExample} />
 
-### Esqueleto de formulario
+### Form Skeleton
 
 <Story of={SkeletonStories.FormSkeletonExample} />
 
-### Esqueleto de código
+### Code Skeleton
 
 <Story of={SkeletonStories.CodeSkeletonExample} />
 
-### Esqueleto de icono
+### Icon Skeleton
 
 <Story of={SkeletonStories.IconSkeletonExample} />
 
-### Esqueleto de lista
+### List Skeleton
 
 <Story of={SkeletonStories.ListSkeletonExample} />
 
-### Esqueleto de tabla
+### Table Skeleton
 
 <Story of={SkeletonStories.TableSkeletonExample} />
 
-### Esqueleto de párrafo
+### Paragraph Skeleton
 
 <Story of={SkeletonStories.ParagraphSkeletonExample} />

@@ -5,35 +5,35 @@ import * as PopoverStories from "./Popover.stories.tsx";
 
 # Popover
 
-El componente Popover es un elemento de interfaz que muestra contenido adicional cuando se activa, generalmente mediante un clic en un botón o elemento.
+The Popover component is a UI element that displays additional content when triggered, usually by clicking on a button or element.
 
-## Características
+## Features
 
-- Contenido personalizable
-- Botón de activación personalizable
-- Clases CSS personalizables para el botón y el panel
-- Diseño centrado por defecto
+- Customizable content
+- Customizable trigger button
+- Customizable CSS classes for button and panel
+- Centered layout by default
 
-## Uso
+## Usage
 
 ```tsx
 import { Popover } from "@your-package/components";
 
-// Popover básico
+// Basic Popover
 <Popover
   buttonContent="Open Popover"
-  panelContent={<div>Contenido del popover</div>}
+  panelContent={<div>Popover content</div>}
 />
 
-// Popover con contenido personalizado
+// Popover with custom content
 <Popover
-  buttonContent="Opciones"
+  buttonContent="Options"
   panelContent={
     <div>
       <ul className="space-y-1">
-        <li className="px-2 py-1 rounded">Opción 1</li>
-        <li className="px-2 py-1 rounded">Opción 2</li>
-        <li className="px-2 py-1 rounded">Opción 3</li>
+        <li className="px-2 py-1 rounded">Option 1</li>
+        <li className="px-2 py-1 rounded">Option 2</li>
+        <li className="px-2 py-1 rounded">Option 3</li>
       </ul>
     </div>
   }
@@ -44,12 +44,12 @@ import { Popover } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Popover por defecto
+### Default Popover
 
 <Story of={PopoverStories.Default} />
 
-### Popover con contenido personalizado
+### Popover with Custom Content
 
 <Story of={PopoverStories.WithCustomContent} />

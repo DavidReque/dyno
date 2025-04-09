@@ -5,27 +5,27 @@ import * as BadgeStories from "./Badge.stories";
 
 # Badge
 
-El componente Badge es un elemento visual que muestra información o estado.
+The Badge component is a visual element that displays information or status.
 
-## Características
+## Features
 
-- Múltiples variantes (success, error, warning, info)
-- Personalizable mediante className
-- Integración con el sistema de diseño
-- Soporte para contenido personalizado
+- Multiple variants (success, error, warning, info)
+- Customizable via className
+- Integration with the design system
+- Support for custom content
 
-## Uso
+## Usage
 
 ```tsx
 import { Badge } from "@your-package/components";
 
-// Badge básico
+// Basic Badge
 <Badge>Default Badge</Badge>
 
-// Badge con variante
+// Badge with variant
 <Badge variant="success">Success Badge</Badge>
 
-// Badge con contenido personalizado
+// Badge with custom content
 <Badge variant="error">
   <span className="flex items-center">
     <span className="w-2 h-2 bg-red-500 rounded-full mr-1"></span>
@@ -38,8 +38,8 @@ import { Badge } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Badge por defecto
+### Default Badge
 
 <Story of={BadgeStories.Default} />{" "}

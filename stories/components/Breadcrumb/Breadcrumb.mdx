@@ -5,21 +5,21 @@ import * as BreadcrumbStories from "./Breadcrumb.stories";
 
 # Breadcrumb
 
-El componente Breadcrumb es un elemento de navegación que muestra la jerarquía de la ubicación actual.
+The Breadcrumb component is a navigation element that displays the hierarchy of the current location.
 
-## Características
+## Features
 
-- Navegación jerárquica
-- Soporte para enlaces
-- Personalizable mediante className
-- Integración con el sistema de diseño
+- Hierarchical navigation
+- Support for links
+- Customizable via className
+- Integration with the design system
 
-## Uso
+## Usage
 
 ```tsx
 import { Breadcrumb } from "@your-package/components";
 
-// Breadcrumb básico
+// Basic Breadcrumb
 <Breadcrumb
   items={[
     { label: "Home", href: "/" },
@@ -28,7 +28,7 @@ import { Breadcrumb } from "@your-package/components";
   ]}
 />
 
-// Breadcrumb con items personalizados
+// Breadcrumb with custom items
 <Breadcrumb
   items={[
     { label: "Dashboard", href: "/" },
@@ -43,8 +43,8 @@ import { Breadcrumb } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Breadcrumb por defecto
+### Default Breadcrumb
 
 <Story of={BreadcrumbStories.Default} />{" "}

@@ -5,50 +5,50 @@ import * as TooltipStories from "./Tooltip.stories.tsx";
 
 # Tooltip
 
-El componente Tooltip es un elemento de interfaz que muestra información adicional cuando el usuario pasa el cursor sobre un elemento.
+The Tooltip component is a UI element that displays additional information when the user hovers over an element.
 
-## Características
+## Features
 
-- Texto personalizable
-- Posición personalizable (top, bottom, left, right)
-- Clases CSS personalizables
-- Diseño centrado por defecto
+- Customizable text
+- Customizable position (top, bottom, left, right)
+- Customizable CSS classes
+- Centered layout by default
 
-## Uso
+## Usage
 
 ```tsx
 import { Tooltip } from "@your-package/components";
 
-// Tooltip básico
+// Basic Tooltip
 <Tooltip
-  text="Este es un tooltip"
+  text="This is a tooltip"
   position="top"
 >
-  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+  <span className="px-2 py-1 border rounded">Hover here</span>
 </Tooltip>
 
-// Tooltip en la parte inferior
+// Bottom Tooltip
 <Tooltip
-  text="Tooltip en la parte inferior"
+  text="Bottom tooltip"
   position="bottom"
 >
-  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+  <span className="px-2 py-1 border rounded">Hover here</span>
 </Tooltip>
 
-// Tooltip a la izquierda
+// Left Tooltip
 <Tooltip
-  text="Tooltip a la izquierda"
+  text="Left tooltip"
   position="left"
 >
-  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+  <span className="px-2 py-1 border rounded">Hover here</span>
 </Tooltip>
 
-// Tooltip a la derecha
+// Right Tooltip
 <Tooltip
-  text="Tooltip a la derecha"
+  text="Right tooltip"
   position="right"
 >
-  <span className="px-2 py-1 border rounded">Pasa el cursor aquí</span>
+  <span className="px-2 py-1 border rounded">Hover here</span>
 </Tooltip>
 ```
 
@@ -56,20 +56,20 @@ import { Tooltip } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Tooltip por defecto
+### Default Tooltip
 
 <Story of={TooltipStories.Default} />
 
-### Tooltip en la parte inferior
+### Bottom Tooltip
 
 <Story of={TooltipStories.Bottom} />
 
-### Tooltip a la izquierda
+### Left Tooltip
 
 <Story of={TooltipStories.Left} />
 
-### Tooltip a la derecha
+### Right Tooltip
 
 <Story of={TooltipStories.Right} />

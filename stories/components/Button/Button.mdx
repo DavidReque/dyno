@@ -5,30 +5,30 @@ import * as ButtonStories from "./Button.stories";
 
 # Button
 
-El componente Button es un elemento fundamental de la interfaz que permite a los usuarios realizar acciones.
+The Button component is a fundamental interface element that allows users to perform actions.
 
-## Características
+## Features
 
-- Múltiples variantes (primary, secondary, ghost, destructive)
-- Diferentes tamaños (sm, md, lg)
-- Soporte para iconos
-- Estados (disabled, loading)
-- Personalizable mediante className
+- Multiple variants (primary, secondary, ghost, destructive)
+- Different sizes (sm, md, lg)
+- Support for icons
+- States (disabled, loading)
+- Customizable via className
 
-## Uso
+## Usage
 
 ```tsx
 import { Button } from "@your-package/components";
 
-// Botón básico
+// Basic button
 <Button>Click me</Button>
 
-// Botón con variante y tamaño
+// Button with variant and size
 <Button variant="primary" size="md">
   Submit
 </Button>
 
-// Botón con icono
+// Button with icon
 <Button variant="secondary" icon={File}>
   Upload File
 </Button>
@@ -38,8 +38,8 @@ import { Button } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Botón por defecto
+### Default Button
 
 <Story of={ButtonStories.Default} />{" "}

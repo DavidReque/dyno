@@ -5,27 +5,27 @@ import * as SwitchStories from "./Switch.stories.tsx";
 
 # Switch
 
-El componente Switch es un elemento de interfaz que permite a los usuarios alternar entre dos estados, generalmente activado y desactivado.
+The Switch component is a UI element that allows users to toggle between two states, usually on and off.
 
-## Características
+## Features
 
-- Estado controlado mediante checked y onChange
-- Diseño centrado por defecto
-- Documentación automática
+- Controlled state via checked and onChange
+- Centered layout by default
+- Automatic documentation
 
-## Uso
+## Usage
 
 ```tsx
 import { Switch } from "@your-package/components";
 import { useState } from "react";
 
-// Switch básico con estado controlado
+// Basic Switch with controlled state
 const MyComponent = () => {
   const [value, setValue] = useState(false);
   return <Switch checked={value} onChange={setValue} />;
 };
 
-// Switch con estado inicial
+// Switch with initial state
 const MyComponentWithInitialState = () => {
   const [value, setValue] = useState(true);
   return <Switch checked={value} onChange={setValue} />;
@@ -36,8 +36,8 @@ const MyComponentWithInitialState = () => {
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Switch por defecto
+### Default Switch
 
 <Story of={SwitchStories.Default} />

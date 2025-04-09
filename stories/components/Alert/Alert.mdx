@@ -5,24 +5,24 @@ import * as AlertStories from "./Alert.stories";
 
 # Alert
 
-El componente Alert es un elemento de notificación que muestra mensajes importantes al usuario.
+The Alert component is a notification element that displays important messages to the user.
 
-## Características
+## Features
 
-- Múltiples variantes (success, error, warning, info)
-- Opción para cerrar (dismissible)
-- Personalizable mediante className
-- Integración con el sistema de diseño
+- Multiple variants (success, error, warning, info)
+- Option to close (dismissible)
+- Customizable via className
+- Integration with the design system
 
-## Uso
+## Usage
 
 ```tsx
 import { Alert } from "@your-package/components";
 
-// Alerta básica
+// Basic alert
 <Alert message="This is an alert message" />
 
-// Alerta con variante y opción para cerrar
+// Alert with variant and option to close
 <Alert
   variant="success"
   message="Operation completed successfully!"
@@ -30,7 +30,7 @@ import { Alert } from "@your-package/components";
   onClose={() => console.log("Alert closed")}
 />
 
-// Alerta de error
+// Error alert
 <Alert
   variant="error"
   message="An error occurred. Please try again."
@@ -42,8 +42,8 @@ import { Alert } from "@your-package/components";
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Alerta por defecto
+### Default Alert
 
 <Story of={AlertStories.Default} />{" "}
