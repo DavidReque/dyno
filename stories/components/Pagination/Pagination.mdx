@@ -1,0 +1,44 @@
+import { Meta, Story, Controls, Primary } from "@storybook/blocks";
+import * as PaginationStories from "./Pagination.stories";
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+El componente **Pagination** permite al usuario navegar entre diferentes páginas de contenido mediante botones de navegación. Esto es especialmente útil para interfaces que requieren paginación, donde se muestra una parte del contenido total y se permite al usuario cambiar de página de manera intuitiva.
+
+## Características
+
+- **Navegación entre páginas:** Permite cambiar la página activa.
+- **Manejo de estado interno:** Se integra con el estado de la aplicación para actualizar la página actual.
+- **Diseño centrado:** Se adapta a diferentes layouts y resoluciones.
+- **Interacción mediante eventos:** Notifica mediante un callback cada vez que se cambia la página para que el estado pueda ser actualizado externamente.
+
+## Uso
+
+Para utilizar el componente, es necesario manejar el estado de la página actual y actualizarlo a través de la función `onPageChange`. A continuación, un ejemplo de cómo implementar el componente:
+
+```tsx
+import React, { useState } from "react";
+import Pagination from "@your-package/components/General/Pagination/Pagination";
+
+const Example = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  return (
+    <Pagination
+      totalPages={5}
+      currentPage={currentPage}
+      onPageChange={(page) => setCurrentPage(page)}
+    />
+  );
+};
+
+export default Example;
+```
+
+## Ejemplos
+
+### Accordion por defecto
+
+<Story of={PaginationStories.Default} />

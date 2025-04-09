@@ -7,8 +7,13 @@ const meta: Meta<typeof Pagination> = {
   component: Pagination,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Un componente de paginación que permite navegar entre diferentes páginas de contenido.",
+      },
+    },
   },
-  tags: ["autodocs"],
   argTypes: {
     className: { control: false },
   },
@@ -18,11 +23,12 @@ export default meta;
 
 const Template: StoryFn<typeof Pagination> = (args) => {
   const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <Pagination
       {...args}
       currentPage={currentPage}
-      onPageChange={(page) => setCurrentPage(page)}
+      onPageChange={(page: number) => setCurrentPage(page)}
     />
   );
 };
