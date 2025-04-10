@@ -44,6 +44,7 @@ type Story = StoryObj<typeof Alert>;
 export const Default: Story = {
   args: {
     message: "This is a default alert message",
+    dismissible: true,
   },
 };
 

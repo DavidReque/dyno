@@ -5,35 +5,35 @@ import * as AvatarStories from "./Avatar.stories";
 
 # Avatar
 
-El componente Avatar es un elemento visual que representa a un usuario o entidad.
+The Avatar component is a visual element that represents a user or entity.
 
-## Características
+## Features
 
-- Diferentes tamaños (sm, md, lg)
-- Soporte para imágenes y fallback
-- Personalizable mediante className
-- Integración con el sistema de diseño
+- Multiple sizes (sm, md, lg)
+- Supports images and fallback content
+- Customizable via `className`
+- Seamlessly integrates with the design system
 
-## Uso
+## Usage
 
 ```tsx
 import { Avatar } from "@your-package/components";
 
-// Avatar básico con imagen
+// Basic avatar with image
 <Avatar
   src="https://example.com/avatar.jpg"
   alt="User Avatar"
   size="md"
 />
 
-// Avatar con fallback
+// Avatar with fallback
 <Avatar
   alt="John Doe"
   size="lg"
   fallback="JD"
 />
 
-// Avatar pequeño
+// Small avatar
 <Avatar
   src="https://example.com/avatar.jpg"
   alt="Small Avatar"
@@ -41,12 +41,12 @@ import { Avatar } from "@your-package/components";
 />
 ```
 
-## Props
+Props
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Avatar por defecto
+### Default Avatar
 
-<Story of={AvatarStories.Default} />{" "}
+<Story of={AvatarStories.Default} />

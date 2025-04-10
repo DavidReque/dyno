@@ -5,51 +5,54 @@ import * as CardStories from "./Card.stories";
 
 # Card
 
-El componente Card es un contenedor que agrupa contenido relacionado.
+The Card component is a container that groups related content.
 
-## Características
+## Features
 
-- Múltiples variantes (default, ghost, outline)
-- Soporte para título, subtítulo e icono
-- Personalizable mediante className
-- Integración con el sistema de diseño
+- Multiple variants (`default`, `ghost`, `outline`)
+- Support for title, subtitle, and icon
+- Customizable via `className`
+- Integrated with the design system
 
-## Uso
+## Usage
 
 ```tsx
 import { Card } from "@your-package/components";
 import { User } from "lucide-react";
 
-// Card básica
+// Basic card
 <Card
   title="Card Title"
   subtitle="Card Subtitle"
-  children="Card content goes here"
-/>
+>
+  Card content goes here
+</Card>
 
-// Card con icono
+// Card with icon
 <Card
   title="Card with Icon"
   subtitle="This card displays an icon"
   icon={User}
-  children="The icon enhances the visual appeal"
-/>
+>
+  The icon enhances the visual appeal
+</Card>
 
-// Card con footer
+// Card with footer
 <Card
   title="Card with Footer"
   subtitle="This card includes a footer"
-  children="Main content"
   footer="Learn More"
-/>
+>
+  Main content
+</Card>
 ```
 
-## Props
+Props
 
 <Controls />
 
-## Ejemplos
+## Examples
 
-### Card por defecto
+### Default Card
 
-<Story of={CardStories.Default} />{" "}
+<Story of={CardStories.Default} />
