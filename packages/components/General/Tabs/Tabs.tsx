@@ -1,9 +1,6 @@
 import React, { useState, useRef, KeyboardEvent } from "react";
 import { cn } from "../../../lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Poppins } from "next/font/google";
-
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export interface Tab {
   id: string;
@@ -49,8 +46,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, className }) => {
     <div
       className={cn(
         "w-full p-4 rounded-lg bg-[var(--color-tabs-bg)] text-[var(--color-tabs-text)]",
-        className,
-        poppins.className
+        className
       )}
     >
       {/* Lista de tabs con roles ARIA */}
