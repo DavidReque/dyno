@@ -1,4 +1,4 @@
-# @dyno/ui
+# @davidreque/ui
 
 A modern, accessible, and customizable React component library built with TypeScript and Tailwind CSS.
 
@@ -7,11 +7,11 @@ A modern, accessible, and customizable React component library built with TypeSc
 ### From npm
 
 ```bash
-npm install @dyno/ui
+npm install @davidreque/ui
 # or
-yarn add @dyno/ui
+yarn add @davidreque/ui
 # or
-pnpm add @dyno/ui
+pnpm add @davidreque/ui
 ```
 
 ### From GitHub Packages
@@ -19,30 +19,37 @@ pnpm add @dyno/ui
 1. Create a `.npmrc` file in your project root with the following content:
 
 ```
-@dyno:registry=https://npm.pkg.github.com
+@davidreque:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
 2. Set up your GitHub token as an environment variable:
 
 ```bash
+# For Windows PowerShell
+$env:GITHUB_TOKEN = "your_github_token"
+
+# For Windows CMD
+set GITHUB_TOKEN=your_github_token
+
+# For Linux/Mac
 export GITHUB_TOKEN=your_github_token
 ```
 
 3. Install the package:
 
 ```bash
-npm install @dyno/ui
+npm install @davidreque/ui
 # or
-yarn add @dyno/ui
+yarn add @davidreque/ui
 # or
-pnpm add @dyno/ui
+pnpm add @davidreque/ui
 ```
 
 ## Usage
 
 ```tsx
-import { Button, Modal, DatePicker } from "@dyno/ui";
+import { Button, Modal, DatePicker } from "@davidreque/ui";
 
 function App() {
   return (
@@ -78,7 +85,7 @@ function App() {
 - Calendar
 - DatePicker
 - Modal
-- Input
+- TextInput
 
 ## Requirements
 
