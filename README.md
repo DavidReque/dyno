@@ -49,14 +49,9 @@ function App() {
 - [Calendar](./stories/components/Calendar/Calendar.mdx)
 - [DatePicker](./stories/components/DatePicker/DatePicker.mdx)
 - [Modal](./stories/components/Modal/Modal.mdx)
-- [TextInput](./stories/components/TextInput/TextInput.mdx)
+- [Input](./stories/components/Input/Input.mdx)
 
 ## Development
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
 
 ### Setup
 
@@ -83,13 +78,6 @@ npm run storybook
 yarn storybook
 ```
 
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## Testing
 
@@ -117,7 +105,3 @@ yarn build
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-For support, please open an issue in the GitHub repository or contact the maintainers.
